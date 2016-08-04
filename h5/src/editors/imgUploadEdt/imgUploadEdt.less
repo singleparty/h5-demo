@@ -1,0 +1,56 @@
+.max() {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.imgUploadEdt {
+    height: 122px;
+    border-bottom: 2px dashed #eee;
+    .frame {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        border: 2px solid #eee;
+        margin: 8px;
+        overflow: hidden;
+        .icon {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            &.success {
+                background: url(./icon.png) no-repeat 0 0;
+            }
+            &.error {
+                background: url(./icon.png) no-repeat -30px 0;
+            }
+        }
+        .upload {
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 2;
+            font-size: 100px;
+            opacity: 0;
+            -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        }
+    }
+    .preview {
+        .max();
+        overflow: hidden;
+        font-size: 0;
+    }
+    .preview-div {
+        .max();
+        visibility: hidden;
+    }
+    .preview-img {
+        width: 100%;
+        visibility: hidden;
+    }
+}

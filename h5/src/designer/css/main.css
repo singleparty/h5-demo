@@ -1,0 +1,120 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  list-style: noen;
+}
+.main {
+  width: 100%;
+  min-width: 900px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.main:after {
+  content: '';
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+.designer-wrap {
+  float: left;
+  width: 100%;
+}
+.designer-wrap .designer {
+  margin-right: 300px;
+  margin-left: 100px;
+  padding-top: 1px;
+}
+.canvas-wrap {
+  width: 375px;
+  height: 667px;
+  border-top: 25px solid #eee;
+  border-right: 1px solid #eee;
+  border-bottom: 25px solid #eee;
+  border-left: 1px solid #eee;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  overflow: auto;
+  margin: 60px auto;
+}
+.canvas-wrap::-webkit-scrollbar-thumb {
+  background-color: #D0CCCC;
+  -webkit-border-radius: 6px;
+}
+.canvas-wrap::-webkit-scrollbar-thumb:hover {
+  background-color: #b3afaf;
+  -webkit-border-radius: 6px;
+}
+.canvas-wrap::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.canvas-wrap .canvas-adaption {
+  position: relative;
+}
+.canvas-wrap .canvas-adaption:after {
+  content: '';
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+.canvas-wrap .canvas {
+  float: left;
+  width: 100%;
+}
+.canvas-wrap .basic-com {
+  position: relative;
+}
+.editors-wrap {
+  float: left;
+  width: 298px;
+  height: 100%;
+  border-left: 2px dashed #eee;
+  margin-left: -300px;
+}
+.editors-wrap .editors-scene {
+  width: 100%;
+  height: 180px;
+  border-bottom: 2px solid #eee;
+}
+.editors-wrap .editors {
+  width: 100%;
+}
+.components-wrap {
+  float: left;
+  width: 98px;
+  height: 100%;
+  border-right: 2px dashed #eee;
+  margin-left: -100%;
+}
+.components-wrap .components {
+  width: 100%;
+  padding-top: 1px;
+}
+.components-wrap .component {
+  width: 80px;
+  border: 2px solid #eee;
+  margin: 10px auto;
+}
+.components-wrap .component img {
+  width: 100%;
+}

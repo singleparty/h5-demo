@@ -1,0 +1,22 @@
+.showcase {
+  padding: 10px;
+  overflow: hidden;
+}
+.showcase .showcase-main {
+  margin-right: -100px;
+}
+.showcase .showcase-item {
+  width: 106px;
+  height: 76px;
+  border: 2px solid #eee;
+  margin-right: 13px;
+  float: left;
+  overflow: hidden;
+}
+.showcase .showcase-item a {
+  display: block;
+  font-size: 0;
+}
+.showcase .showcase-item img {
+  width: 100%;
+}
