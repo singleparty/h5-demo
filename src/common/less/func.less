@@ -1,0 +1,37 @@
+.clearFix() {
+    &:after {
+        content: '';
+        display: block;
+        height: 0;
+        overflow: hidden;
+        clear: both;
+    }
+}
+.scrollBar() {
+    &::-webkit-scrollbar-thumb {
+        background-color: #D0CCCC;
+        -webkit-border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #b3afaf;
+        -webkit-border-radius: 6px;
+    }
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+}
+.prefix(@k, @v) {
+    -webkit-@{k}: @v;
+    -moz-@{k}: @v;
+    -ms-@{k}: @v;
+    -o-@{k}: @v;
+    @{k}: @v;
+}
+.suffix(@k, @v) {
+    @{k}: ~'-webkit-@{v}';
+    @{k}: ~'-moz-@{v}';
+    @{k}: ~'-ms-@{v}';
+    @{k}: ~'-o-@{v}';
+    @{k}: ~'@{v}';
+}

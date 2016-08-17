@@ -1,0 +1,17 @@
+<div class="sketchpads-wrap">
+    <div class="sketchpads">
+        <div class="canvas-wrap">
+            <div class="canvas-adaption">
+                <!--主界面-->
+                <div class="canvas">
+                    <div class="basic-com"
+                         :data-com-name="_com.comName"
+                         v-for="_com in coms"
+                         track-by="$index">
+                        <component :is="_com.comName"></component>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

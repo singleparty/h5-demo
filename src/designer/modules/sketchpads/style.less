@@ -1,0 +1,34 @@
+@import '../../../common/less/func.less';
+.sketchpads-wrap {
+    float: left;
+    width: 100%;
+    .sketchpads {
+        margin-right: 300px;
+        margin-left: 100px;
+        padding-top: 1px;
+    }
+}
+
+.canvas-wrap {
+    .scrollBar();
+    width: 375px;
+    height: 667px;
+    border-top: 25px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 25px solid #eee;
+    border-left: 1px solid #eee;
+    .prefix(border-radius, 15px);
+    overflow: auto;
+    margin: 60px auto;
+    .canvas-adaption {
+        .clearFix();
+        position: relative;
+    }
+    .canvas {
+        .clearFix();
+        width: 100%;
+    }
+    .basic-com {
+        position: relative;
+    }
+}
