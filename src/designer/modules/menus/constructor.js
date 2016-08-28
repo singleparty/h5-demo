@@ -10,7 +10,7 @@ module.exports = Vue.extend({
     },
     methods: {
         add: function ($index) {
-            this.$dispatch('addOnCom', this.menus[$index]);
+            this.$dispatch('add-on-com', this.menus[$index]['comName']);
         }
     },
     template: tpl

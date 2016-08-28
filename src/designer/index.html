@@ -6,9 +6,9 @@
     <title>h5 demo</title>
 </head>
 <body>
-<div id="main" @addOnCom="">
+<div id="main">
     <sketchpads :coms="coms"></sketchpads>
-    <editors></editors>
+    <modify :edt.sync="edt" :scene.sync="scene"></modify>
     <menus></menus>
 </div>
 </body>

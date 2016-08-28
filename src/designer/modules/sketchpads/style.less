@@ -29,6 +29,26 @@
         width: 100%;
     }
     .basic-com {
+        float: left;
+        width: 100%;
         position: relative;
+        .cover {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            .mask {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: -1;
+                width: 100%;
+                height: 100%;
+                background: #000;
+                opacity: .6;
+            }
+        }
     }
 }
