@@ -30,11 +30,15 @@ module.exports = {
              loader: 'imports?$=jquery'
              },*/
             {
-                test: /\.less/,
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel?presets[]=es2015'
+            }, {
+                test: /\.less$/,
                 exclude: /node_modules/,
                 loader: lessExtractText.extract("style", "css!less")
             }, {
-                test: /\.css/,
+                test: /\.css$/,
                 exclude: /node_modules/,
                 loader: cssExtractText.extract("style", "css")
             }, {
