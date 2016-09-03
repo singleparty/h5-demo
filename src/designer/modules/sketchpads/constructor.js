@@ -45,6 +45,9 @@ module.exports = Vue.extend({
             this.focus++;
         }
     },
+    transitions: {
+
+    },
     components: comMap.comObj,
     ready: function () {
 

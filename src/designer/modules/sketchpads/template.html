@@ -11,7 +11,7 @@
                          v-for="_com in coms"
                          track-by="$index">
                         <component :is="_com.comName" :info="_com.info" :index="$index"></component>
-                        <div class="cover"
+                        <div class="cover" transition="fade"
                              v-if="$index == focus"
                              @click.stop.prevent="blurCom($index)">
                             <div class="mask"></div>

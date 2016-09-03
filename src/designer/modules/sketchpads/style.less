@@ -50,5 +50,11 @@
                 opacity: .6;
             }
         }
+        .fade-transition {
+            .prefix(transition, opacity .3s ease);
+        }
+        .fade-enter, .fade-leave {
+            opacity: 0;
+        }
     }
 }

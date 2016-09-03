@@ -65,7 +65,8 @@ module.exports = {
             publish: __dirname + '/src/publish',
             vue: __dirname + '/libs/vue-1.0.26/vue.dev.js',
             jquery: __dirname + '/libs/jquery-1.9.1/jquery.js',
-            template: __dirname + '/libs/artTemplate-v3.0.0/dist/template.js'
+            template: __dirname + '/libs/artTemplate-v3.0.0/dist/template.js',
+            plugins: __dirname + '/src/plugins'
         }
     },
     devtool: 'source-map',

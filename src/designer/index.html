@@ -7,9 +7,10 @@
 </head>
 <body>
 <div id="main">
-    <sketchpads :coms="coms"></sketchpads>
+    <sketchpads :coms="coms" @edit-com="editCom" @cancel-edit-com="cancelEditCom"></sketchpads>
     <modify :edt.sync="edt" :scene.sync="scene"></modify>
-    <menus></menus>
+    <menus @add-on-com="addOnCom"></menus>
+    <!--<upload-img></upload-img>-->
 </div>
 </body>
 </html>
