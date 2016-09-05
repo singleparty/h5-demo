@@ -22,10 +22,13 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-md5-hash": "0.0.5"
   },
   "dependencies": {},
   "scripts": {
-    "webpack-dev-server": "webpack-dev-server --port 9090 --hot --inline --watch-poll"
+    "webpack-dev-server": "webpack-dev-server --port 9090 --hot --inline --watch-poll --host 0.0.0.0",
+    "start": "webpack-dev-server --port 9090 --hot --inline --watch-poll --host 0.0.0.0",
+    "build": "gulp build"
   }
 }
