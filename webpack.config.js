@@ -25,15 +25,7 @@ module.exports = {
     },
     module: {
         loaders: [
-            /*{
-             test: require.resolve('./src/designer/js/test.js'),
-             loader: 'imports?$=jquery'
-             },*/
             {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel?presets[]=es2015'
-            }, {
                 test: /\.less$/,
                 exclude: /node_modules/,
                 loader: ExtractTextPlugin.extract("style", "css!less")
@@ -44,40 +36,48 @@ module.exports = {
             }, {
                 test: /\.(png|jpg)$/,
                 exclude: /node_modules/,
-                loader: 'url-loader?limit=8192&name=[path][name]-[hash:8].[ext]'
+                loader: 'url-loader?limit=8192&name=image/[name]-[hash:8].[ext]'
             }, {
                 test: /\.html$/,
                 loader: "raw"
             }, {
-                test: require.resolve('./libs/jquery-1.9.1/jquery.js'),
+                test: /\.(txt|swf|xap)$/,
+                exclude: /node_modules/,
+                loader: "file?name=file/[name]-[hash:8].[ext]"
+            }, {
+                test: require.resolve('./libs/jquery-1.9.1/jquery.js'), //jquery
                 loader: 'exports?window.$'
+            }, {
+                test: require.resolve('./libs/plupload/js/plupload.full.min.js'), //plupload
+                loader: 'imports?this=>window!exports?window.plupload,window.mOxie'
             }
         ]
     },
     resolve: {
         alias: {
-            /*test: __dirname + '/src/designer/js/test.js',*/
             libs: __dirname + '/libs',
             common: __dirname + '/src/common',
-            components: __dirname + '/src/components',
+            //设计器
             designer: __dirname + '/src/designer',
-            editors: __dirname + '/src/editors',
-            publish: __dirname + '/src/publish',
+            components: __dirname + '/src/designer/components',
+            editors: __dirname + '/src/designer/editors',
+            plugins: __dirname + '/src/designer/plugins',
+            //插件
             vue: __dirname + '/libs/vue-1.0.26/vue.dev.js',
             jquery: __dirname + '/libs/jquery-1.9.1/jquery.js',
-            template: __dirname + '/libs/artTemplate-v3.0.0/dist/template.js',
-            plugins: __dirname + '/src/plugins'
+            plupload: __dirname + '/libs/plupload/js/plupload.full.min.js'
         }
     },
     devtool: 'source-map',
-    /*devServer: {
+    devServer: {
         proxy: {
-            '*.php': {
-                target: 'localhost:82',
+            '/backend/*' : {
+                target: 'http://localhost:82/',
+                changeOrigin: true,
                 secure: false
             }
         }
-    },*/
+    },
     /*externals: {
      'jquery': 'jQuery' //key是模块名，value是全局变量
      },*/

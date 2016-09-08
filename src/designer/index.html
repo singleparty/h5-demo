@@ -10,7 +10,7 @@
     <sketchpads :coms="coms" @edit-com="editCom" @cancel-edit-com="cancelEditCom"></sketchpads>
     <modify :edt.sync="edt" :scene.sync="scene"></modify>
     <menus @add-on-com="addOnCom"></menus>
-    <!--<upload-img></upload-img>-->
+    <upload-img v-show="isShowUploadImg"></upload-img>
 </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 [TOC]
 # **单页面h5编辑器**
 ## **技术栈**
-**webpack webpack-dev-server gulp vue es6 commomJS less php/node**
+**webpack webpack-dev-server gulp vue commomJS less php/node**
 ***
 ### 1.clone或者下载项目
 ```bash
@@ -26,7 +26,7 @@ npm install gulp webpack webpack-dev-server -g
 
 * 在项目根目录下，命令窗口输入以下命令
 ```bash
-npm run webpack-dev-server
+npm run start
 ```
 ### 4.浏览器访问
 
@@ -37,10 +37,10 @@ http://localhost:9090/dist/index.html
 
 # **发布**
 
-最终打包的文件输出到dist目录下
-进入项目根目录，命令窗口运行gulp命令
+最终发行版本输出到dist目录下
+进入项目根目录，命令窗口输入
 ```bash
-gulp build
+npm run build
 ```
 # **项目结构**
 

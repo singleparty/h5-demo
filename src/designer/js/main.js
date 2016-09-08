@@ -13,7 +13,8 @@ var main = new Vue({
         comArr: comMap.comArr,
         coms: [],
         edt: {},
-        scene: {}
+        scene: {},
+        isShowUploadImg: false
     },
     events: {
 
