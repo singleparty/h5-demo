@@ -15,7 +15,7 @@ module.exports = {
             'webpack/hot/dev-server',
             'webpack-dev-server/client?http://localhost:9090'
         ],//我们开发时的入口文件
-        vendor: ['vue']
+        vendor: ['vue', 'plupload']
     },
     output: {
         path: path.join(__dirname, 'dist'),

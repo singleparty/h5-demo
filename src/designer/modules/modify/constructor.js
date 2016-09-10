@@ -5,7 +5,7 @@ var edtMap = require('editors/edts-map');
 module.exports = Vue.extend({
     template: tpl,
     props: {
-        edt: {
+        edts: {
             type: Object,
             default: function () {
                 return {};

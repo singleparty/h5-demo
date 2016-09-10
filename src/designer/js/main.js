@@ -6,15 +6,18 @@ var moduleModify = require('designer/modules/modify/constructor');
 var moduleSketchpads = require('designer/modules/sketchpads/constructor');
 var comMap = require('components/coms-map');
 var pluginUploadImg = require('plugins/uploadImg/constructor.js');
-Vue.use(pluginUploadImg);
+Vue.use(pluginUploadImg, {
+    url: '/backend/uploadImg.php', //上传地址
+    fileDataName: 'upload', //上传的name
+    maxFileSize: 5 * 1024 * 1024 //图片上限
+});
 var main = new Vue({
     el: '#main',
     data: {
         comArr: comMap.comArr,
         coms: [],
-        edt: {},
-        scene: {},
-        isShowUploadImg: false
+        edts: {},
+        scene: {}
     },
     events: {
 
@@ -30,11 +33,14 @@ var main = new Vue({
             })
         },
         editCom: function (opt) {
-            opt.info = this.coms[opt.index].info;
-            this.edt = opt;
+            opt['info'] = this.coms[opt.index].info;
+            this.edts = opt;
         },
         cancelEditCom: function (opt) {
-            this.edt = {};
+            this.edts = {};
+        },
+        uploadImg: function (cb) {
+            this.$refs.uploadImg.open(cb);
         }
     },
     components: {

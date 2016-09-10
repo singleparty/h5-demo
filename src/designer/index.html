@@ -8,9 +8,9 @@
 <body>
 <div id="main">
     <sketchpads :coms="coms" @edit-com="editCom" @cancel-edit-com="cancelEditCom"></sketchpads>
-    <modify :edt.sync="edt" :scene.sync="scene"></modify>
+    <modify :edts.sync="edts" :scene.sync="scene" @upload-img="uploadImg"></modify>
     <menus @add-on-com="addOnCom"></menus>
-    <upload-img v-show="isShowUploadImg"></upload-img>
+    <upload-img v-ref:upload-img></upload-img>
 </div>
 </body>
 </html>

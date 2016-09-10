@@ -1,3 +1,4 @@
+var animate = require('libs/animate.min.css');
 var style = require('./style.less');
 var tpl = require('./template.html');
 var _temp = require('plupload');
@@ -68,6 +69,8 @@ MyPlugin.install = function (Vue, options) {
         template: tpl,
         data: function () {
             return {
+                isShow: false,
+                callback: null,
                 uploader: null,
                 resources: [],
                 queue: [],
@@ -78,6 +81,17 @@ MyPlugin.install = function (Vue, options) {
             }
         },
         methods: {
+            open: function (cb) {
+                this.callback = cb;
+                this.isShow = true;
+            },
+            close: function () {
+                this.isShow = false;
+            },
+            select: function (index) {
+                this.callback && this.callback(this.resources[index].imgUrl);
+                this.close();
+            },
             start: function () {
                 this.uploader.start();
             },
@@ -97,14 +111,14 @@ MyPlugin.install = function (Vue, options) {
                 browse_button: this.$el.querySelector('.browse'),
                 flash_swf_url: swf,
                 silverlight_xap_url: xap,
-                url: '/backend/uploadImg.php',
+                url: options.url,
                 filters: {
                     mime_types: [{title: "Image files", extensions: "jpg,gif,jpeg,png"}],
-                    max_file_size: 5 * 1024 * 1024,
+                    max_file_size: options.maxFileSize,
                     prevent_duplicates: false
                 },
                 max_retries: 0,
-                file_data_name: 'upload',
+                file_data_name: options.fileDataName,
                 init: {
                     FilesRemoved: function (uploader, files) {
 
@@ -162,6 +176,18 @@ MyPlugin.install = function (Vue, options) {
                 }
             });
             this.uploader.init();
+        },
+        transitions: {
+            fade: {
+                enterClass: 'fadeIn',
+                leaveClass: 'fadeOut',
+                type: 'animation'
+            },
+            bounce: {
+                enterClass: 'bounceIn',
+                leaveClass: 'bounceOut',
+                type: 'animation'
+            }
         }
     });
 };

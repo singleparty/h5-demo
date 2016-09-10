@@ -7,54 +7,50 @@
         margin-left: 100px;
         padding-top: 1px;
     }
-}
-
-.canvas-wrap {
-    .scrollBar();
-    width: 375px;
-    height: 667px;
-    border-top: 25px solid #eee;
-    border-right: 1px solid #eee;
-    border-bottom: 25px solid #eee;
-    border-left: 1px solid #eee;
-    .prefix(border-radius, 15px);
-    overflow: auto;
-    margin: 60px auto;
-    .canvas-adaption {
-        .clearFix();
-        position: relative;
-    }
-    .canvas {
-        .clearFix();
-        width: 100%;
-    }
-    .basic-com {
-        float: left;
-        width: 100%;
-        position: relative;
-        .cover {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 99;
+    .canvas-wrap {
+        .scrollBar();
+        width: 375px;
+        height: 667px;
+        border-top: 25px solid #eee;
+        border-right: 1px solid #eee;
+        border-bottom: 25px solid #eee;
+        border-left: 1px solid #eee;
+        .prefix(border-radius, 15px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        margin: 60px auto;
+        .canvas-adaption {
+            .clearFix();
+            position: relative;
+        }
+        .canvas {
+            .clearFix();
             width: 100%;
-            height: 100%;
-            .mask {
+        }
+        .basic-com {
+            float: left;
+            width: 100%;
+            position: relative;
+            .prefix(animation-duration, .3s);
+            .cover {
                 position: absolute;
                 left: 0;
                 top: 0;
-                z-index: -1;
+                z-index: 99;
                 width: 100%;
                 height: 100%;
-                background: #000;
-                opacity: .6;
+                .prefix(animation-duration, .3s);
+                .mask {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: -1;
+                    width: 100%;
+                    height: 100%;
+                    background: #000;
+                    opacity: .6;
+                }
             }
-        }
-        .fade-transition {
-            .prefix(transition, opacity .3s ease);
-        }
-        .fade-enter, .fade-leave {
-            opacity: 0;
         }
     }
 }

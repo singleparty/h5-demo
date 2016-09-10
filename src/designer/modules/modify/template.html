@@ -7,8 +7,9 @@
     <!--组件编辑器-->
     <div class="modify">
         <div class="basic-edt"
-             :data-edt-name="edt.edtName">
-            <component :is="edt.edtName" :info.sync="edt.info"></component>
+             v-for="edtName in edts.edtNames" track-by="$index"
+             :data-edt-name="edtName">
+            <component :is="edtName" :info.sync="edts.info"></component>
         </div>
     </div>
 </div>

@@ -1,18 +1,21 @@
-<div class="upload-img">
-    <div class="mask"></div>
+<div class="upload-img animated" v-show="isShow" transition="bounce">
+    <div class="mask" @click="close"></div>
     <div class="frame">
         <div class="frame-resources">
             <h5>资源列表</h5>
             <div class="resources">
-                <img class="item"
-                     v-for="resource in resources"
-                     :src="resource.imgUrl"/>
+                <div class="item" v-for="resource in resources" track-by="$index">
+                    <img :src="resource.imgUrl"/>
+                    <div class="item-mask">
+                        <button @click="select($index)">选中</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="frame-upload-queue">
             <h5>待上传资源</h5>
             <div class="queue">
-                <div class="item" v-for="item in queue">
+                <div class="item" v-for="item in queue" track-by="$index">
                     <div class="preview-backup"></div>
                     <img class="preview" :src="item.imgUrl" alt=""/>
                     <div class="percent" :style="{width: item.percent + '%'}"></div>
@@ -23,7 +26,7 @@
             <button class="browse">选择文件</button>
             <button class="start_upload" @click="start()">开始上传</button>
         </div>
-        <div class="toast" v-if="isShowToast" transition="fade">
+        <div class="toast animated" v-if="isShowToast" transition="fade">
             <span class="tips" v-text="toast"></span>
         </div>
     </div>

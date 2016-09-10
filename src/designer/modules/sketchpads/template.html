@@ -4,14 +4,15 @@
             <div class="canvas-adaption">
                 <!--主界面-->
                 <div class="canvas">
-                    <div class="basic-com"
+                    <div class="basic-com animated"
+                         transition="fadeDown"
                          :class="{'active': $index == focus}"
                          :data-com-name="_com.comName"
                          @click="focusCom($index)"
                          v-for="_com in coms"
                          track-by="$index">
                         <component :is="_com.comName" :info="_com.info" :index="$index"></component>
-                        <div class="cover" transition="fade"
+                        <div class="cover animated" transition="fade"
                              v-if="$index == focus"
                              @click.stop.prevent="blurCom($index)">
                             <div class="mask"></div>

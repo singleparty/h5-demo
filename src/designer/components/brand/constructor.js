@@ -36,7 +36,7 @@ module.exports = Vue.extend({
     },
     methods: {
         editor: function ($event) {
-            this.$dispatch('edit-com', {edtName: 'brandEdt', index: this.index});
+            this.$dispatch('edit-com', {edtNames: ['brandEdt'], index: this.index});
         }
     }
 });

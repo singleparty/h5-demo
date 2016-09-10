@@ -40,5 +40,12 @@ module.exports = Vue.extend({
             }
         }
     },
-    methods: {}
+    methods: {
+        upload: function () {
+            var self = this;
+            this.$dispatch('upload-img', function (url) {
+                self.info.imgSrc = url;
+            });
+        }
+    }
 });

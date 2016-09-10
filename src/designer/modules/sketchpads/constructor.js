@@ -1,4 +1,5 @@
 var Vue = require('vue');
+var animate = require('libs/animate.min.css');
 var style = require('./style.less');
 var tpl = require('./template.html');
 var comMap = require('components/coms-map');
@@ -46,7 +47,16 @@ module.exports = Vue.extend({
         }
     },
     transitions: {
-
+        fade: {
+            enterClass: 'fadeIn',
+            leaveClass: 'fadeOut',
+            type: 'animation'
+        },
+        fadeDown: {
+            enterClass: 'fadeInDown',
+            leaveClass: 'fadeOut',
+            type: 'animation'
+        }
     },
     components: comMap.comObj,
     ready: function () {

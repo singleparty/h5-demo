@@ -1,8 +1,7 @@
 <div class="menus-wrap">
     <!--组件集合-->
     <div class="menus">
-        <div class="menu"
-             v-for="menu in menus" @click="add($index)">
+        <div class="menu" v-for="menu in menus" track-by="$index" @click="add($index)">
             {{menu['zh-comName']}}
         </div>
     </div>
