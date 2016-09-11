@@ -1,6 +1,6 @@
 var animate = require('libs/animate.min.css');
 var style = require('./style.less');
-var tpl = require('./template.html');
+var tpl = require('./tpl.html');
 var _temp = require('plupload');
 var plupload = _temp['window.plupload'];
 var mOxie = _temp['window.mOxie'];
@@ -109,6 +109,7 @@ MyPlugin.install = function (Vue, options) {
             var self = this;
             this.uploader = new plupload.Uploader({
                 browse_button: this.$el.querySelector('.browse'),
+                runtimes: 'flash,html5,silverlight,browserplus,gears,html4',
                 flash_swf_url: swf,
                 silverlight_xap_url: xap,
                 url: options.url,
@@ -175,6 +176,8 @@ MyPlugin.install = function (Vue, options) {
                     }
                 }
             });
+        },
+        ready: function () {
             this.uploader.init();
         },
         transitions: {

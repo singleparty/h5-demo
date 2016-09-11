@@ -2,7 +2,7 @@ var arr = [], obj = {}, _temp = null;
 arr.push({
     comName: 'brand',
     'zh-comName': '头图',
-    constructor: require('./brand/constructor')
+    constructor: require('./brand/brand.vue')
 });
 for (var i = 0, l = arr.length; i < l; i++) {
     _temp = arr[i];

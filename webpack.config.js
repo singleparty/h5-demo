@@ -45,6 +45,15 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: "file?name=file/[name]-[hash:8].[ext]"
             }, {
+                test: /\.vue$/,
+                exclude: /node_modules/,
+                loader: "vue"
+            }, {
+                test: /\.js$/,
+                exclude: [/node_modules/, /libs/],
+                include: /src/,
+                loader: "babel?presets[]=es2015"
+            }, {
                 test: require.resolve('./libs/jquery-1.9.1/jquery.js'), //jquery
                 loader: 'exports?window.$'
             }, {
@@ -71,7 +80,7 @@ module.exports = {
     devtool: 'source-map',
     devServer: {
         proxy: {
-            '/backend/*' : {
+            '/backend/*': {
                 target: 'http://localhost:82/',
                 changeOrigin: true,
                 secure: false
@@ -85,9 +94,9 @@ module.exports = {
         new ExtractTextPlugin('css/all-[contenthash:8].css'),
         new NoErrorsPlugin(),
         new WebpackMd5Hash(),
-        /*new ProvidePlugin({
-         Vue: 'vue'
-         }),*/
+        new ProvidePlugin({
+            Vue: 'vue'
+        }),
         /*new UglifyJsPlugin({
          compress: {warnings: false}
          }),*/

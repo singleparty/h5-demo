@@ -1,7 +1,7 @@
 [TOC]
 # **单页面h5编辑器**
 ## **技术栈**
-**webpack webpack-dev-server gulp vue commomJS less php/node**
+**webpack webpack-dev-server gulp vue es6 commomJS less php/node**
 ***
 ### 1.clone或者下载项目
 ```bash

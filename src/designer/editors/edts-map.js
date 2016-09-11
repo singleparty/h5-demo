@@ -2,7 +2,7 @@ var arr = [], obj = {}, _temp = null;
 arr.push({
     edtName: 'brandEdt',
     'zh-edtName': '头图编辑器',
-    constructor: require('./brandEdt/constructor')
+    constructor: require('./brandEdt/brandEdt.vue')
 });
 for (var i = 0, l = arr.length; i < l; i++) {
     _temp = arr[i];
