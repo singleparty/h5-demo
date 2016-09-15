@@ -14,8 +14,8 @@
 <style lang="less" scoped>
     @import "./style.less";
 </style>
-<script>
-    module.exports = Vue.extend({
+<script type="es6">
+    var ctor = Vue.extend({
         props: {
             info: {
                 type: Object,
@@ -23,17 +23,17 @@
             }
         },
         computed: {
-            showImg: function () {
+            showImg () {
                 return !!this.info.imgSrc
             }
         },
-        data: function () {
+        data () {
             return {};
         },
         watch: {},
         filters: {
             protocol: {
-                read: function (val) {
+                read (val) {
                     var pre = '', _temp;
                     _temp = val.replace(/https?:\/\//, function (match) {
                         pre = match;
@@ -41,7 +41,7 @@
                     });
                     return pre ? pre + _temp : 'http://' + _temp;
                 },
-                write: function (val) {
+                write (val) {
                     var pre = '', _temp;
                     _temp = val.replace(/https?:\/\//, function (match) {
                         pre = match;
@@ -52,7 +52,7 @@
             }
         },
         methods: {
-            upload: function () {
+            upload () {
                 var self = this;
                 this.$dispatch('upload-img', function (url) {
                     self.info.imgSrc = url;
@@ -60,4 +60,5 @@
             }
         }
     });
+    module.exports = ctor;
 </script>

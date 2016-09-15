@@ -1,6 +1,9 @@
 <template>
     <div class="sketchpads-wrap">
         <div class="sketchpads">
+            <div class="sketchpads-header">
+                <slot name="operation"></slot>
+            </div>
             <div class="canvas-wrap">
                 <div class="canvas-adaption">
                     <!--主界面-->
@@ -26,15 +29,15 @@
                 </div>
             </div>
         </div>
-    </div>  </div>
+    </div>
 </template>
 <style lang="less" scoped>
     @import "./style.less";
 </style>
-<script>
+<script type="es6">
     var animate = require('libs/animate.min.css');
     var comMap = require('components/coms-map');
-    module.exports = Vue.extend({
+    var ctor = Vue.extend({
         props: {
             coms: {
                 type: Array,
@@ -44,31 +47,31 @@
                 twoWay: false
             }
         },
-        data: function () {
+        data () {
             return {
                 focus: null
             }
         },
         methods: {
-            focusCom: function ($index) {
+            focusCom ($index) {
                 this.focus = $index;
             },
-            blurCom: function ($index) {
+            blurCom ($index) {
                 this.focus = null;
                 this.$dispatch('cancel-edit-com', {index: $index});
             },
-            deleteCom: function ($index) {
+            deleteCom ($index) {
                 this.blurCom($index);
                 this.coms.splice($index, 1);
             },
-            moveUpCom: function ($index) {
+            moveUpCom ($index) {
                 if ($index == 0) return false;
                 var _temp = this.coms[$index];
                 this.coms.$set($index, this.coms[$index - 1]);
                 this.coms.$set($index - 1, _temp);
                 this.focus--;
             },
-            moveDownCom: function ($index) {
+            moveDownCom ($index) {
                 if ($index == this.coms.length - 1) return false;
                 var _temp = this.coms[$index];
                 this.coms.$set($index, this.coms[$index + 1]);
@@ -89,8 +92,9 @@
             }
         },
         components: comMap.comObj,
-        ready: function () {
+        ready () {
 
         }
     });
+    module.exports = ctor;
 </script>

@@ -11,18 +11,19 @@
 <style lang="less" scoped>
     @import "./style.less";
 </style>
-<script>
+<script type="es6">
     var comMap = require('components/coms-map');
-    module.exports = Vue.extend({
-        data: function () {
+    var ctor = Vue.extend({
+        data () {
             return {
                 menus: comMap.comArr
             }
         },
         methods: {
-            add: function ($index) {
+            add ($index) {
                 this.$dispatch('add-on-com', this.menus[$index]['comName']);
             }
         }
     });
+    module.exports = ctor;
 </script>

@@ -7,7 +7,9 @@
 </head>
 <body>
 <div id="main">
-    <sketchpads :coms="coms" @edit-com="editCom" @cancel-edit-com="cancelEditCom"></sketchpads>
+    <sketchpads :coms="coms" @edit-com="editCom" @cancel-edit-com="cancelEditCom">
+        <operation slot="operation" @save="save" @publish="publish"></operation>
+    </sketchpads>
     <modify :edts.sync="edts" :scene.sync="scene" @upload-img="uploadImg"></modify>
     <menus @add-on-com="addOnCom"></menus>
     <upload-img v-ref:upload-img></upload-img>

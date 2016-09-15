@@ -18,9 +18,9 @@
 <style lang="less" scoped>
     @import "./style.less";
 </style>
-<script>
+<script type="es6">
     var edtMap = require('editors/edts-map');
-    module.exports = Vue.extend({
+    var ctor = Vue.extend({
         props: {
             edts: {
                 type: Object,
@@ -40,13 +40,14 @@
                 twoWay: true
             }
         },
-        data: function () {
+        data () {
             return {}
         },
         methods: {},
         components: edtMap.edtObj,
-        ready: function () {
+        ready () {
 
         }
     });
+    module.exports = ctor;
 </script>

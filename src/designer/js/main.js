@@ -1,8 +1,8 @@
-if (__DEV__) require('../index.html');
 require('../less/main.less');
-var moduleMenus = require('designer/modules/menus/menus.vue');
-var moduleModify = require('designer/modules/modify/modify.vue');
-var moduleSketchpads = require('designer/modules/sketchpads/sketchpads.vue');
+var menus = require('designer/modules/menus/menus.vue');
+var modify = require('designer/modules/modify/modify.vue');
+var sketchpads = require('designer/modules/sketchpads/sketchpads.vue');
+var operation = require('designer/modules/operation/operation.vue');
 var comMap = require('components/coms-map');
 var pluginUploadImg = require('plugins/uploadImg/uploadImg.js');
 Vue.use(pluginUploadImg, {
@@ -11,7 +11,7 @@ Vue.use(pluginUploadImg, {
     maxFileSize: 5 * 1024 * 1024 //图片上限
 });
 var main = new Vue({
-    el: '#main',
+    el: document.getElementById('main'),
     data: {
         comArr: comMap.comArr,
         coms: [],
@@ -36,12 +36,16 @@ var main = new Vue({
         },
         uploadImg (cb) {
             this.$refs.uploadImg.open(cb);
+        },
+        save (){
+            console.log('保存');
+        },
+        publish (){
+            console.log('发布');
         }
     },
     components: {
-        menus: moduleMenus,
-        modify: moduleModify,
-        sketchpads: moduleSketchpads
+        menus, modify, sketchpads, operation
     }
 });
 module.exports = main;

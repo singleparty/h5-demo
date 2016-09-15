@@ -19,7 +19,7 @@ var createObjectURL = (function () {
     return fn;
 }());
 
-var mOxiePreviewImage = function (file, callback) {
+var mOxiePreviewImage = (file, callback) => {
     //file为plupload事件监听函数参数中的file对象,callback为预览图片准备完成的回调函数
     //确保文件是图片
     if (!file || !/image\//.test(file.type)) return;
@@ -46,15 +46,15 @@ var mOxiePreviewImage = function (file, callback) {
         preloader.load(file.getSource());
     }
 };
-var previewImage = function (file, cb) {
+var previewImage = (file, cb) => {
     var native = file.getNative();
     if (native && createObjectURL) {
         cb && cb(createObjectURL(native));
     } else {
-        mOxiePreviewImage.apply(this, Array.prototype.slice.call(arguments, 0));
+        mOxiePreviewImage(file, cb);
     }
 };
-var findObjFromArr = function (arr, key, val) {
+var findObjFromArr = (arr, key, val) => {
     var object = null;
     arr.some(function (obj, i) {
         if (obj[key] === val) {
@@ -64,10 +64,10 @@ var findObjFromArr = function (arr, key, val) {
     });
     return object;
 };
-MyPlugin.install = function (Vue, options) {
+MyPlugin.install = (Vue, options) => {
     Vue.component('uploadImg', {
         template: tpl,
-        data: function () {
+        data () {
             return {
                 isShow: false,
                 callback: null,
@@ -81,21 +81,21 @@ MyPlugin.install = function (Vue, options) {
             }
         },
         methods: {
-            open: function (cb) {
+            open (cb) {
                 this.callback = cb;
                 this.isShow = true;
             },
-            close: function () {
+            close () {
                 this.isShow = false;
             },
-            select: function (index) {
+            select (index) {
                 this.callback && this.callback(this.resources[index].imgUrl);
                 this.close();
             },
-            start: function () {
+            start () {
                 this.uploader.start();
             },
-            showToast: function (msg) {
+            showToast (msg) {
                 var self = this;
                 this.toast = msg;
                 this.isShowToast = true;
@@ -105,7 +105,7 @@ MyPlugin.install = function (Vue, options) {
                 }, 3000);
             }
         },
-        compiled: function () {
+        compiled () {
             var self = this;
             this.uploader = new plupload.Uploader({
                 browse_button: this.$el.querySelector('.browse'),
@@ -154,7 +154,7 @@ MyPlugin.install = function (Vue, options) {
                         }
                     },
                     Error: function (uploader, errObject) {
-                        switch(errObject.code) {
+                        switch (errObject.code) {
                             case plupload.HTTP_ERROR:
                                 self.showToast('网络错误，请刷新重试');
                                 break;
@@ -177,7 +177,7 @@ MyPlugin.install = function (Vue, options) {
                 }
             });
         },
-        ready: function () {
+        ready () {
             this.uploader.init();
         },
         transitions: {
