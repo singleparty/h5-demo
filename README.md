@@ -48,7 +48,7 @@ npm run build
 
 # **项目结构**
 
-![](http://image18-c.poco.cn/mypoco/myphoto/20160916/03/18352577220160916030653031.png)
+ ![](http://image18-c.poco.cn/mypoco/myphoto/20160916/03/18352577220160916030653031.png)
 
 # **注意**
 
