@@ -1,72 +1,110 @@
-var animate = require('libs/animate.min.css');
-var style = require('./style.less');
-var tpl = require('./tpl.html');
-var _temp = require('plupload');
-var plupload = _temp['window.plupload'];
-var mOxie = _temp['window.mOxie'];
-var swf = require('libs/plupload/js/Moxie.swf');
-var xap = require('libs/plupload/js/Moxie.xap');
-var MyPlugin = {};
-var createObjectURL = (function () {
-    var fn = null;
-    if (window.createObjectURL != undefined) {
-        fn = window.createObjectURL;
-    } else if (window.URL != undefined) {
-        fn = window.URL.createObjectURL;
-    } else if (window.webkitURL != undefined) {
-        fn = window.webkitURL.createObjectURL;
-    }
-    return fn;
-}());
+<template>
+    <div class="upload-img animated" v-show="isShow" transition="bounce">
+        <div class="mask" @click="close"></div>
+        <div class="frame">
+            <div class="frame-resources">
+                <h5>资源列表</h5>
 
-var mOxiePreviewImage = (file, callback) => {
-    //file为plupload事件监听函数参数中的file对象,callback为预览图片准备完成的回调函数
-    //确保文件是图片
-    if (!file || !/image\//.test(file.type)) return;
-    //gif使用FileReader进行预览,因为mOxie.Image只支持jpg和png
-    if (file.type == 'image / gif') {
-        var fr = new mOxie.FileReader();
-        fr.onload = function () {
-            callback(fr.result);
-            fr.destroy();
-            fr = null;
-        };
-        fr.readAsDataURL(file.getSource());
-    }
-    else {
-        var preloader = new mOxie.Image();
-        preloader.onload = function () {
-            //得到图片src,实质为一个base64编码的数据
-            var imgsrc = preloader.type == 'image / jpeg' ? preloader.getAsDataURL(image / jpeg, 80) :
-                preloader.getAsDataURL();
-            callback && callback(imgsrc);
-            preloader.destroy();
-            preloader = null;
-        };
-        preloader.load(file.getSource());
-    }
-};
-var previewImage = (file, cb) => {
-    var native = file.getNative();
-    if (native && createObjectURL) {
-        cb && cb(createObjectURL(native));
-    } else {
-        mOxiePreviewImage(file, cb);
-    }
-};
-var findObjFromArr = (arr, key, val) => {
-    var object = null;
-    arr.some(function (obj, i) {
-        if (obj[key] === val) {
-            object = obj;
-            return true;
+                <div class="resources">
+                    <div class="item" v-for="resource in resources" track-by="$index">
+                        <img :src="resource.imgUrl"/>
+
+                        <div class="item-mask">
+                            <button @click="select($index)">选中</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="frame-upload-queue">
+                <h5>待上传资源</h5>
+
+                <div class="queue">
+                    <div class="item" v-for="item in queue" track-by="$index">
+                        <div class="preview-backup"></div>
+                        <img class="preview" :src="item.imgUrl" alt=""/>
+
+                        <div class="percent" :style="{width: item.percent + '%'}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="frame-operate">
+                <button class="browse">选择文件</button>
+                <button class="start_upload" @click="start()">开始上传</button>
+            </div>
+            <div class="toast animated" v-if="isShowToast" transition="fade">
+                <span class="tips" v-text="toast"></span>
+            </div>
+        </div>
+    </div>
+</template>
+<style lang="less" scoped>
+    @import "./style.less";
+</style>
+<script type="es6">
+    var animate = require('libs/animate.min.css');
+    var _temp = require('plupload');
+    var plupload = _temp['window.plupload'];
+    var mOxie = _temp['window.mOxie'];
+    var swf = require('libs/plupload/js/Moxie.swf');
+    var xap = require('libs/plupload/js/Moxie.xap');
+    var createObjectURL = (function () {
+        var fn = null;
+        if (window.createObjectURL != undefined) {
+            fn = window.createObjectURL;
+        } else if (window.URL != undefined) {
+            fn = window.URL.createObjectURL;
+        } else if (window.webkitURL != undefined) {
+            fn = window.webkitURL.createObjectURL;
         }
-    });
-    return object;
-};
-MyPlugin.install = (Vue, options) => {
-    Vue.component('uploadImg', {
-        template: tpl,
+        return fn;
+    }());
+
+    var mOxiePreviewImage = (file, callback) => {
+        //file为plupload事件监听函数参数中的file对象,callback为预览图片准备完成的回调函数
+        //确保文件是图片
+        if (!file || !/image\//.test(file.type)) return;
+        //gif使用FileReader进行预览,因为mOxie.Image只支持jpg和png
+        if (file.type == 'image / gif') {
+            var fr = new mOxie.FileReader();
+            fr.onload = function () {
+                callback(fr.result);
+                fr.destroy();
+                fr = null;
+            };
+            fr.readAsDataURL(file.getSource());
+        }
+        else {
+            var preloader = new mOxie.Image();
+            preloader.onload = function () {
+                //得到图片src,实质为一个base64编码的数据
+                var imgsrc = preloader.type == 'image / jpeg' ? preloader.getAsDataURL(image / jpeg, 80) :
+                        preloader.getAsDataURL();
+                callback && callback(imgsrc);
+                preloader.destroy();
+                preloader = null;
+            };
+            preloader.load(file.getSource());
+        }
+    };
+    var previewImage = (file, cb) => {
+        var native = file.getNative();
+        if (native && createObjectURL) {
+            cb && cb(createObjectURL(native));
+        } else {
+            mOxiePreviewImage(file, cb);
+        }
+    };
+    var findObjFromArr = (arr, key, val) => {
+        var object = null;
+        arr.some(function (obj, i) {
+            if (obj[key] === val) {
+                object = obj;
+                return true;
+            }
+        });
+        return object;
+    };
+    var ctor = Vue.extend({
         data () {
             return {
                 isShow: false,
@@ -80,7 +118,17 @@ MyPlugin.install = (Vue, options) => {
                 showToastTimeoutHandler: null
             }
         },
+        props: {
+            option: {
+                type: Object,
+                required: true,
+                validator: function (i) {
+                    return i['url'] && i['maxFileSize'] && i['fileDataName'];
+                }
+            }
+        },
         methods: {
+            //open, close 供外部调用
             open (cb) {
                 this.callback = cb;
                 this.isShow = true;
@@ -92,6 +140,7 @@ MyPlugin.install = (Vue, options) => {
                 this.callback && this.callback(this.resources[index].imgUrl);
                 this.close();
             },
+            //开始上传
             start () {
                 this.uploader.start();
             },
@@ -112,14 +161,14 @@ MyPlugin.install = (Vue, options) => {
                 runtimes: 'flash,html5,silverlight,browserplus,gears,html4',
                 flash_swf_url: swf,
                 silverlight_xap_url: xap,
-                url: options.url,
+                url: self.option.url,
                 filters: {
                     mime_types: [{title: "Image files", extensions: "jpg,gif,jpeg,png"}],
-                    max_file_size: options.maxFileSize,
+                    max_file_size: self.option.maxFileSize,
                     prevent_duplicates: false
                 },
                 max_retries: 0,
-                file_data_name: options.fileDataName,
+                file_data_name: self.option.fileDataName,
                 init: {
                     FilesRemoved: function (uploader, files) {
 
@@ -192,6 +241,6 @@ MyPlugin.install = (Vue, options) => {
                 type: 'animation'
             }
         }
-    });
-};
-module.exports = MyPlugin;
+    })
+    module.exports = ctor;
+</script>

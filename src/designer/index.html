@@ -12,7 +12,7 @@
     </sketchpads>
     <modify :edts.sync="edts" :scene.sync="scene" @upload-img="uploadImg"></modify>
     <menus @add-on-com="addOnCom"></menus>
-    <upload-img v-ref:upload-img></upload-img>
+    <upload-img v-ref:upload-img :option="uploadImgOption"></upload-img>
 </div>
 </body>
 </html>

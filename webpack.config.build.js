@@ -11,34 +11,25 @@ var ReloadPlugin = require('reload-html-webpack-plugin');
 var path = require('path');
 module.exports = {
     entry: {
-        bundle: [
-            './src/designer/js/main.js',
-            'webpack/hot/dev-server',
-            'webpack-dev-server/client?http://localhost:9090'
-        ],//我们开发时的入口文件
-        vendor: [
-            'vue',
-            'plupload',
-            'webpack/hot/dev-server',
-            'webpack-dev-server/client?http://localhost:9090'
-        ]
+        bundle: ['./src/designer/js/main.js'],
+        vendor: ['vue', 'plupload']
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'js/[name].js',
-        publicPath: '/dist/', //给require.ensure用
-        chunkFilename: 'js/[name].js' //给require.ensure用
+        filename: 'js/[name]-[chunkhash:8].js',
+        publicPath: './', //给require.ensure用
+        chunkFilename: 'js/[name]-[chunkhash:8].js' //给require.ensure用
     },
     module: {
         loaders: [
             {
                 test: /\.less$/,
                 exclude: /node_modules/,
-                loader: 'style!css!less'
+                loader: ExtractTextPlugin.extract("style", "css!less")
             }, {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                loader: 'style!css'
+                loader: ExtractTextPlugin.extract("style", "css")
             }, {
                 test: /\.(png|jpg)$/,
                 exclude: /node_modules/,
@@ -58,15 +49,20 @@ module.exports = {
                 test: /\.js$/,
                 exclude: [/node_modules/, /libs/],
                 include: /src/,
-                loader: "babel?presets[]=es2015!webpack-module-hot-accept"
+                loader: "babel?presets[]=es2015"
             }, {
-                test: require.resolve('./libs/jquery-1.9.1/jquery.js'), //jquery
+                test: require.resolve('./libs/jquery-1.9.1/jquery.min.js'), //jquery
                 loader: 'exports?window.$'
             }, {
                 test: require.resolve('./libs/plupload/js/plupload.full.min.js'), //plupload
                 loader: 'imports?this=>window!exports?window.plupload,window.mOxie'
             }
         ]
+    },
+    vue: {
+        loaders: {
+            vue: ExtractTextPlugin.extract('vue-style-loader', 'css!less')
+        }
     },
     resolve: {
         alias: {
@@ -76,58 +72,43 @@ module.exports = {
             designer: __dirname + '/src/designer',
             components: __dirname + '/src/designer/components',
             editors: __dirname + '/src/designer/editors',
-            plugins: __dirname + '/src/designer/plugins',
             //插件
-            vue: __dirname + '/libs/vue-1.0.26/vue.dev.js',
-            jquery: __dirname + '/libs/jquery-1.9.1/jquery.js',
+            vue: __dirname + '/libs/vue-1.0.26/vue.min.js',
+            jquery: __dirname + '/libs/jquery-1.9.1/jquery.min.js',
             plupload: __dirname + '/libs/plupload/js/plupload.full.min.js'
-        }
-    },
-    devtool: 'source-map',
-    devServer: {
-        //项目根目录，如果设置dist，无法访问其他文件夹静态资源
-        //contentBase: 'dist',
-        hot: true,
-        publicPath: '/dist',
-        port: 9090,
-        host: '0.0.0.0',
-        historyApiFallback: false,
-        progress: true,
-        lazy: false,
-        stats: {
-            colors: true
-        },
-        proxy: {
-            '/backend/*': {
-                target: 'http://localhost:82',
-                changeOrigin: true,
-                secure: false
-            }
         }
     },
     /*externals: {
      'jquery': 'jQuery' //key是模块名，value是全局变量
      },*/
     plugins: [
+        new ExtractTextPlugin('css/all-[contenthash:8].css'),
         new NoErrorsPlugin(),
         new WebpackMd5Hash(),
-        new ReloadPlugin(),
         new ProvidePlugin({
             Vue: 'vue'
+        }),
+        new UglifyJsPlugin({
+            compress: {warnings: false},
+            except: ['$super', '$', 'exports', 'require'] //排除关键字
         }),
         new HtmlWebpackPlugin({
             template: require.resolve('./src/designer/index.html'),
             favicon: require.resolve('./favicon.ico'),
+            minify: {
+                removeComments: true, //移除HTML中的注释
+                collapseWhitespace: true //删除空白符与换行符
+            },
             chunks: ['bundle', 'vendor']
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.HotModuleReplacementPlugin(),
         new CommonsChunkPlugin({
             name: 'vendor',
             chunks: ['bundle', 'vendor'],
             minChunks: Infinity
         }),
         new DefinePlugin({
-            __DEV__: true
+            __DEV__: false
         })
     ]
 };
