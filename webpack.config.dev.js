@@ -45,6 +45,7 @@ module.exports = {
                 loader: 'url-loader?limit=8192&name=image/[name]-[hash:8].[ext]'
             }, {
                 test: /\.html$/,
+                exclude: /node_modules/,
                 loader: "raw"
             }, {
                 test: /\.(txt|swf|xap)$/,
@@ -78,6 +79,7 @@ module.exports = {
             editors: __dirname + '/src/designer/editors',
             //插件
             vue: __dirname + '/libs/vue-1.0.26/vue.dev.js',
+            vuex: __dirname + '/libs/vuex-1.0.0/vuex.js',
             jquery: __dirname + '/libs/jquery-1.9.1/jquery.js',
             plupload: __dirname + '/libs/plupload/js/plupload.full.min.js'
         }
