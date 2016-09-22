@@ -16,11 +16,6 @@ module.exports = {
             'webpack/hot/dev-server',
             'webpack-dev-server/client?http://localhost:9090'
         ],//我们开发时的入口文件
-        test: [
-            './src/designer/js/test.js',
-            'webpack/hot/dev-server',
-            'webpack-dev-server/client?http://localhost:9090'
-        ],
         vendor: [
             'vue',
             'plupload',
@@ -125,12 +120,6 @@ module.exports = {
             template: require.resolve('./src/designer/index.html'),
             favicon: require.resolve('./favicon.ico'),
             chunks: ['bundle', 'vendor']
-        }),
-        new HtmlWebpackPlugin({
-            template: require.resolve('./src/designer/test.html'),
-            filename: 'test.html',
-            favicon: require.resolve('./favicon.ico'),
-            chunks: ['test']
         }),
         new webpack.HotModuleReplacementPlugin(),
         new CommonsChunkPlugin({
