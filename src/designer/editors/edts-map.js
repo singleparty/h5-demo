@@ -1,13 +1,7 @@
-var arr = [], obj = {}, _temp = null;
-arr.push({
-    edtName: 'brandEdt',
-    'zh-edtName': '头图编辑器',
-    constructor: require('./brandEdt/brandEdt.vue')
+import brandEdt from 'editors/brandEdt/brandEdt.vue';
+var edtArr = [], edtObj = {};
+edtArr.push({edtName: 'brandEdt', 'zh-edtName': '头图编辑器', constructor: brandEdt});
+edtArr.forEach((e, i) => {
+    edtObj[e['edtName']] = e['constructor'];
 });
-for (var i = 0, l = arr.length; i < l; i++) {
-    _temp = arr[i];
-    obj[_temp['edtName']] = _temp['constructor'];
-}
-module.exports = {
-    edtArr: arr, edtObj: obj
-};
+export {edtArr, edtObj};

@@ -10,7 +10,7 @@
     @import './style.less';
 </style>
 <script type="es6">
-    var pic = require('./default.png');
+    import pic from './default.png';
     var ctor = Vue.extend({
         props: {
             //初始化
@@ -46,5 +46,5 @@
             }
         }
     });
-    module.exports = ctor;
+    export default ctor;
 </script>

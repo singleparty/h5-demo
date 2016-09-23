@@ -41,12 +41,12 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    var animate = require('libs/animate.min.css');
-    var _temp = require('plupload');
+    import 'libs/animate.min.css';
+    import _temp from 'plupload';
+    import swf from 'libs/plupload/js/Moxie.swf';
+    import xap from 'libs/plupload/js/Moxie.xap';
     var plupload = _temp['window.plupload'];
     var mOxie = _temp['window.mOxie'];
-    var swf = require('libs/plupload/js/Moxie.swf');
-    var xap = require('libs/plupload/js/Moxie.xap');
     var createObjectURL = (function () {
         var fn = null;
         if (window.createObjectURL != undefined) {
@@ -242,5 +242,5 @@
             }
         }
     })
-    module.exports = ctor;
+    export default ctor;
 </script>

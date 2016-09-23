@@ -1,15 +1,14 @@
-var Vue = require('vue');
-var Vuex = require('vuex');
-var mutations = require('./mutations.js');
+import Vue from 'vue';
+import Vuex from 'vuex';
+import * as mutations from './mutations';
 Vue.use(Vuex);
 const state = {
     count: 1
 };
 var store = new Vuex.Store({
-    strict: __DEV__,
-    state, mutations
+    strict: __DEV__, state, mutations
 });
-module.exports = store;
+export default store;
 if(__DEV__) {
     if (module.hot) {
         module.hot.accept(['./actions', './mutations'], () => {

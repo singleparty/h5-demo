@@ -35,8 +35,8 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    var animate = require('libs/animate.min.css');
-    var comMap = require('components/coms-map');
+    import 'libs/animate.min.css';
+    import {comObj} from 'components/coms-map';
     var ctor = Vue.extend({
         props: {
             coms: {
@@ -91,10 +91,10 @@
                 type: 'animation'
             }
         },
-        components: comMap.comObj,
+        components: comObj,
         ready () {
 
         }
     });
-    module.exports = ctor;
+    export default ctor;
 </script>

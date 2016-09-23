@@ -12,11 +12,11 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    var comMap = require('components/coms-map');
+    import {comArr} from 'components/coms-map';
     var ctor = Vue.extend({
         data () {
             return {
-                menus: comMap.comArr
+                menus: comArr
             }
         },
         methods: {
@@ -25,5 +25,5 @@
             }
         }
     });
-    module.exports = ctor;
+    export default ctor;
 </script>

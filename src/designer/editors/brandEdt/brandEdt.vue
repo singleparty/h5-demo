@@ -60,5 +60,5 @@
             }
         }
     });
-    module.exports = ctor;
+    export default ctor;
 </script>

@@ -19,7 +19,7 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    var edtMap = require('editors/edts-map');
+    import {edtObj} from 'editors/edts-map';
     var ctor = Vue.extend({
         props: {
             edts: {
@@ -44,10 +44,10 @@
             return {}
         },
         methods: {},
-        components: edtMap.edtObj,
+        components: edtObj,
         ready () {
 
         }
     });
-    module.exports = ctor;
+    export default ctor;
 </script>

@@ -1,7 +1,7 @@
 {
   "name": "yy",
   "file": "demo",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "personal project",
   "license": "MIT",
   "devDependencies": {

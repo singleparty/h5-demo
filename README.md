@@ -2,7 +2,7 @@
 h5专题设计器
 ***
 ## **技术栈**
-webpack webpack-dev-server hmr gulp vue es6 commomJS less php/node
+webpack webpack-dev-server hmr gulp vue es6 less php/node
 ### 1.clone或者下载项目
 ```bash
 git clone https://github.com/singleparty/h5-demo.git

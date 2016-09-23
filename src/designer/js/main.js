@@ -1,14 +1,14 @@
-require('../less/main.less');
-var menus = require('designer/modules/menus/menus.vue');
-var modify = require('designer/modules/modify/modify.vue');
-var sketchpads = require('designer/modules/sketchpads/sketchpads.vue');
-var operation = require('designer/modules/operation/operation.vue');
-var uploadImg = require('designer/modules/uploadImg/uploadImg.vue');
-var comMap = require('components/coms-map');
+import 'designer/less/main.less'
+import menus from 'designer/modules/menus/menus.vue';
+import modify from 'designer/modules/modify/modify.vue';
+import sketchpads from 'designer/modules/sketchpads/sketchpads.vue';
+import operation from 'designer/modules/operation/operation.vue';
+import uploadImg from 'designer/modules/uploadImg/uploadImg.vue';
+import {comArr} from 'components/coms-map';
 var main = new Vue({
     el: document.getElementById('main'),
     data: {
-        comArr: comMap.comArr, // for menu
+        comArr: comArr, // for menu
         coms: [], // for sketchpads
         edts: {}, // for modify
         scene: {}, // scene info
@@ -48,4 +48,4 @@ var main = new Vue({
         menus, modify, sketchpads, operation, uploadImg
     }
 });
-module.exports = main;
+export default main;

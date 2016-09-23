@@ -1,13 +1,7 @@
-var arr = [], obj = {}, _temp = null;
-arr.push({
-    comName: 'brand',
-    'zh-comName': '头图',
-    constructor: require('./brand/brand.vue')
+import brand from 'components/brand/brand.vue';
+var comArr = [], comObj = {};
+comArr.push({comName: 'brand', 'zh-comName': '头图', constructor: brand});
+comArr.forEach((e, i) => {
+    comObj[e['comName']] = e['constructor'];
 });
-for (var i = 0, l = arr.length; i < l; i++) {
-    _temp = arr[i];
-    obj[_temp['comName']] = _temp['constructor'];
-}
-module.exports = {
-    comArr: arr, comObj: obj
-};
+export {comArr, comObj};
