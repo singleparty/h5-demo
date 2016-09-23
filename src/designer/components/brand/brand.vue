@@ -11,30 +11,15 @@
 </style>
 <script type="es6">
     import pic from './default.png';
+    import {getComs} from 'designer/store/getters';
     var ctor = Vue.extend({
-        props: {
-            //初始化
-            info: {
-                type: Object,
-                coerce(val){
-                    if (val.imgSrc === undefined) {
-                        Vue.set(val, 'imgSrc', '');
-                    }
-                    if (val.href === undefined) {
-                        Vue.set(val, 'href', '');
-                    }
-                    if (val.text === undefined) {
-                        Vue.set(val, 'text', 'text');
-                    }
-                    return val;
-                },
-                twoWay: false
-            },
-            index: {}
-        },
+        props: ['index'],
         computed: {
             imgSrc() {
                 return this.info.imgSrc ? this.info.imgSrc : pic;
+            },
+            info () {
+                return this.coms[this.index];
             }
         },
         data () {
@@ -43,6 +28,11 @@
         methods: {
             editor ($event) {
                 this.$dispatch('edit-com', {edtNames: ['brandEdt'], index: this.index});
+            }
+        },
+        vuex: {
+            getters: {
+                coms: getComs
             }
         }
     });
