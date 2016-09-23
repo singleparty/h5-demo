@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as mutations from './mutations';
+import {comArr} from 'components/coms-map';
 Vue.use(Vuex);
 const state = {
-    count: 1
+    comArr
 };
 var store = new Vuex.Store({
     strict: __DEV__, state, mutations

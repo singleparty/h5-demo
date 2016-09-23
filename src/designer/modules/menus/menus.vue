@@ -12,16 +12,19 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {comArr} from 'components/coms-map';
+    import {getComArr} from 'designer/store/getters';
     var ctor = Vue.extend({
         data () {
-            return {
-                menus: comArr
-            }
+            return {}
         },
         methods: {
             add ($index) {
                 this.$dispatch('add-on-com', this.menus[$index]['comName']);
+            }
+        },
+        vuex: {
+            getters: {
+                menus: getComArr
             }
         }
     });

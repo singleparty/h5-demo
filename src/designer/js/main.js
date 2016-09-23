@@ -4,11 +4,10 @@ import modify from 'designer/modules/modify/modify.vue';
 import sketchpads from 'designer/modules/sketchpads/sketchpads.vue';
 import operation from 'designer/modules/operation/operation.vue';
 import uploadImg from 'designer/modules/uploadImg/uploadImg.vue';
-import {comArr} from 'components/coms-map';
+import store from 'designer/store/index';
 var main = new Vue({
     el: document.getElementById('main'),
     data: {
-        comArr: comArr, // for menu
         coms: [], // for sketchpads
         edts: {}, // for modify
         scene: {}, // scene info
@@ -46,6 +45,7 @@ var main = new Vue({
     },
     components: {
         menus, modify, sketchpads, operation, uploadImg
-    }
+    },
+    store
 });
 export default main;
