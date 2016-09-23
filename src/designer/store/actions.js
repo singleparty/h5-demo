@@ -1,1 +1,1 @@
-export const increment = ({dispatch, state}) => dispatch('INCREMENT', 1);
+export const addOnCom = ({dispatch, state}, name) => dispatch('ADD_ON_COM', name);

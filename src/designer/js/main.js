@@ -8,7 +8,6 @@ import store from 'designer/store/index';
 var main = new Vue({
     el: document.getElementById('main'),
     data: {
-        coms: [], // for sketchpads
         edts: {}, // for modify
         scene: {}, // scene info
         uploadImgOption: {
@@ -20,12 +19,6 @@ var main = new Vue({
     events: {},
     computed: {},
     methods: {
-        addOnCom (name) {
-            this.coms.push({
-                comName: name,
-                info: {}
-            })
-        },
         editCom (opt) {
             opt['info'] = this.coms[opt.index].info;
             this.edts = opt;

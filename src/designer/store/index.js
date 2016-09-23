@@ -4,7 +4,7 @@ import * as mutations from './mutations';
 import {comArr} from 'components/coms-map';
 Vue.use(Vuex);
 const state = {
-    comArr
+    comArr, coms: []
 };
 var store = new Vuex.Store({
     strict: __DEV__, state, mutations

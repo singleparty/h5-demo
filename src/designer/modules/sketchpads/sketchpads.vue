@@ -36,17 +36,10 @@
 </style>
 <script type="es6">
     import 'libs/animate.min.css';
+    import {getComs} from 'designer/store/getters';
     import {comObj} from 'components/coms-map';
     var ctor = Vue.extend({
-        props: {
-            coms: {
-                type: Array,
-                default: function () {
-                    return [];
-                },
-                twoWay: false
-            }
-        },
+        props: {},
         data () {
             return {
                 focus: null
@@ -94,6 +87,11 @@
         components: comObj,
         ready () {
 
+        },
+        vuex: {
+            getters: {
+                coms: getComs
+            }
         }
     });
     export default ctor;
