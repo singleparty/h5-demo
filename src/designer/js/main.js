@@ -1,4 +1,4 @@
-import 'designer/less/main.less'
+import 'designer/less/main.less';
 import menus from 'designer/modules/menus/menus.vue';
 import modify from 'designer/modules/modify/modify.vue';
 import sketchpads from 'designer/modules/sketchpads/sketchpads.vue';
