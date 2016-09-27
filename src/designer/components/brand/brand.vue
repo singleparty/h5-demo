@@ -1,5 +1,5 @@
 <template>
-    <div class="brand" @click="editor($event)">
+    <div class="brand" @click="editor">
     <span class="brand-href">
         <img :src="imgSrc" alt="" class="brand-img"/>
     </span>
@@ -12,7 +12,7 @@
 <script type="es6">
     import pic from './default.png';
     import {getComs} from 'designer/store/getters';
-    import {editComInfo} from 'designer/store/actions';
+    import {editComInfo, showComEdit} from 'designer/store/actions';
     var ctor = Vue.extend({
         props: ['index'],
         computed: {
@@ -34,8 +34,10 @@
             return {};
         },
         methods: {
-            editor ($event) {
-                this.$dispatch('edit-com', {edtNames: ['brandEdt'], index: this.index});
+            editor () {
+                this.showComEdit([{
+                    index: this.index, edtName: 'brandEdt'
+                }]);
             }
         },
         vuex: {
@@ -43,7 +45,8 @@
                 coms: getComs
             },
             actions: {
-                editComInfo: editComInfo
+                editComInfo: editComInfo,
+                showComEdit: showComEdit
             }
         }
     });

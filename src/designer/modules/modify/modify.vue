@@ -8,9 +8,9 @@
         <!--组件编辑器-->
         <div class="modify">
             <div class="basic-edt"
-                 v-for="edtName in edts.edtNames" track-by="$index"
-                 :data-edt-name="edtName">
-                <component :is="edtName" :info.sync="edts.info"></component>
+                 v-for="_edt in edts" track-by="$index"
+                 :data-edt-name="_edt.edtName">
+                <component :is="_edt.edtName" :index="_edt.index"></component>
             </div>
         </div>
     </div>
@@ -20,15 +20,9 @@
 </style>
 <script type="es6">
     import {edtObj} from 'editors/edts-map';
+    import {getEdts} from 'designer/store/getters';
     var ctor = Vue.extend({
         props: {
-            edts: {
-                type: Object,
-                default: function () {
-                    return {};
-                },
-                twoWay: true
-            },
             scene: {
                 type: Object,
                 coerce: function (val) {
@@ -45,8 +39,10 @@
         },
         methods: {},
         components: edtObj,
-        ready () {
-
+        vuex: {
+            getters: {
+                edts: getEdts
+            }
         }
     });
     export default ctor;

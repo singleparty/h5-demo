@@ -8,7 +8,6 @@ import store from 'designer/store/index';
 var main = new Vue({
     el: document.getElementById('main'),
     data: {
-        edts: {}, // for modify
         scene: {}, // scene info
         uploadImgOption: {
             url: '../backend/uploadImg.php', //上传地址
@@ -19,10 +18,6 @@ var main = new Vue({
     events: {},
     computed: {},
     methods: {
-        editCom (opt) {
-            opt['info'] = this.coms[opt.index].info;
-            this.edts = opt;
-        },
         cancelEditCom (opt) {
             this.edts = {};
         },

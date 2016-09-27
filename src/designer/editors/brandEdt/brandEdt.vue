@@ -15,22 +15,20 @@
     @import "./style.less";
 </style>
 <script type="es6">
+    import {getComs} from 'designer/store/getters';
     var ctor = Vue.extend({
-        props: {
-            info: {
-                type: Object,
-                twoWay: true
-            }
-        },
+        props: ['index'],
         computed: {
             showImg () {
                 return !!this.info.imgSrc
+            },
+            info () {
+                return this.coms[this.index]['info'];
             }
         },
         data () {
             return {};
         },
-        watch: {},
         filters: {
             protocol: {
                 read (val) {
@@ -57,6 +55,11 @@
                 this.$dispatch('upload-img', function (url) {
                     self.info.imgSrc = url;
                 });
+            }
+        },
+        vuex: {
+            getters: {
+                coms: getComs
             }
         }
     });
