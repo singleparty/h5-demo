@@ -4,3 +4,6 @@ export const ADD_ON_COM = (state, name) => {
         info: {}
     });
 };
+export const EDIT_COM_INFO = (state, index, value) => {
+    state['coms'][index]['info'] = value;
+};
