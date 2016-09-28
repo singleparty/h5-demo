@@ -3,7 +3,11 @@ import Vuex from 'vuex';
 import * as mutations from './mutations';
 Vue.use(Vuex);
 const state = {
-    coms: [], edts: []
+    coms: [],
+    edts: [],
+    sceneInfo: {
+        name: ''
+    }
 };
 var store = new Vuex.Store({
     state, mutations

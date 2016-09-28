@@ -3,7 +3,7 @@
         <!--页面级信息编辑器-->
         <div class="modify-scene">
             <h5>专题名字</h5>
-            <input type="text" v-model="scene.name"/>
+            <input type="text" v-model="sceneInfo.name"/>
         </div>
         <!--组件编辑器-->
         <div class="modify">
@@ -20,20 +20,8 @@
 </style>
 <script type="es6">
     import {edtObj} from 'editors/edts-map';
-    import {getEdts} from 'designer/store/getters';
+    import {getEdts, getSceneInfo} from 'designer/store/getters';
     var ctor = Vue.extend({
-        props: {
-            scene: {
-                type: Object,
-                coerce: function (val) {
-                    if (val.name === undefined) {
-                        Vue.set(val, 'name', '');
-                    }
-                    return val;
-                },
-                twoWay: true
-            }
-        },
         data () {
             return {}
         },
@@ -41,7 +29,8 @@
         components: edtObj,
         vuex: {
             getters: {
-                edts: getEdts
+                edts: getEdts,
+                sceneInfo: getSceneInfo
             }
         }
     });
