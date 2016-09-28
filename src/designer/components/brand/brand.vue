@@ -12,7 +12,7 @@
 <script type="es6">
     import pic from './default.png';
     import {getComs} from 'designer/store/getters';
-    import {editComInfo, showComEdit} from 'designer/store/actions';
+    import {initComInfo, showComEdit} from 'designer/store/actions';
     var ctor = Vue.extend({
         props: ['index'],
         computed: {
@@ -23,8 +23,8 @@
                 var info = this.coms[this.index]['info'];
                 if(info['imgSrc'] === undefined) {
                     //初始化info数据
-                    this.editComInfo(this.index, {
-                        imgSrc: '', href: '', text: 'text'
+                    this.initComInfo(this.index, {
+                        imgSrc: '', href: '', text: '文字'
                     });
                 }
                 return this.coms[this.index]['info'];
@@ -45,7 +45,7 @@
                 coms: getComs
             },
             actions: {
-                editComInfo: editComInfo,
+                initComInfo: initComInfo,
                 showComEdit: showComEdit
             }
         }

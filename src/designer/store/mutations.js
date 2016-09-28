@@ -4,7 +4,7 @@ export const ADD_ON_COM = (state, name) => {
         info: {}
     });
 };
-export const EDIT_COM_INFO = (state, index, value) => {
+export const INIT_COM_INFO = (state, index, value) => {
     state['coms'][index]['info'] = value;
 };
 export const SHOW_COM_EDIT = (state, arr) => {
