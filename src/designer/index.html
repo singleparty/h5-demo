@@ -10,7 +10,7 @@
     <sketchpads>
         <operation slot="operation" @save="save" @publish="publish"></operation>
     </sketchpads>
-    <modify :scene.sync="scene" @upload-img="uploadImg"></modify>
+    <modify @upload-img="uploadImg"></modify>
     <menus></menus>
     <upload-img v-ref:upload-img :option="uploadImgOption"></upload-img>
 </div>
