@@ -3,7 +3,7 @@
         <!--组件集合-->
         <div class="menus">
             <div class="menu" v-for="menu in menus" track-by="$index" @click="add($index)">
-                {{menu['zh-comName']}}
+                {{menu['comName']}}
             </div>
         </div>
     </div>

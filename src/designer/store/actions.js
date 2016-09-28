@@ -1,1 +1,0 @@
-export const increment = ({dispatch, state}) => dispatch('INCREMENT', 1);
