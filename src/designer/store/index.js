@@ -6,7 +6,7 @@ const state = {
     coms: [], edts: []
 };
 var store = new Vuex.Store({
-    strict: __DEV__, state, mutations
+    state, mutations
 });
 export default store;
 if(__DEV__) {
