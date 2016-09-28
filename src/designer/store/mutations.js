@@ -13,3 +13,6 @@ export const SHOW_COM_EDIT = (state, arr) => {
 export const CANCEL_COM_EDIT = (state) => {
     state.edts = []
 };
+export const EDIT_COM_INFO = (state, info, expression, value) => {
+    info[expression] = value;
+};

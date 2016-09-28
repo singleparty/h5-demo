@@ -6,9 +6,9 @@
             <img :src="info.imgSrc" alt="" v-show="showImg"/>
         </div>
         <h5>修改链接</h5>
-        <input type="text" v-model="info.href | protocol"/>
+        <input type="text" :value="info.href"/>
         <h5>修改文字</h5>
-        <input type="text" v-model="info.text"/>
+        <input type="text" :value="info.text" v-sync-com-info="text"/>
     </div>
 </template>
 <style lang="less" scoped>
@@ -16,6 +16,7 @@
 </style>
 <script type="es6">
     import {getComs} from 'designer/store/getters';
+    import {editComInfo} from 'designer/store/actions';
     var ctor = Vue.extend({
         props: ['index'],
         computed: {
@@ -29,26 +30,6 @@
         data () {
             return {};
         },
-        filters: {
-            protocol: {
-                read (val) {
-                    var pre = '', _temp;
-                    _temp = val.replace(/https?:\/\//, function (match) {
-                        pre = match;
-                        return '';
-                    });
-                    return pre ? pre + _temp : 'http://' + _temp;
-                },
-                write (val) {
-                    var pre = '', _temp;
-                    _temp = val.replace(/https?:\/\//, function (match) {
-                        pre = match;
-                        return '';
-                    });
-                    return _temp ? (pre ? pre + _temp : 'http://' + _temp) : '';
-                }
-            }
-        },
         methods: {
             upload () {
                 var self = this;
@@ -57,9 +38,24 @@
                 });
             }
         },
+        directives: {
+            syncComInfo: {
+                bind () {
+                    this.el.addEventListener('input', (e)=> {
+                        var expression = this.expression;
+                        var value = e.currentTarget.value;
+                        var info = this.vm.info;
+                        this.vm.editComInfo(info, expression, value);
+                    });
+                }
+            }
+        },
         vuex: {
             getters: {
                 coms: getComs
+            },
+            actions: {
+                editComInfo
             }
         }
     });
