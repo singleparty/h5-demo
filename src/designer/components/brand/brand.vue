@@ -3,7 +3,7 @@
     <span class="brand-href">
         <img :src="imgSrc" alt="" class="brand-img"/>
     </span>
-        <h5>{{info.text}}</h5>
+        <h5 v-for="_desc in info.desc">{{_desc.text}}</h5>
     </div>
 </template>
 <style lang="less" scoped>
@@ -24,7 +24,7 @@
                 if(info['imgSrc'] === undefined) {
                     //初始化info数据
                     this.initComInfo(this.index, {
-                        imgSrc: '', href: '', text: '文字'
+                        imgSrc: '', href: '', desc: [{text:'描述1'}, {text: '描述2'}]
                     });
                 }
                 return this.coms[this.index]['info'];

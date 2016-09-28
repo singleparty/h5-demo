@@ -6,9 +6,10 @@
             <img :src="info.imgSrc" alt="" v-show="showImg"/>
         </div>
         <h5>修改链接</h5>
-        <input type="text" :value="info.href"/>
+        <input type="text" :value="info.href" v-sync-com-info :expression="'href'"/>
         <h5>修改文字</h5>
-        <input type="text" :value="info.text" v-sync-com-info="text"/>
+        <input type="text" v-for="(index, _desc) in info.desc" :value="_desc.text" v-sync-com-info
+               :expression="'desc.'+index+'.text'"/>
     </div>
 </template>
 <style lang="less" scoped>
@@ -40,12 +41,10 @@
         },
         directives: {
             syncComInfo: {
+                params: ['expression'],
                 bind () {
                     this.el.addEventListener('input', (e)=> {
-                        var expression = this.expression;
-                        var value = e.currentTarget.value;
-                        var info = this.vm.info;
-                        this.vm.editComInfo(info, expression, value);
+                        this.vm.editComInfo(this.vm.index, this.params.expression, e.currentTarget.value);
                     });
                 }
             }
