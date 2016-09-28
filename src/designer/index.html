@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="main">
-    <sketchpads @cancel-edit-com="cancelEditCom">
+    <sketchpads>
         <operation slot="operation" @save="save" @publish="publish"></operation>
     </sketchpads>
     <modify :scene.sync="scene" @upload-img="uploadImg"></modify>

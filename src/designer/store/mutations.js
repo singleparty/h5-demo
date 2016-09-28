@@ -10,3 +10,6 @@ export const EDIT_COM_INFO = (state, index, value) => {
 export const SHOW_COM_EDIT = (state, arr) => {
     state.edts = arr
 };
+export const CANCEL_COM_EDIT = (state) => {
+    state.edts = []
+};

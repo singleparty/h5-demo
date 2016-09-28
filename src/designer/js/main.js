@@ -18,9 +18,6 @@ var main = new Vue({
     events: {},
     computed: {},
     methods: {
-        cancelEditCom (opt) {
-            this.edts = {};
-        },
         uploadImg (cb) {
             this.$refs.uploadImg.open(cb);
         },

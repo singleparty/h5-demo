@@ -37,6 +37,7 @@
 <script type="es6">
     import 'libs/animate.min.css';
     import {getComs} from 'designer/store/getters';
+    import {cancelComEdit} from 'designer/store/actions';
     import {comObj} from 'components/coms-map';
     var ctor = Vue.extend({
         props: {},
@@ -51,7 +52,7 @@
             },
             blurCom ($index) {
                 this.focus = null;
-                this.$dispatch('cancel-edit-com', {index: $index});
+                this.cancelComEdit();
             },
             deleteCom ($index) {
                 this.blurCom($index);
@@ -91,6 +92,9 @@
         vuex: {
             getters: {
                 coms: getComs
+            },
+            actions: {
+                cancelComEdit
             }
         }
     });
