@@ -8,7 +8,6 @@ import {comArr} from 'components/coms-map';
 var main = new Vue({
     el: document.getElementById('main'),
     data: {
-        comArr: comArr, // for menu
         coms: [], // for sketchpads
         edts: {}, // for modify
         scene: {}, // scene info
@@ -18,8 +17,6 @@ var main = new Vue({
             maxFileSize: 5 * 1024 * 1024 //图片上限
         }
     },
-    events: {},
-    computed: {},
     methods: {
         addOnCom (name) {
             this.coms.push({
