@@ -10,7 +10,7 @@ const state = {
     }
 };
 var store = new Vuex.Store({
-    state, mutations
+    strict: __DEV__, state, mutations
 });
 export default store;
 if(__DEV__) {
