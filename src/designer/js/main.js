@@ -8,15 +8,12 @@ import store from 'designer/store/index';
 var main = new Vue({
     el: document.getElementById('main'),
     data: {
-        scene: {}, // scene info
         uploadImgOption: {
             url: '../backend/uploadImg.php', //上传地址
             fileDataName: 'upload', //上传的name
             maxFileSize: 5 * 1024 * 1024 //图片上限
         }
     },
-    events: {},
-    computed: {},
     methods: {
         uploadImg (cb) {
             this.$refs.uploadImg.open(cb);
