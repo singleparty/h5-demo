@@ -2,8 +2,13 @@
     <div class="modify-wrap">
         <!--页面级信息编辑器-->
         <div class="modify-scene">
-            <h5>专题名字</h5>
-            <input type="text" :value="sceneInfo.name" v-sync-scene-info expression="name"/>
+            <div class="item">
+                <span class="name">专题名字：</span>
+                <label>
+                    <input type="text" :value="sceneInfo.name" v-sync-scene-info
+                           expression="name" class="input"/>
+                </label>
+            </div>
         </div>
         <!--组件编辑器-->
         <div class="modify">

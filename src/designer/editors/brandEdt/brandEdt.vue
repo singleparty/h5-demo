@@ -1,15 +1,23 @@
 <template>
     <div class="brand-edt">
-        <h5>修改图片</h5>
+        <div class="item pic">
+            <span class="name">修改图片：</span>
 
-        <div class="img-preview" @click="upload">
-            <img :src="info.imgSrc" alt="" v-show="showImg"/>
+            <div class="img-preview" @click="upload">
+                <img :src="info.imgSrc" alt="" v-show="showImg"/>
+            </div>
         </div>
-        <h5>修改链接</h5>
-        <input type="text" :value="info.href" v-sync-com-info :expression="'href'"/>
-        <h5>修改文字</h5>
-        <input type="text" v-for="(index, _desc) in info.desc" :value="_desc.text" v-sync-com-info
-               :expression="'desc.'+index+'.text'"/>
+        <div class="item href">
+            <span class="name">跳转地址：</span>
+            <input type="text" :value="info.href" v-sync-com-info :expression="'href'"/>
+        </div>
+        <div class="item text">
+            <span class="name">描述文字：</span>
+            <div class="text-content">
+                <input type="text" v-for="(index, _desc) in info.desc"
+                       :value="_desc.text" v-sync-com-info :expression="'desc.'+index+'.text'"/>
+            </div>
+        </div>
     </div>
 </template>
 <style lang="less" scoped>
