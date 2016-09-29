@@ -7,13 +7,14 @@ const state = {
     edts: [],
     sceneInfo: {
         name: ''
-    }
+    },
+    uploadImgMethods: {}
 };
 var store = new Vuex.Store({
     strict: __DEV__, state, mutations
 });
 export default store;
-if(__DEV__) {
+if (__DEV__) {
     if (module.hot) {
         module.hot.accept(['./actions', './mutations'], () => {
             const newActions = require('./actions').default;

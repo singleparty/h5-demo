@@ -45,6 +45,7 @@
     import _temp from 'plupload';
     import swf from 'libs/plupload/js/Moxie.swf';
     import xap from 'libs/plupload/js/Moxie.xap';
+    import {uploadImgMethods} from 'designer/store/actions';
     var plupload = _temp['window.plupload'];
     var mOxie = _temp['window.mOxie'];
     var createObjectURL = (function () {
@@ -228,6 +229,9 @@
         },
         ready () {
             this.uploader.init();
+            this.uploadImgMethods({
+                open: this.open, close: this.close
+            });
         },
         transitions: {
             fade: {
@@ -239,6 +243,11 @@
                 enterClass: 'bounceIn',
                 leaveClass: 'bounceOut',
                 type: 'animation'
+            }
+        },
+        vuex: {
+            actions: {
+                uploadImgMethods
             }
         }
     })

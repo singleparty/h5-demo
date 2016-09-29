@@ -18,3 +18,6 @@ export const moveDownCom = ({dispatch, state}, index) => {
 export const editSceneInfo = ({dispatch, state}, expression, value) => {
     dispatch('EDIT_SCENE_INFO', expression, value);
 };
+export const uploadImgMethods = ({dispatch, state}, value) => {
+    dispatch('UPLOAD_IMG_METHODS', value);
+};

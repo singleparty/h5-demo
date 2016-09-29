@@ -16,7 +16,7 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getComs} from 'designer/store/getters';
+    import {getComs, getUploadImgMethods} from 'designer/store/getters';
     import {editComInfo} from 'designer/store/actions';
     var ctor = Vue.extend({
         props: ['index'],
@@ -33,9 +33,8 @@
         },
         methods: {
             upload () {
-                var self = this;
-                this.$dispatch('upload-img', function (url) {
-                    self.info.imgSrc = url;
+                this.uploadImgMethods.open((url) => {
+                    this.editComInfo(this.index, 'imgSrc', url);
                 });
             }
         },
@@ -51,7 +50,8 @@
         },
         vuex: {
             getters: {
-                coms: getComs
+                coms: getComs,
+                uploadImgMethods: getUploadImgMethods
             },
             actions: {
                 editComInfo
