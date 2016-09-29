@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="item href">
-            <span class="name">跳转地址：</span>
+            <span class="name">跳转网页：</span>
             <input type="text" :value="info.href" v-sync-com-info :expression="'href'"/>
         </div>
         <div class="item text">
