@@ -1,7 +1,6 @@
 <template>
     <div class="operation">
         <button @click="save">保存</button>
-        <button @click="publish">发布</button>
     </div>
 </template>
 <style lang="less" scoped>
@@ -14,10 +13,7 @@
         },
         methods: {
             save(){
-                this.$dispatch('save');
-            },
-            publish(){
-                this.$dispatch('publish');
+                console.log('save');
             }
         }
     });

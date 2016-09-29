@@ -14,17 +14,6 @@ var main = new Vue({
             maxFileSize: 5 * 1024 * 1024 //图片上限
         }
     },
-    methods: {
-        uploadImg (cb) {
-            this.$refs.uploadImg.open(cb);
-        },
-        save (){
-            console.log('保存');
-        },
-        publish (){
-            console.log('发布');
-        }
-    },
     components: {
         menus, modify, sketchpads, operation, uploadImg
     },
