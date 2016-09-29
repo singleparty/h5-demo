@@ -37,7 +37,7 @@
 <script type="es6">
     import 'libs/animate.min.css';
     import {getComs} from 'designer/store/getters';
-    import {cancelComEdit} from 'designer/store/actions';
+    import {cancelComEdit, deleteCom, moveUpCom, moveDownCom} from 'designer/store/actions';
     import {comObj} from 'components/coms-map';
     var ctor = Vue.extend({
         props: {},
@@ -55,21 +55,17 @@
                 this.cancelComEdit();
             },
             deleteCom ($index) {
-                this.blurCom($index);
-                this.coms.splice($index, 1);
+                this.focus = null;
+                this._deleteCom($index);
             },
             moveUpCom ($index) {
                 if ($index == 0) return false;
-                var _temp = this.coms[$index];
-                this.coms.$set($index, this.coms[$index - 1]);
-                this.coms.$set($index - 1, _temp);
+                this._moveUpCom($index);
                 this.focus--;
             },
             moveDownCom ($index) {
                 if ($index == this.coms.length - 1) return false;
-                var _temp = this.coms[$index];
-                this.coms.$set($index, this.coms[$index + 1]);
-                this.coms.$set($index + 1, _temp);
+                this._moveDownCom($index);
                 this.focus++;
             }
         },
@@ -94,7 +90,10 @@
                 coms: getComs
             },
             actions: {
-                cancelComEdit
+                cancelComEdit,
+                _deleteCom: deleteCom,
+                _moveUpCom: moveUpCom,
+                _moveDownCom: moveDownCom,
             }
         }
     });

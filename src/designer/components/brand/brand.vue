@@ -45,8 +45,7 @@
                 coms: getComs
             },
             actions: {
-                initComInfo: initComInfo,
-                showComEdit: showComEdit
+                initComInfo, showComEdit
             }
         }
     });

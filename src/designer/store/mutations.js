@@ -37,3 +37,31 @@ export const EDIT_COM_INFO = (state, index, expression, value) => {
     }
     editComInfoFuns[expression](state.coms[index]['info'], value);
 };
+/*
+ * 删除组件
+ */
+export const DELETE_COM = (state, index) => {
+    state['coms'].splice(index, 1);
+};
+/*
+ * 组件上移
+ */
+export const MOVE_UP_COM = (state, index) => {
+    var _temp = state.coms[index];
+    state.coms.$set(index, state.coms[index - 1]);
+    state.coms.$set(index - 1, _temp);
+    state.edts.forEach(function (e) {
+        e.index = index - 1;
+    });
+};
+/*
+ * 组件下移
+ */
+export const MOVE_DOWN_COM = (state, index) => {
+    var _temp = state.coms[index];
+    state.coms.$set(index, state.coms[index + 1]);
+    state.coms.$set(index + 1, _temp);
+    state.edts.forEach(function (e) {
+        e.index = index + 1;
+    });
+};
