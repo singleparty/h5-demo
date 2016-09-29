@@ -20,9 +20,9 @@
                                  v-if="$index == focus"
                                  @click.stop.prevent="blurCom($index)">
                                 <div class="mask"></div>
-                                <button @click.stop.prevent="deleteCom($index)">删除</button>
-                                <button @click.stop.prevent="moveUpCom($index)">上移</button>
-                                <button @click.stop.prevent="moveDownCom($index)">下移</button>
+                                <button class="oper" @click.stop.prevent="deleteCom($index)">删除</button>
+                                <button class="oper" @click.stop.prevent="moveUpCom($index)">上移</button>
+                                <button class="oper" @click.stop.prevent="moveDownCom($index)">下移</button>
                             </div>
                         </div>
                     </div>

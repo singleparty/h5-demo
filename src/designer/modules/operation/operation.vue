@@ -1,6 +1,6 @@
 <template>
     <div class="operation">
-        <button @click="save">保存</button>
+        <button class="save" @click="save">保存</button>
     </div>
 </template>
 <style lang="less" scoped>
