@@ -1,4 +1,5 @@
-var editComInfoFuns = {};
+var editComInfoFuncs = {};
+var editSceneInfoFuncs = {};
 /*
  * 添加一个组件
  */
@@ -31,11 +32,11 @@ export const CANCEL_COM_EDIT = (state) => {
  * 由于修改info需要在mutations，所以这么麻烦
  */
 export const EDIT_COM_INFO = (state, index, expression, value) => {
-    if (!editComInfoFuns[expression]) {
+    if (!editComInfoFuncs[expression]) {
         var path = '[\'' + expression.replace(/\./g, '\'][\'') + '\']';
-        editComInfoFuns[expression] = new Function('info', 'value', 'info' + path + '=value');
+        editComInfoFuncs[expression] = new Function('info', 'value', 'info' + path + '=value');
     }
-    editComInfoFuns[expression](state.coms[index]['info'], value);
+    editComInfoFuncs[expression](state.coms[index]['info'], value);
 };
 /*
  * 删除组件
@@ -64,4 +65,14 @@ export const MOVE_DOWN_COM = (state, index) => {
     state.edts.forEach(function (e) {
         e.index = index + 1;
     });
+};
+/*
+ * 组件下移
+ */
+export const EDIT_SCENE_INFO = (state, expression, value) => {
+    if (!editSceneInfoFuncs[expression]) {
+        var path = '[\'' + expression.replace(/\./g, '\'][\'') + '\']';
+        editSceneInfoFuncs[expression] = new Function('sceneInfo', 'value', 'sceneInfo' + path + '=value');
+    }
+    editSceneInfoFuncs[expression](state.sceneInfo, value);
 };

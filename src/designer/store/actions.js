@@ -15,3 +15,6 @@ export const moveUpCom = ({dispatch, state}, index) => {
 export const moveDownCom = ({dispatch, state}, index) => {
     dispatch('MOVE_DOWN_COM', index);
 };
+export const editSceneInfo = ({dispatch, state}, expression, value) => {
+    dispatch('EDIT_SCENE_INFO', expression, value);
+};
