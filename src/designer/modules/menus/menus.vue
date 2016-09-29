@@ -3,7 +3,7 @@
         <!--组件集合-->
         <div class="menus">
             <div class="menu" v-for="menu in menus" track-by="$index" @click="add(menu['comName'])">
-                {{menu['comName']}}
+                <img :src="menu.logo" alt=""/>
             </div>
         </div>
     </div>
