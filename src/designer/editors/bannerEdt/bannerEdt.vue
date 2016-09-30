@@ -11,13 +11,6 @@
             <span class="name">跳转网页：</span>
             <input type="text" :value="info.href" v-sync-com-info :expression="'href'"/>
         </div>
-        <div class="item text">
-            <span class="name">描述文字：</span>
-            <div class="text-content">
-                <input type="text" v-for="(index, _desc) in info.desc"
-                       :value="_desc.text" v-sync-com-info :expression="'desc.'+index+'.text'"/>
-            </div>
-        </div>
     </div>
 </template>
 <style lang="less" scoped>
