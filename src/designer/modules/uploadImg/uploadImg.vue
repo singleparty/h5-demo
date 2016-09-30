@@ -159,7 +159,7 @@
             var self = this;
             this.uploader = new plupload.Uploader({
                 browse_button: this.$el.querySelector('.browse'),
-                runtimes: 'flash,html5,silverlight,browserplus,gears,html4',
+                runtimes: 'html5,html4,flash,silverlight,browserplus,gears',
                 flash_swf_url: swf,
                 silverlight_xap_url: xap,
                 url: self.option.url,
