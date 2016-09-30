@@ -1,5 +1,5 @@
 <template>
-    <div class="banner" @click="editor">
+    <div class="banner">
         <span class="banner-href">
             <img :src="imgSrc" alt="" class="banner-img"/>
         </span>
@@ -11,7 +11,7 @@
 <script type="es6">
     import pic from './default.png';
     import {getComs} from 'designer/store/getters';
-    import {initComInfo, showComEdit} from 'designer/store/actions';
+    import {initComInfo} from 'designer/store/actions';
     var ctor = Vue.extend({
         props: ['index'],
         computed: {
@@ -32,19 +32,12 @@
         data () {
             return {};
         },
-        methods: {
-            editor () {
-                this.showComEdit([{
-                    index: this.index, edtName: 'bannerEdt'
-                }]);
-            }
-        },
         vuex: {
             getters: {
                 coms: getComs
             },
             actions: {
-                initComInfo, showComEdit
+                initComInfo
             }
         }
     });

@@ -1,5 +1,5 @@
 <template>
-    <div class="demo" @click="editor">
+    <div class="demo">
         <span class="demo-href">
             <img :src="imgSrc" alt="" class="demo-img"/>
         </span>
@@ -12,7 +12,7 @@
 <script type="es6">
     import pic from './default.png';
     import {getComs} from 'designer/store/getters';
-    import {initComInfo, showComEdit} from 'designer/store/actions';
+    import {initComInfo} from 'designer/store/actions';
     var ctor = Vue.extend({
         props: ['index'],
         computed: {
@@ -33,19 +33,12 @@
         data () {
             return {};
         },
-        methods: {
-            editor () {
-                this.showComEdit([{
-                    index: this.index, edtName: 'demoEdt'
-                }]);
-            }
-        },
         vuex: {
             getters: {
                 coms: getComs
             },
             actions: {
-                initComInfo, showComEdit
+                initComInfo
             }
         }
     });
