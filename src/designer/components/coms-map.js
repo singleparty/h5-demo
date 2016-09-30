@@ -1,4 +1,4 @@
-var comArr = [], comObj = {};
+var comArr = [], comObj = {}, comToEdts = [];
 import demo from 'components/demo/demo.vue';
 import demoLogo from 'components/demo/demoLogo.png';
 import banner from 'components/banner/banner.vue';
@@ -10,5 +10,6 @@ comArr.push({comName: 'banner', constructor: banner, logo: bannerLogo, edts: ['b
 comArr.push({comName: 'symmetry', constructor: symmetry, logo: symmetryLogo, edts: ['symmetryEdt']});
 comArr.forEach((e, i) => {
     comObj[e['comName']] = e['constructor'];
+    comToEdts[e['comName']] = e['edts'];
 });
-export {comArr, comObj};
+export {comArr, comObj, comToEdts};

@@ -37,8 +37,8 @@
 <script type="es6">
     import 'libs/animate.min.css';
     import {getComs} from 'designer/store/getters';
-    import {cancelComEdit, deleteCom, moveUpCom, moveDownCom} from 'designer/store/actions';
-    import {comObj} from 'components/coms-map';
+    import {cancelComEdit, deleteCom, moveUpCom, moveDownCom, showComEdit} from 'designer/store/actions';
+    import {comObj, comToEdts} from 'components/coms-map';
     var ctor = Vue.extend({
         props: {},
         data () {
@@ -49,6 +49,9 @@
         methods: {
             focusCom ($index) {
                 this.focus = $index;
+                this.showComEdit(comToEdts[this.coms[$index]['comName']].map(function (e) {
+                    return {index: $index, edtName: e};
+                }));
             },
             blurCom ($index) {
                 this.focus = null;
@@ -90,7 +93,7 @@
                 coms: getComs
             },
             actions: {
-                cancelComEdit,
+                cancelComEdit, showComEdit,
                 _deleteCom: deleteCom,
                 _moveUpCom: moveUpCom,
                 _moveDownCom: moveDownCom,
