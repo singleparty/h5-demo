@@ -1,8 +1,8 @@
 <template>
     <div class="banner" @click="editor">
-    <span class="banner-href">
-        <img :src="imgSrc" alt="" class="banner-img"/>
-    </span>
+        <span class="banner-href">
+            <img :src="imgSrc" alt="" class="banner-img"/>
+        </span>
         <h5 v-for="_desc in info.desc">{{_desc.text}}</h5>
     </div>
 </template>
