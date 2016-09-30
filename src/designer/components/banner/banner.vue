@@ -20,7 +20,7 @@
             },
             info () {
                 var info = this.coms[this.index]['info'];
-                if(info['imgSrc'] === undefined) {
+                if(info === null) {
                     //初始化info数据
                     this.initComInfo(this.index, {
                         imgSrc: '', href: ''
