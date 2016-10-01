@@ -2,12 +2,12 @@
     <div class="symmetry">
         <div class="symmetry-left">
             <span class="symmetry-href">
-                <img class="symmetry-img" :src="info.left.imgSrc | defaultImg" alt=""/>
+                <img class="symmetry-img" :src="data.left.imgSrc | defaultImg" alt=""/>
             </span>
         </div>
         <div class="symmetry-right">
             <span class="symmetry-href">
-                <img class="symmetry-img" :src="info.right.imgSrc | defaultImg" alt=""/>
+                <img class="symmetry-img" :src="data.right.imgSrc | defaultImg" alt=""/>
             </span>
         </div>
     </div>
@@ -20,18 +20,16 @@
     import {getComs} from 'designer/store/getters';
     import {initComInfo} from 'designer/store/actions';
     var ctor = Vue.extend({
-        props: ['index'],
+        props: ['index', 'info'],
         computed: {
-            info () {
-                var info = this.coms[this.index]['info'];
-                if(info === null) {
+            data () {
+                var baseInfo = {left: {imgSrc: '', href: ''}, right: {imgSrc: '', href: ''}};
+                if(this.info === null) {
                     //初始化info数据
-                    this.initComInfo(this.index, {
-                        left: {imgSrc: '', href: ''},
-                        right: {imgSrc: '', href: ''}
-                    });
+                    this.initComInfo(this.index, baseInfo);
+                    return baseInfo;
                 }
-                return this.coms[this.index]['info'];
+                return this.info;
             }
         },
         data () {
@@ -43,9 +41,6 @@
             }
         },
         vuex: {
-            getters: {
-                coms: getComs
-            },
             actions: {
                 initComInfo
             }

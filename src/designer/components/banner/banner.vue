@@ -10,32 +10,27 @@
 </style>
 <script type="es6">
     import pic from './default.png';
-    import {getComs} from 'designer/store/getters';
     import {initComInfo} from 'designer/store/actions';
     var ctor = Vue.extend({
-        props: ['index'],
+        props: ['index', 'info'],
         computed: {
             imgSrc() {
-                return this.info.imgSrc ? this.info.imgSrc : pic;
+                return this.data.imgSrc ? this.data.imgSrc : pic;
             },
-            info () {
-                var info = this.coms[this.index]['info'];
-                if(info === null) {
+            data () {
+                var baseInfo = {imgSrc: '', href: ''};
+                if(this.info === null) {
                     //初始化info数据
-                    this.initComInfo(this.index, {
-                        imgSrc: '', href: ''
-                    });
+                    this.initComInfo(this.index, baseInfo);
+                    return baseInfo;
                 }
-                return this.coms[this.index]['info'];
+                return this.info;
             }
         },
         data () {
             return {};
         },
         vuex: {
-            getters: {
-                coms: getComs
-            },
             actions: {
                 initComInfo
             }

@@ -15,14 +15,14 @@
                              @click="focusCom($index)"
                              v-for="_com in coms"
                              track-by="$index">
-                            <component :is="_com.comName" :index="$index"></component>
+                            <component :is="_com.comName" :index="$index" :info="_com.info"></component>
                             <div class="cover animated" transition="fade"
                                  v-if="$index == focus"
                                  @click.stop.prevent="blurCom($index)">
                                 <div class="mask"></div>
-                                <button class="oper" @click.stop.prevent="deleteCom($index)">删除</button>
-                                <button class="oper" @click.stop.prevent="moveUpCom($index)">上移</button>
-                                <button class="oper" @click.stop.prevent="moveDownCom($index)">下移</button>
+                                <button class="operate" @click.stop.prevent="deleteCom($index)">删除</button>
+                                <button class="operate" @click.stop.prevent="moveUpCom($index)">上移</button>
+                                <button class="operate" @click.stop.prevent="moveDownCom($index)">下移</button>
                             </div>
                         </div>
                     </div>
