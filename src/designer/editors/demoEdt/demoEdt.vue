@@ -4,7 +4,7 @@
             <span class="name">修改图片：</span>
 
             <div class="img-preview" @click="upload">
-                <img :src="info.imgSrc" alt="" v-show="showImg"/>
+                <img :src="info.imgSrc" alt="" v-show="info.imgSrc"/>
             </div>
         </div>
         <div class="item href">
@@ -24,17 +24,11 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getComs, getUploadImgMethods} from 'designer/store/getters';
+    import {getUploadImgMethods} from 'designer/store/getters';
     import {editComInfo} from 'designer/store/actions';
     var ctor = Vue.extend({
-        props: ['index'],
+        props: ['index', 'info'],
         computed: {
-            showImg () {
-                return !!this.info.imgSrc
-            },
-            info () {
-                return this.coms[this.index]['info'];
-            }
         },
         data () {
             return {};
@@ -58,7 +52,6 @@
         },
         vuex: {
             getters: {
-                coms: getComs,
                 uploadImgMethods: getUploadImgMethods
             },
             actions: {

@@ -49,9 +49,10 @@
         methods: {
             focusCom ($index) {
                 this.focus = $index;
-                this.showComEdit(comToEdts[this.coms[$index]['comName']].map(function (e) {
-                    return {index: $index, edtName: e};
-                }));
+                this.showComEdit({
+                    index: $index,
+                    edtNames: comToEdts[this.coms[$index]['comName']]
+                });
             },
             blurCom ($index) {
                 this.focus = null;

@@ -18,8 +18,8 @@ export const INIT_COM_INFO = (state, index, value) => {
 /*
  * 展示组件的编辑器
  */
-export const SHOW_COM_EDIT = (state, arr) => {
-    state.edts = arr
+export const SHOW_COM_EDIT = (state, edts) => {
+    state.edts = edts;
 };
 /*
  * 隐藏组件的编辑器

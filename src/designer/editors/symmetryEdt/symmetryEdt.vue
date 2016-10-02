@@ -34,14 +34,11 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getComs, getUploadImgMethods} from 'designer/store/getters';
+    import {getUploadImgMethods} from 'designer/store/getters';
     import {editComInfo} from 'designer/store/actions';
     var ctor = Vue.extend({
-        props: ['index'],
+        props: ['index', 'info'],
         computed: {
-            info () {
-                return this.coms[this.index]['info'];
-            }
         },
         data () {
             return {};
@@ -65,7 +62,6 @@
         },
         vuex: {
             getters: {
-                coms: getComs,
                 uploadImgMethods: getUploadImgMethods
             },
             actions: {

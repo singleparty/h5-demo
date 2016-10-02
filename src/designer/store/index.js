@@ -4,7 +4,7 @@ import * as mutations from './mutations';
 Vue.use(Vuex);
 const state = {
     coms: [],
-    edts: [],
+    edts: {},
     sceneInfo: {
         name: ''
     },
