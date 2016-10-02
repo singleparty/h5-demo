@@ -51,9 +51,7 @@ export const MOVE_UP_COM = (state, index) => {
     var _temp = state.coms[index];
     state.coms.$set(index, state.coms[index - 1]);
     state.coms.$set(index - 1, _temp);
-    state.edts.forEach(function (e) {
-        e.index = index - 1;
-    });
+    state.edts.index = index - 1;
 };
 /*
  * 组件下移
@@ -62,9 +60,7 @@ export const MOVE_DOWN_COM = (state, index) => {
     var _temp = state.coms[index];
     state.coms.$set(index, state.coms[index + 1]);
     state.coms.$set(index + 1, _temp);
-    state.edts.forEach(function (e) {
-        e.index = index + 1;
-    });
+    state.edts.index = index + 1;
 };
 /*
  * 组件下移
