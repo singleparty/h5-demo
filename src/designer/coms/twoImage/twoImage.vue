@@ -1,13 +1,13 @@
 <template>
-    <div class="symmetry">
-        <div class="symmetry-left">
-            <span class="symmetry-href">
-                <img class="symmetry-img" :src="data.left.imgSrc | defaultImg" alt=""/>
+    <div class="two-image">
+        <div class="two-image-left">
+            <span class="two-image-href">
+                <img class="two-image-img" :src="data.left.imgSrc | defaultImg" alt=""/>
             </span>
         </div>
-        <div class="symmetry-right">
-            <span class="symmetry-href">
-                <img class="symmetry-img" :src="data.right.imgSrc | defaultImg" alt=""/>
+        <div class="two-image-right">
+            <span class="two-image-href">
+                <img class="two-image-img" :src="data.right.imgSrc | defaultImg" alt=""/>
             </span>
         </div>
     </div>

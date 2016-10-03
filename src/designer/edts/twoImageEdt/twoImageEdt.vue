@@ -1,5 +1,5 @@
 <template>
-    <div class="symmetry-edt">
+    <div class="two-image-edt">
         <div class="left">
             <h5>左侧图片信息修改：</h5>
             <div class="item pic">
