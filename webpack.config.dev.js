@@ -77,6 +77,7 @@ module.exports = {
             designer: __dirname + '/src/designer',
             components: __dirname + '/src/designer/components',
             editors: __dirname + '/src/designer/editors',
+            store: __dirname + '/src/designer/store',
             //插件
             vue: __dirname + '/libs/vue-1.0.26/vue.dev.js',
             vuex: __dirname + '/libs/vuex-1.0.0/vuex.js',

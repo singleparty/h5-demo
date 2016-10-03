@@ -45,7 +45,7 @@
     import _temp from 'plupload';
     import swf from 'libs/plupload/js/Moxie.swf';
     import xap from 'libs/plupload/js/Moxie.xap';
-    import {uploadImgMethods} from 'designer/store/actions';
+    import {uploadImgMethods} from 'store/actions';
     var plupload = _temp['window.plupload'];
     var mOxie = _temp['window.mOxie'];
     var createObjectURL = (function () {

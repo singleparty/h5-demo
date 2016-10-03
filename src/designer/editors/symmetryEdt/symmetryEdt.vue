@@ -34,8 +34,8 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getUploadImgMethods} from 'designer/store/getters';
-    import {editComInfo} from 'designer/store/actions';
+    import {getUploadImgMethods} from 'store/getters';
+    import {editComInfo} from 'store/actions';
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {

@@ -10,7 +10,7 @@
 </style>
 <script type="es6">
     import pic from './default.png';
-    import {initComInfo} from 'designer/store/actions';
+    import {initComInfo} from 'store/actions';
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {

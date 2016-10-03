@@ -25,8 +25,8 @@
 </style>
 <script type="es6">
     import {edtObj} from 'editors/edts-map';
-    import {getEdts, getSceneInfo} from 'designer/store/getters';
-    import {editSceneInfo} from 'designer/store/actions';
+    import {getEdts, getSceneInfo} from 'store/getters';
+    import {editSceneInfo} from 'store/actions';
     var ctor = Vue.extend({
         data () {
             return {}

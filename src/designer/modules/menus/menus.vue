@@ -12,8 +12,8 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getComArr} from 'designer/store/getters';
-    import {addOnCom} from 'designer/store/actions';
+    import {getComArr} from 'store/getters';
+    import {addOnCom} from 'store/actions';
     import {comArr} from 'components/coms-map';
     var ctor = Vue.extend({
         data () {

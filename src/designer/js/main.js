@@ -4,7 +4,7 @@ import modify from 'designer/modules/modify/modify.vue';
 import sketchpads from 'designer/modules/sketchpads/sketchpads.vue';
 import operation from 'designer/modules/operation/operation.vue';
 import uploadImg from 'designer/modules/uploadImg/uploadImg.vue';
-import store from 'designer/store/index';
+import store from 'store/index';
 var main = new Vue({
     el: document.getElementById('main'),
     data: {

@@ -17,8 +17,8 @@
 </style>
 <script type="es6">
     import pic from './default.png';
-    import {getComs} from 'designer/store/getters';
-    import {initComInfo} from 'designer/store/actions';
+    import {getComs} from 'store/getters';
+    import {initComInfo} from 'store/actions';
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
