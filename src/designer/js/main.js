@@ -1,6 +1,6 @@
 import 'designer/less/main.less'
 import menus from 'designer/modules/menus/menus.vue';
-import modify from 'designer/modules/modify/modify.vue';
+import editors from 'designer/modules/editors/editors.vue';
 import sketchpads from 'designer/modules/sketchpads/sketchpads.vue';
 import operation from 'designer/modules/operation/operation.vue';
 import uploadImg from 'designer/modules/uploadImg/uploadImg.vue';
@@ -15,7 +15,7 @@ var main = new Vue({
         }
     },
     components: {
-        menus, modify, sketchpads, operation, uploadImg
+        menus, editors, sketchpads, operation, uploadImg
     },
     store
 });

@@ -38,7 +38,7 @@
     import 'libs/animate.min.css';
     import {getComs} from 'store/getters';
     import {cancelComEdit, deleteCom, moveUpCom, moveDownCom, showComEdit} from 'store/actions';
-    import {comObj, comToEdts} from 'components/coms-map';
+    import {comObj, comToEdts} from 'coms/coms-map';
     var ctor = Vue.extend({
         props: {},
         data () {

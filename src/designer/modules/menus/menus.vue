@@ -14,7 +14,7 @@
 <script type="es6">
     import {getComArr} from 'store/getters';
     import {addOnCom} from 'store/actions';
-    import {comArr} from 'components/coms-map';
+    import {comArr} from 'coms/coms-map';
     var ctor = Vue.extend({
         data () {
             return {

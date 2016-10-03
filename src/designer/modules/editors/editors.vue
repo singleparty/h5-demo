@@ -1,7 +1,7 @@
 <template>
-    <div class="modify-wrap">
+    <div class="editors-wrap">
         <!--页面级信息编辑器-->
-        <div class="modify-scene">
+        <div class="editors-scene">
             <div class="item">
                 <span class="name">专题名字：</span>
                 <label>
@@ -11,7 +11,7 @@
             </div>
         </div>
         <!--组件编辑器-->
-        <div class="modify">
+        <div class="editors">
             <div class="basic-edt"
                  v-for="edtName in edts.edtNames" track-by="$index"
                  :data-edt-name="edtName">
@@ -24,7 +24,7 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {edtObj} from 'editors/edts-map';
+    import {edtObj} from 'edts/edts-map';
     import {getEdts, getSceneInfo} from 'store/getters';
     import {editSceneInfo} from 'store/actions';
     var ctor = Vue.extend({

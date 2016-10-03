@@ -1,6 +1,6 @@
-import demoEdt from 'editors/demoEdt/demoEdt.vue';
-import bannerEdt from 'editors/bannerEdt/bannerEdt.vue';
-import symmetryEdt from 'editors/symmetryEdt/symmetryEdt.vue';
+import demoEdt from 'edts/demoEdt/demoEdt.vue';
+import bannerEdt from 'edts/bannerEdt/bannerEdt.vue';
+import symmetryEdt from 'edts/symmetryEdt/symmetryEdt.vue';
 var edtArr = [], edtObj = {};
 edtArr.push({edtName: 'demoEdt', constructor: demoEdt});
 edtArr.push({edtName: 'bannerEdt', constructor: bannerEdt});
