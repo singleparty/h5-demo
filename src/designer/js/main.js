@@ -5,6 +5,7 @@ import screen from 'designer/modules/screen/screen.vue';
 import operation from 'designer/modules/operation/operation.vue';
 import uploadImg from 'designer/modules/uploadImg/uploadImg.vue';
 import store from 'store/index';
+import {init} from 'store/actions'
 var main = new Vue({
     el: document.getElementById('main'),
     data: {
@@ -16,6 +17,14 @@ var main = new Vue({
     },
     components: {
         menus, editors, screen, operation, uploadImg
+    },
+    ready: function () {
+        this.init();
+    },
+    vuex: {
+        actions: {
+            init: init
+        }
     },
     store
 });

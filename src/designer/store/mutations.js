@@ -78,3 +78,10 @@ export const EDIT_SCENE_INFO = (state, expression, value) => {
 export const UPLOAD_IMG_METHODS = (state, value) => {
     state.uploadImgMethods = value;
 };
+/*
+ * 初始化
+ */
+export const INIT = (state, data) => {
+    state.coms = data.coms;
+    state.sceneInfo = data.sceneInfo;
+};

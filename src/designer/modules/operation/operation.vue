@@ -7,13 +7,24 @@
     @import "./style.less";
 </style>
 <script type="es6">
+    import {getComs, getSceneInfo} from 'store/getters';
     var ctor = Vue.extend({
         data(){
             return {};
         },
         methods: {
             save(){
-                console.log('save');
+                var data = {
+                    coms: this.coms,
+                    sceneInfo: this.sceneInfo
+                };
+                localStorage.setItem('scene', encodeURIComponent(JSON.stringify(data)));
+            }
+        },
+        vuex: {
+            getters: {
+                coms: getComs,
+                sceneInfo: getSceneInfo
             }
         }
     });

@@ -25,3 +25,9 @@ export const editSceneInfo = ({dispatch, state}, expression, value) => {
 export const uploadImgMethods = ({dispatch, state}, value) => {
     dispatch('UPLOAD_IMG_METHODS', value);
 };
+export const init = ({dispatch, state}) => {
+    if(localStorage.getItem('scene')) {
+        var data = JSON.parse(decodeURIComponent(localStorage.getItem('scene')));
+        dispatch('INIT', data);
+    }
+};
