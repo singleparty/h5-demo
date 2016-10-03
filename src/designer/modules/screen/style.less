@@ -1,0 +1,84 @@
+@import '../../../common/less/func.less';
+.screen-wrap {
+    float: left;
+    width: 100%;
+    .screen {
+        margin-right: 300px;
+        margin-left: 200px;
+        padding-top: 1px;
+        position: relative;
+    }
+    .screen-header {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    .canvas-wrap {
+        .scrollBar();
+        width: 375px;
+        height: 667px;
+        border-top: 25px solid #eee;
+        border-right: 1px solid #eee;
+        border-bottom: 25px solid #eee;
+        border-left: 1px solid #eee;
+        .prefix(border-radius, 15px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        margin: 60px auto;
+        .canvas-adaption {
+            .clearFix();
+            position: relative;
+        }
+        .canvas {
+            .clearFix();
+            width: 100%;
+        }
+        .basic-com {
+            float: left;
+            width: 100%;
+            position: relative;
+            .prefix(animation-duration, .3s);
+            .cover {
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 99;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    height: 100%;
+                    vertical-align: middle;
+                }
+                .prefix(animation-duration, .3s);
+                .mask {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: -1;
+                    width: 100%;
+                    height: 100%;
+                    background: #000;
+                    opacity: .6;
+                }
+                .operate {
+                    background: #828282;
+                    padding: 0;
+                    border: 0 none;
+                    outline: 0 none;
+                    color: #fff;
+                    width: 40px;
+                    height: 40px;
+                    .prefix(border-radius, 50%);
+                    &:hover {
+                        background: #fff;
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}

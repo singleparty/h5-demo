@@ -45,6 +45,7 @@
     import _temp from 'plupload';
     import swf from 'libs/plupload/js/Moxie.swf';
     import xap from 'libs/plupload/js/Moxie.xap';
+    import {setUploadImgMethods} from 'store/actions';
     var plupload = _temp['window.plupload'];
     var mOxie = _temp['window.mOxie'];
     var createObjectURL = (function () {
@@ -158,7 +159,7 @@
             var self = this;
             this.uploader = new plupload.Uploader({
                 browse_button: this.$el.querySelector('.browse'),
-                runtimes: 'flash,html5,silverlight,browserplus,gears,html4',
+                runtimes: 'html5,html4,flash,silverlight,browserplus,gears',
                 flash_swf_url: swf,
                 silverlight_xap_url: xap,
                 url: self.option.url,
@@ -199,8 +200,10 @@
                             self.resources.push({
                                 imgUrl: url
                             });
-                            self.queue.$remove(findObjFromArr(self.queue, 'id', id));
+                        } else {
+                            self.showToast('上传失败请重试');
                         }
+                        self.queue.$remove(findObjFromArr(self.queue, 'id', id));
                     },
                     Error: function (uploader, errObject) {
                         switch (errObject.code) {
@@ -228,6 +231,9 @@
         },
         ready () {
             this.uploader.init();
+            this.setUploadImgMethods({
+                open: this.open, close: this.close
+            });
         },
         transitions: {
             fade: {
@@ -239,6 +245,11 @@
                 enterClass: 'bounceIn',
                 leaveClass: 'bounceOut',
                 type: 'animation'
+            }
+        },
+        vuex: {
+            actions: {
+                setUploadImgMethods
             }
         }
     })
