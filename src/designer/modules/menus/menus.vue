@@ -2,13 +2,8 @@
     <div class="menus-wrap">
         <!--组件集合-->
         <div class="menus">
-<<<<<<< HEAD
-            <div class="menu" v-for="menu in menus" track-by="$index" @click="add($index)">
-                {{menu['comName']}}
-=======
             <div class="menu" v-for="menu in menus" track-by="$index" @click="add(menu['comName'])">
                 <img :src="menu.logo" alt=""/>
->>>>>>> dev
             </div>
         </div>
     </div>
