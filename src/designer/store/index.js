@@ -8,7 +8,8 @@ const state = {
     sceneInfo: {
         name: ''
     },
-    uploadImgMethods: {}
+    uploadImgMethods: {},
+    showMessageMethods: {}
 };
 var store = new Vuex.Store({
     strict: __DEV__, state, mutations

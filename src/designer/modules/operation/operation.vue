@@ -7,7 +7,7 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getComs, getSceneInfo} from 'store/getters';
+    import {getComs, getSceneInfo, getShowMessageMethods} from 'store/getters';
     var ctor = Vue.extend({
         data(){
             return {};
@@ -19,12 +19,14 @@
                     sceneInfo: this.sceneInfo
                 };
                 localStorage.setItem('scene', encodeURIComponent(JSON.stringify(data)));
+                this.showMessageMethods.open('保存成功');
             }
         },
         vuex: {
             getters: {
                 coms: getComs,
-                sceneInfo: getSceneInfo
+                sceneInfo: getSceneInfo,
+                showMessageMethods: getShowMessageMethods
             }
         }
     });

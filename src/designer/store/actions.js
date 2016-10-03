@@ -22,12 +22,16 @@ export const moveDownCom = ({dispatch, state}, index) => {
 export const editSceneInfo = ({dispatch, state}, expression, value) => {
     dispatch('EDIT_SCENE_INFO', expression, value);
 };
-export const uploadImgMethods = ({dispatch, state}, value) => {
-    dispatch('UPLOAD_IMG_METHODS', value);
+export const setUploadImgMethods = ({dispatch, state}, value) => {
+    dispatch('SET_UPLOAD_IMG_METHODS', value);
+};
+export const setShowMessageMethods = ({dispatch, state}, value) => {
+    dispatch('SET_SHOW_MESSAGE_METHODS', value);
 };
 export const init = ({dispatch, state}) => {
     if(localStorage.getItem('scene')) {
         var data = JSON.parse(decodeURIComponent(localStorage.getItem('scene')));
         dispatch('INIT', data);
+        state.showMessageMethods.open('读取缓存成功');
     }
 };

@@ -75,8 +75,14 @@ export const EDIT_SCENE_INFO = (state, expression, value) => {
 /*
  * 上传图片方法集
  */
-export const UPLOAD_IMG_METHODS = (state, value) => {
+export const SET_UPLOAD_IMG_METHODS = (state, value) => {
     state.uploadImgMethods = value;
+};
+/*
+ * 信息提示方法集
+ */
+export const SET_SHOW_MESSAGE_METHODS = (state, value) => {
+    state.showMessageMethods = value;
 };
 /*
  * 初始化
