@@ -12,7 +12,7 @@ var path = require('path');
 module.exports = {
     entry: {
         bundle: ['./src/designer/js/main.js'],
-        vendor: ['vue', 'plupload']
+        vendor: ['vue', 'vuex', 'plupload']
     },
     output: {
         path: path.join(__dirname, 'dist'),

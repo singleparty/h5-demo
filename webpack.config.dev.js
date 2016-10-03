@@ -18,6 +18,7 @@ module.exports = {
         ],//我们开发时的入口文件
         vendor: [
             'vue',
+            'vuex',
             'plupload',
             'webpack/hot/dev-server',
             'webpack-dev-server/client?http://localhost:9090'
