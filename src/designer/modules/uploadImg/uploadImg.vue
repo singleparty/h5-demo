@@ -200,8 +200,10 @@
                             self.resources.push({
                                 imgUrl: url
                             });
-                            self.queue.$remove(findObjFromArr(self.queue, 'id', id));
+                        } else {
+                            self.showToast('上传失败请重试');
                         }
+                        self.queue.$remove(findObjFromArr(self.queue, 'id', id));
                     },
                     Error: function (uploader, errObject) {
                         switch (errObject.code) {
