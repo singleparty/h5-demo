@@ -81,7 +81,6 @@
             },
             fadeDown: {
                 enterClass: 'fadeInDown',
-                leaveClass: 'fadeOut',
                 type: 'animation'
             }
         },
