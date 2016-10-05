@@ -29,7 +29,11 @@
         methods: Object.assign({
             upload () {
                 this.uploadImgMethods.open((url) => {
-                    this.editComInfo(this.index, 'imgSrc', url);
+                    this.editComInfo({
+                        index: this.index,
+                        expression: 'imgSrc',
+                        value: url
+                    });
                 });
             }
         }, mapActions(['editComInfo'])),
@@ -38,7 +42,11 @@
                 params: ['expression'],
                 bind () {
                     this.el.addEventListener('input', (e)=> {
-                        this.vm.editComInfo(this.vm.index, this.params.expression, e.currentTarget.value);
+                        this.vm.editComInfo({
+                            index: this.vm.index,
+                            expression: this.params.expression,
+                            value: e.currentTarget.value
+                        });
                     });
                 }
             }

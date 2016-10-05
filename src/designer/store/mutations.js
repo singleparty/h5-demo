@@ -12,8 +12,8 @@ export const ADD_ON_COM = (state, name) => {
 /*
  * 初始化一个组件的info信息
  */
-export const INIT_COM_INFO = (state, index, value) => {
-    state['coms'][index]['info'] = value;
+export const INIT_COM_INFO = (state, {index, info}) => {
+    state['coms'][index]['info'] = info;
 };
 /*
  * 展示组件的编辑器
@@ -31,7 +31,7 @@ export const CANCEL_COM_EDIT = (state) => {
  * 编辑组件的info信息
  * 由于修改info需要在mutations，所以这么麻烦
  */
-export const EDIT_COM_INFO = (state, index, expression, value) => {
+export const EDIT_COM_INFO = (state, {index, expression, value}) => {
     if (!editComInfoFuncs[expression]) {
         var path = '[\'' + expression.replace(/\./g, '\'][\'') + '\']';
         editComInfoFuncs[expression] = new Function('info', 'value', 'info' + path + '=value');
@@ -65,7 +65,7 @@ export const MOVE_DOWN_COM = (state, index) => {
 /*
  * 组件下移
  */
-export const EDIT_SCENE_INFO = (state, expression, value) => {
+export const EDIT_SCENE_INFO = (state, {expression, value}) => {
     if (!editSceneInfoFuncs[expression]) {
         var path = '[\'' + expression.replace(/\./g, '\'][\'') + '\']';
         editSceneInfoFuncs[expression] = new Function('sceneInfo', 'value', 'sceneInfo' + path + '=value');

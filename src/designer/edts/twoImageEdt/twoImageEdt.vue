@@ -2,6 +2,7 @@
     <div class="two-image-edt">
         <div class="left">
             <h5>左侧图片信息修改：</h5>
+
             <div class="item pic">
                 <span class="name">修改图片：</span>
 
@@ -16,6 +17,7 @@
         </div>
         <div class="right">
             <h5>右侧图片信息修改：</h5>
+
             <div class="item pic">
                 <span class="name">修改图片：</span>
 
@@ -37,16 +39,20 @@
     import {mapGetters, mapActions } from 'vuex';
     var ctor = Vue.extend({
         props: ['index', 'info'],
-        computed: Object.assign({},mapGetters({
+        computed: Object.assign({}, mapGetters({
             uploadImgMethods: 'getUploadImgMethods'
         })),
         data () {
             return {};
         },
         methods: Object.assign({
-            upload () {
+            upload (type) {
                 this.uploadImgMethods.open((url) => {
-                    this.editComInfo(this.index, 'imgSrc', url);
+                    this.editComInfo({
+                        index: this.index,
+                        expression: type + '.imgSrc',
+                        value: url
+                    });
                 });
             }
         }, mapActions(['editComInfo'])),
@@ -55,7 +61,11 @@
                 params: ['expression'],
                 bind () {
                     this.el.addEventListener('input', (e)=> {
-                        this.vm.editComInfo(this.vm.index, this.params.expression, e.currentTarget.value);
+                        this.vm.editComInfo({
+                            index: this.vm.index,
+                            expression: this.params.expression,
+                            value: e.currentTarget.value
+                        });
                     });
                 }
             }

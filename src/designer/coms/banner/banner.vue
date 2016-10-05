@@ -21,10 +21,13 @@
                 var baseInfo = {imgSrc: '', href: ''};
                 if(this.info === null) {
                     //初始化info数据
-                    this.initComInfo(this.index, baseInfo);
+                    this.initComInfo({
+                        index: this.index,
+                        info: baseInfo
+                    });
                     return baseInfo;
                 }
-                return baseInfo;
+                return this.info;
             }
         },
         data () {

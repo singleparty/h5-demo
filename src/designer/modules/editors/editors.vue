@@ -36,7 +36,10 @@
                 params: ['expression'],
                 bind () {
                     this.el.addEventListener('input', (e)=> {
-                        this.vm.editSceneInfo(this.params.expression, e.currentTarget.value);
+                        this.vm.editSceneInfo({
+                            expression: this.params.expression,
+                            value: e.currentTarget.value
+                        });
                     });
                 }
             }
