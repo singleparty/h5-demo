@@ -25,13 +25,11 @@
 </style>
 <script type="es6">
     import {edtObj} from 'edts/edts-map';
-    import {getEdts, getSceneInfo} from 'store/getters';
-    import {editSceneInfo} from 'store/actions';
+    import {mapGetters, mapActions } from 'vuex';
     var ctor = Vue.extend({
         data () {
             return {}
         },
-        methods: {},
         components: edtObj,
         directives: {
             syncSceneInfo: {
@@ -43,15 +41,11 @@
                 }
             }
         },
-        vuex: {
-            getters: {
-                edts: getEdts,
-                sceneInfo: getSceneInfo
-            },
-            actions: {
-                editSceneInfo
-            }
-        }
+        computed: Object.assign({},mapGetters({
+            edts: 'getEdts',
+            sceneInfo: 'getSceneInfo'
+        })),
+        methods: Object.assign({},mapActions(['editSceneInfo']))
     });
     export default ctor;
 </script>

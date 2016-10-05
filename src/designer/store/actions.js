@@ -9,9 +9,9 @@ export const cancelComEdit = ({commit, state}) => commit('CANCEL_COM_EDIT');
 export const editComInfo = ({commit, state}, index, expression, value) => {
     commit('EDIT_COM_INFO', index, expression, value);
 };
-export const deleteCom = ({commit, state}, index) => {
+export const removeCom = ({commit, state}, index) => {
     commit('CANCEL_COM_EDIT');
-    commit('DELETE_COM', index);
+    commit('REMOVE_COM', index);
 };
 export const moveUpCom = ({commit, state}, index) => {
     commit('MOVE_UP_COM', index);

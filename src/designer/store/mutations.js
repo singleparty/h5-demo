@@ -41,7 +41,7 @@ export const EDIT_COM_INFO = (state, index, expression, value) => {
 /*
  * 删除组件
  */
-export const DELETE_COM = (state, index) => {
+export const REMOVE_COM = (state, index) => {
     state['coms'].splice(index, 1);
 };
 /*

@@ -17,23 +17,22 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getUploadImgMethods} from 'store/getters';
-    import {editComInfo} from 'store/actions';
+    import {mapGetters, mapActions } from 'vuex';
     var ctor = Vue.extend({
         props: ['index', 'info'],
-        computed: {
-
-        },
+        computed: Object.assign({},mapGetters({
+            uploadImgMethods: 'getUploadImgMethods'
+        })),
         data () {
             return {};
         },
-        methods: {
+        methods: Object.assign({
             upload () {
                 this.uploadImgMethods.open((url) => {
                     this.editComInfo(this.index, 'imgSrc', url);
                 });
             }
-        },
+        }, mapActions(['editComInfo'])),
         directives: {
             syncComInfo: {
                 params: ['expression'],
@@ -42,14 +41,6 @@
                         this.vm.editComInfo(this.vm.index, this.params.expression, e.currentTarget.value);
                     });
                 }
-            }
-        },
-        vuex: {
-            getters: {
-                uploadImgMethods: getUploadImgMethods
-            },
-            actions: {
-                editComInfo
             }
         }
     });

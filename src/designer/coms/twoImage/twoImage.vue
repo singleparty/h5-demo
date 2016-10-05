@@ -17,8 +17,7 @@
 </style>
 <script type="es6">
     import pic from './default.png';
-    import {getComs} from 'store/getters';
-    import {initComInfo} from 'store/actions';
+    import {mapActions } from 'vuex';
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
@@ -29,7 +28,7 @@
                     this.initComInfo(this.index, baseInfo);
                     return baseInfo;
                 }
-                return this.info;
+                return baseInfo;
             }
         },
         data () {
@@ -40,11 +39,7 @@
                 return val ? val : pic;
             }
         },
-        vuex: {
-            actions: {
-                initComInfo
-            }
-        }
+        methods: Object.assign({},mapActions(['initComInfo']))
     });
     export default ctor;
 </script>

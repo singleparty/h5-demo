@@ -5,8 +5,8 @@ import screen from 'designer/modules/screen/screen.vue';
 import operation from 'designer/modules/operation/operation.vue';
 import uploadImg from 'designer/modules/uploadImg/uploadImg.vue';
 import showMessage from 'designer/modules/showMessage/showMessage.vue';
+import {mapGetters, mapActions } from 'vuex';
 import store from 'store/index';
-import {init} from 'store/actions'
 var main = new Vue({
     el: document.getElementById('main'),
     data: {
@@ -22,11 +22,7 @@ var main = new Vue({
     ready: function () {
         this.init();
     },
-    vuex: {
-        actions: {
-            init: init
-        }
-    },
+    methods: Object.assign({},mapActions(['init'])),
     store
 });
 export default main;
