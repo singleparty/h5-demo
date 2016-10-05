@@ -1,37 +1,37 @@
-export const addOnCom = ({dispatch, state}, name) => dispatch('ADD_ON_COM', name);
-export const initComInfo = ({dispatch, state}, index, value) => dispatch('INIT_COM_INFO', index, value);
-export const showComEdit = ({dispatch, state}, edts) => {
+export const addOnCom = ({commit, state}, name) => commit('ADD_ON_COM', name);
+export const initComInfo = ({commit, state}, index, value) => commit('INIT_COM_INFO', index, value);
+export const showComEdit = ({commit, state}, edts) => {
     var index = edts['index'];
     edts['info'] = state.coms[index]['info'];
-    dispatch('SHOW_COM_EDIT', edts);
+    commit('SHOW_COM_EDIT', edts);
 };
-export const cancelComEdit = ({dispatch, state}) => dispatch('CANCEL_COM_EDIT');
-export const editComInfo = ({dispatch, state}, index, expression, value) => {
-    dispatch('EDIT_COM_INFO', index, expression, value);
+export const cancelComEdit = ({commit, state}) => commit('CANCEL_COM_EDIT');
+export const editComInfo = ({commit, state}, index, expression, value) => {
+    commit('EDIT_COM_INFO', index, expression, value);
 };
-export const deleteCom = ({dispatch, state}, index) => {
-    dispatch('CANCEL_COM_EDIT');
-    dispatch('DELETE_COM', index);
+export const deleteCom = ({commit, state}, index) => {
+    commit('CANCEL_COM_EDIT');
+    commit('DELETE_COM', index);
 };
-export const moveUpCom = ({dispatch, state}, index) => {
-    dispatch('MOVE_UP_COM', index);
+export const moveUpCom = ({commit, state}, index) => {
+    commit('MOVE_UP_COM', index);
 };
-export const moveDownCom = ({dispatch, state}, index) => {
-    dispatch('MOVE_DOWN_COM', index);
+export const moveDownCom = ({commit, state}, index) => {
+    commit('MOVE_DOWN_COM', index);
 };
-export const editSceneInfo = ({dispatch, state}, expression, value) => {
-    dispatch('EDIT_SCENE_INFO', expression, value);
+export const editSceneInfo = ({commit, state}, expression, value) => {
+    commit('EDIT_SCENE_INFO', expression, value);
 };
-export const setUploadImgMethods = ({dispatch, state}, value) => {
-    dispatch('SET_UPLOAD_IMG_METHODS', value);
+export const setUploadImgMethods = ({commit, state}, value) => {
+    commit('SET_UPLOAD_IMG_METHODS', value);
 };
-export const setShowMessageMethods = ({dispatch, state}, value) => {
-    dispatch('SET_SHOW_MESSAGE_METHODS', value);
+export const setShowMessageMethods = ({commit, state}, value) => {
+    commit('SET_SHOW_MESSAGE_METHODS', value);
 };
-export const init = ({dispatch, state}) => {
+export const init = ({commit, state}) => {
     if(localStorage.getItem('scene')) {
         var data = JSON.parse(decodeURIComponent(localStorage.getItem('scene')));
-        dispatch('INIT', data);
+        commit('INIT', data);
         state.showMessageMethods.open('读取缓存成功');
     }
 };

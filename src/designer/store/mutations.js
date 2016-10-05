@@ -25,7 +25,7 @@ export const SHOW_COM_EDIT = (state, edts) => {
  * 隐藏组件的编辑器
  */
 export const CANCEL_COM_EDIT = (state) => {
-    state.edts = []
+    state.edts = {}
 };
 /*
  * 编辑组件的info信息

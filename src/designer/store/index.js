@@ -1,6 +1,7 @@
-import Vue from 'vue';
 import Vuex from 'vuex';
 import * as mutations from './mutations';
+import * as actions from './actions';
+import * as getters from './getters';
 Vue.use(Vuex);
 const state = {
     coms: [],
@@ -12,7 +13,7 @@ const state = {
     showMessageMethods: {}
 };
 var store = new Vuex.Store({
-    strict: __DEV__, state, mutations
+    strict: __DEV__, state, mutations, actions, getters
 });
 export default store;
 if (__DEV__) {
