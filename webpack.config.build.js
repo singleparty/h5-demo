@@ -50,7 +50,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: [/node_modules/, /libs/],
                 include: /src/,
-                loader: "babel?presets[]=es2015&presets[]=stage-0"
+                loader: "babel?presets[]=es2015"
             }, {
                 test: require.resolve('./libs/jquery-1.9.1/jquery.min.js'), //jquery
                 loader: 'exports?window.$'
