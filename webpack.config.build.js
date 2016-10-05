@@ -62,7 +62,8 @@ module.exports = {
     },
     vue: {
         loaders: {
-            vue: ExtractTextPlugin.extract('vue-style-loader', 'css!less')
+            less: ExtractTextPlugin.extract('css!less'),
+            js: 'babel?presets[]=es2015&presets[]=stage-0'
         }
     },
     resolve: {

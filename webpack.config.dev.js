@@ -70,6 +70,11 @@ module.exports = {
             }
         ]
     },
+    vue: {
+        loaders: {
+            js: 'babel?presets[]=es2015&presets[]=stage-0!webpack-module-hot-accept'
+        }
+    },
     resolve: {
         alias: {
             libs: __dirname + '/libs',
