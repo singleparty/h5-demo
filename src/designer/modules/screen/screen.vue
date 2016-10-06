@@ -38,6 +38,10 @@
     import 'libs/animate.min.css';
     import {mapGetters, mapActions } from 'vuex';
     import {comObj, comToEdts} from 'coms/coms-map';
+    var _getters = mapGetters({
+        coms: 'getComs'
+    });
+    var _actions = mapActions(['cancelComEdit', 'showComEdit', 'removeCom', 'moveUpCom', 'moveDownCom']);
     var ctor = Vue.extend({
         props: {},
         data () {
@@ -45,7 +49,8 @@
                 focusIndex: null
             }
         },
-        methods: Object.assign({
+        methods: {
+            ..._actions,
             focus ($index) {
                 this.focusIndex = $index;
                 this.showComEdit({
@@ -71,7 +76,7 @@
                 this.moveDownCom($index);
                 this.focusIndex++;
             }
-        }, mapActions(['cancelComEdit', 'showComEdit', 'removeCom', 'moveUpCom', 'moveDownCom'])),
+        },
         transitions: {
             fade: {
                 enterClass: 'fadeIn',
@@ -84,9 +89,9 @@
             }
         },
         components: comObj,
-        computed: Object.assign({}, mapGetters({
-            coms: 'getComs'
-        }))
+        computed: {
+            ..._getters
+        }
     });
     export default ctor;
 </script>

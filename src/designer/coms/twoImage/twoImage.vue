@@ -18,6 +18,7 @@
 <script type="es6">
     import pic from './default.png';
     import {mapActions } from 'vuex';
+    var _actions = mapActions(['initComInfo']);
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
@@ -42,7 +43,9 @@
                 return val ? val : pic;
             }
         },
-        methods: Object.assign({},mapActions(['initComInfo']))
+        methods: {
+            ..._actions
+        }
     });
     export default ctor;
 </script>

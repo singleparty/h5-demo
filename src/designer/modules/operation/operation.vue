@@ -8,6 +8,11 @@
 </style>
 <script type="es6">
     import {mapGetters } from 'vuex';
+    var _getters = mapGetters({
+        coms: 'getComs',
+        sceneInfo: 'getSceneInfo',
+        showMessageMethods: 'getShowMessageMethods'
+    });
     var ctor = Vue.extend({
         data(){
             return {};
@@ -22,11 +27,9 @@
                 this.showMessageMethods.open('保存成功');
             }
         },
-        computed: Object.assign({}, mapGetters({
-            coms: 'getComs',
-            sceneInfo: 'getSceneInfo',
-            showMessageMethods: 'getShowMessageMethods'
-        }))
+        computed: {
+            ..._getters
+        }
     });
     export default ctor;
 </script>

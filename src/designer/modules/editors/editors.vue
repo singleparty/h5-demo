@@ -26,6 +26,11 @@
 <script type="es6">
     import {edtObj} from 'edts/edts-map';
     import {mapGetters, mapActions } from 'vuex';
+    var _getters = mapGetters({
+        edts: 'getEdts',
+        sceneInfo: 'getSceneInfo'
+    });
+    var _actions = mapActions(['editSceneInfo']);
     var ctor = Vue.extend({
         data () {
             return {}
@@ -44,11 +49,12 @@
                 }
             }
         },
-        computed: Object.assign({},mapGetters({
-            edts: 'getEdts',
-            sceneInfo: 'getSceneInfo'
-        })),
-        methods: Object.assign({},mapActions(['editSceneInfo']))
+        computed: {
+            ..._getters
+        },
+        methods: {
+            ..._actions
+        }
     });
     export default ctor;
 </script>

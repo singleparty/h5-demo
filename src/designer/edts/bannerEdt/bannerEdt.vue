@@ -18,15 +18,20 @@
 </style>
 <script type="es6">
     import {mapGetters, mapActions } from 'vuex';
+    var _getters = mapGetters({
+        uploadImgMethods: 'getUploadImgMethods'
+    });
+    var _actions = mapActions(['editComInfo']);
     var ctor = Vue.extend({
         props: ['index', 'info'],
-        computed: Object.assign({},mapGetters({
-            uploadImgMethods: 'getUploadImgMethods'
-        })),
+        computed: {
+            ..._getters
+        },
         data () {
             return {};
         },
-        methods: Object.assign({
+        methods: {
+            ..._actions,
             upload () {
                 this.uploadImgMethods.open((url) => {
                     this.editComInfo({
@@ -36,7 +41,7 @@
                     });
                 });
             }
-        }, mapActions(['editComInfo'])),
+        },
         directives: {
             syncComInfo: {
                 params: ['expression'],
