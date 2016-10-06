@@ -12,20 +12,19 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getComArr} from 'store/getters';
-    import {addOnCom} from 'store/actions';
+    import {mapActions } from 'vuex';
     import {comArr} from 'coms/coms-map';
+    var _actions = mapActions({
+        add: 'addOnCom'
+    });
     var ctor = Vue.extend({
         data () {
             return {
                 menus: comArr
             }
         },
-        methods: {},
-        vuex: {
-            actions: {
-                add: addOnCom
-            }
+        methods: {
+            ..._actions
         }
     });
     export default ctor;

@@ -25,32 +25,35 @@
 </style>
 <script type="es6">
     import {edtObj} from 'edts/edts-map';
-    import {getEdts, getSceneInfo} from 'store/getters';
-    import {editSceneInfo} from 'store/actions';
+    import {mapGetters, mapActions } from 'vuex';
+    var _getters = mapGetters({
+        edts: 'getEdts',
+        sceneInfo: 'getSceneInfo'
+    });
+    var _actions = mapActions(['editSceneInfo']);
     var ctor = Vue.extend({
         data () {
             return {}
         },
-        methods: {},
         components: edtObj,
         directives: {
             syncSceneInfo: {
                 params: ['expression'],
                 bind () {
                     this.el.addEventListener('input', (e)=> {
-                        this.vm.editSceneInfo(this.params.expression, e.currentTarget.value);
+                        this.vm.editSceneInfo({
+                            expression: this.params.expression,
+                            value: e.currentTarget.value
+                        });
                     });
                 }
             }
         },
-        vuex: {
-            getters: {
-                edts: getEdts,
-                sceneInfo: getSceneInfo
-            },
-            actions: {
-                editSceneInfo
-            }
+        computed: {
+            ..._getters
+        },
+        methods: {
+            ..._actions
         }
     });
     export default ctor;

@@ -7,7 +7,12 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getComs, getSceneInfo, getShowMessageMethods} from 'store/getters';
+    import {mapGetters } from 'vuex';
+    var _getters = mapGetters({
+        coms: 'getComs',
+        sceneInfo: 'getSceneInfo',
+        showMessageMethods: 'getShowMessageMethods'
+    });
     var ctor = Vue.extend({
         data(){
             return {};
@@ -22,12 +27,8 @@
                 this.showMessageMethods.open('保存成功');
             }
         },
-        vuex: {
-            getters: {
-                coms: getComs,
-                sceneInfo: getSceneInfo,
-                showMessageMethods: getShowMessageMethods
-            }
+        computed: {
+            ..._getters
         }
     });
     export default ctor;

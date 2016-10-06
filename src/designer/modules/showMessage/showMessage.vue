@@ -12,7 +12,8 @@
 </style>
 <script type="es6">
     import 'libs/animate.min.css';
-    import {setShowMessageMethods} from 'store/actions';
+    import {mapActions } from 'vuex';
+    var _actions = mapActions(['setShowMessageMethods']);
     var ctor = Vue.extend({
         data () {
             return {
@@ -22,6 +23,7 @@
             }
         },
         methods: {
+            ..._actions,
             open (msg) {
                 this.content = msg;
                 this.show = true;
@@ -45,11 +47,6 @@
                 enterClass: 'fadeInDown',
                 leaveClass: 'fadeOutUp',
                 type: 'animation'
-            }
-        },
-        vuex: {
-            actions: {
-                setShowMessageMethods
             }
         }
     });

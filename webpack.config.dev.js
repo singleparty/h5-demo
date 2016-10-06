@@ -60,7 +60,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: [/node_modules/, /libs/],
                 include: /src/,
-                loader: "babel?presets[]=es2015!webpack-module-hot-accept"
+                loader: "babel?presets[]=es2015&presets[]=stage-0!webpack-module-hot-accept"
             }, {
                 test: require.resolve('./libs/jquery-1.9.1/jquery.js'), //jquery
                 loader: 'exports?window.$'
@@ -69,6 +69,11 @@ module.exports = {
                 loader: 'imports?this=>window!exports?window.plupload,window.mOxie'
             }
         ]
+    },
+    vue: {
+        loaders: {
+            js: 'babel?presets[]=es2015&presets[]=stage-0'
+        }
     },
     resolve: {
         alias: {
@@ -81,7 +86,7 @@ module.exports = {
             store: __dirname + '/src/designer/store',
             //插件
             vue: __dirname + '/libs/vue-1.0.26/vue.dev.js',
-            vuex: __dirname + '/libs/vuex-1.0.0/vuex.js',
+            vuex: __dirname + '/libs/vuex-2.0.0/vuex.js',
             jquery: __dirname + '/libs/jquery-1.9.1/jquery.js',
             plupload: __dirname + '/libs/plupload/js/plupload.full.min.js'
         }

@@ -17,20 +17,28 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {getUploadImgMethods} from 'store/getters';
-    import {editComInfo} from 'store/actions';
+    import {mapGetters, mapActions } from 'vuex';
+    var _getters = mapGetters({
+        uploadImgMethods: 'getUploadImgMethods'
+    });
+    var _actions = mapActions(['editComInfo']);
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
-
+            ..._getters
         },
         data () {
             return {};
         },
         methods: {
+            ..._actions,
             upload () {
                 this.uploadImgMethods.open((url) => {
-                    this.editComInfo(this.index, 'imgSrc', url);
+                    this.editComInfo({
+                        index: this.index,
+                        expression: 'imgSrc',
+                        value: url
+                    });
                 });
             }
         },
@@ -39,17 +47,13 @@
                 params: ['expression'],
                 bind () {
                     this.el.addEventListener('input', (e)=> {
-                        this.vm.editComInfo(this.vm.index, this.params.expression, e.currentTarget.value);
+                        this.vm.editComInfo({
+                            index: this.vm.index,
+                            expression: this.params.expression,
+                            value: e.currentTarget.value
+                        });
                     });
                 }
-            }
-        },
-        vuex: {
-            getters: {
-                uploadImgMethods: getUploadImgMethods
-            },
-            actions: {
-                editComInfo
             }
         }
     });

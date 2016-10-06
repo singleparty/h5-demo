@@ -11,8 +11,8 @@
 </style>
 <script type="es6">
     import pic from './default.png';
-    import {getComs} from 'store/getters';
-    import {initComInfo} from 'store/actions';
+    import {mapActions } from 'vuex';
+    var _actions = mapActions(['initComInfo']);
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
@@ -23,7 +23,10 @@
                 var baseInfo = {imgSrc: '', href: '', desc: [{text:'描述1'}, {text: '描述2'}]};
                 if(this.info === null) {
                     //初始化info数据
-                    this.initComInfo(this.index, baseInfo);
+                    this.initComInfo({
+                        index: this.index,
+                        info: baseInfo
+                    });
                     return baseInfo;
                 }
                 return this.info;
@@ -32,10 +35,8 @@
         data () {
             return {};
         },
-        vuex: {
-            actions: {
-                initComInfo
-            }
+        methods: {
+            ..._actions
         }
     });
     export default ctor;

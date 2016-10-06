@@ -10,7 +10,8 @@
 </style>
 <script type="es6">
     import pic from './default.png';
-    import {initComInfo} from 'store/actions';
+    import {mapActions} from 'vuex';
+    var _actions = mapActions(['initComInfo']);
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
@@ -19,9 +20,12 @@
             },
             data () {
                 var baseInfo = {imgSrc: '', href: ''};
-                if(this.info === null) {
+                if (this.info === null) {
                     //初始化info数据
-                    this.initComInfo(this.index, baseInfo);
+                    this.initComInfo({
+                        index: this.index,
+                        info: baseInfo
+                    });
                     return baseInfo;
                 }
                 return this.info;
@@ -30,10 +34,8 @@
         data () {
             return {};
         },
-        vuex: {
-            actions: {
-                initComInfo
-            }
+        methods: {
+            ..._actions
         }
     });
     export default ctor;
