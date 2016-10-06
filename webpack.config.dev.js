@@ -60,7 +60,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: [/node_modules/, /libs/],
                 include: /src/,
-                loader: "babel?presets[]=es2015!webpack-module-hot-accept"
+                loader: "babel?presets[]=es2015&presets[]=stage-0!webpack-module-hot-accept"
             }, {
                 test: require.resolve('./libs/jquery-1.9.1/jquery.js'), //jquery
                 loader: 'exports?window.$'
@@ -69,6 +69,11 @@ module.exports = {
                 loader: 'imports?this=>window!exports?window.plupload,window.mOxie'
             }
         ]
+    },
+    vue: {
+        loaders: {
+            js: 'babel?presets[]=es2015&presets[]=stage-0'
+        }
     },
     resolve: {
         alias: {
