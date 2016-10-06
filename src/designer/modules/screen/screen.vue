@@ -9,7 +9,6 @@
                     <!--主界面-->
                     <div class="canvas">
                         <div class="basic-com animated"
-                             transition="fadeDown"
                              :class="{'active': $index == focus}"
                              :data-com-name="_com.comName"
                              @click="focus($index)"
@@ -81,10 +80,6 @@
             fade: {
                 enterClass: 'fadeIn',
                 leaveClass: 'fadeOut',
-                type: 'animation'
-            },
-            fadeDown: {
-                enterClass: 'fadeInDown',
                 type: 'animation'
             }
         },
