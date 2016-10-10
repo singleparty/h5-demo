@@ -37,7 +37,7 @@ module.exports = {
             }, {
                 test: /\.html$/,
                 exclude: /node_modules/,
-                loader: "raw"
+                loader: "html"
             }, {
                 test: /\.(txt|swf|xap)$/,
                 exclude: /node_modules/,
