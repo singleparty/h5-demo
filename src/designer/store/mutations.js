@@ -81,8 +81,8 @@ export const SET_UPLOAD_IMG_METHODS = (state, value) => {
 /*
  * 信息提示方法集
  */
-export const SET_SHOW_MESSAGE_METHODS = (state, value) => {
-    state.showMessageMethods = value;
+export const SET_TOAST_METHODS = (state, value) => {
+    state.toastMethods = value;
 };
 /*
  * 初始化

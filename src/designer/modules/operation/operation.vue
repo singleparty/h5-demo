@@ -11,7 +11,7 @@
     var _getters = mapGetters({
         coms: 'getComs',
         sceneInfo: 'getSceneInfo',
-        showMessageMethods: 'getShowMessageMethods'
+        toastMethods: 'getToastMethods'
     });
     var ctor = Vue.extend({
         data(){
@@ -24,7 +24,7 @@
                     sceneInfo: this.sceneInfo
                 };
                 localStorage.setItem('scene', encodeURIComponent(JSON.stringify(data)));
-                this.showMessageMethods.open('保存成功');
+                this.toastMethods.open('保存成功');
             }
         },
         computed: {

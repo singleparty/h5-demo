@@ -3,4 +3,4 @@ export const getComs = state => state.coms;
 export const getEdts = state => state.edts;
 export const getSceneInfo = state => state.sceneInfo;
 export const getUploadImgMethods = state => state.uploadImgMethods;
-export const getShowMessageMethods = state => state.showMessageMethods;
+export const getToastMethods = state => state.toastMethods;

@@ -34,7 +34,7 @@
             }
         },
         compiled () {
-            this.$store.dispatch('setShowMessageMethods', {
+            this.$store.dispatch('setToastMethods', {
                 open: this.open,
                 close: this.close
             });

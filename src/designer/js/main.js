@@ -4,7 +4,7 @@ import editors from 'designer/modules/editors/editors.vue';
 import screen from 'designer/modules/screen/screen.vue';
 import operation from 'designer/modules/operation/operation.vue';
 import uploadImg from 'designer/modules/uploadImg/uploadImg.vue';
-import showMessage from 'designer/modules/showMessage/showMessage.vue';
+import toast from 'designer/modules/toast/toast.vue';
 import {mapActions } from 'vuex';
 import store from 'store/index';
 var _actions = mapActions(['init']);
@@ -18,7 +18,7 @@ var main = new Vue({
         }
     },
     components: {
-        menus, editors, screen, operation, uploadImg, showMessage
+        menus, editors, screen, operation, uploadImg, toast
     },
     ready: function () {
         this.init();

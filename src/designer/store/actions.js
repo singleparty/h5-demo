@@ -31,13 +31,13 @@ export const editSceneInfo = ({commit, state}, payload) => {
 export const setUploadImgMethods = ({commit, state}, value) => {
     commit('SET_UPLOAD_IMG_METHODS', value, { silent: true });
 };
-export const setShowMessageMethods = ({commit, state}, value) => {
-    commit('SET_SHOW_MESSAGE_METHODS', value, { silent: true });
+export const setToastMethods = ({commit, state}, value) => {
+    commit('SET_TOAST_METHODS', value, { silent: true });
 };
 export const init = ({commit, state}, payload) => {
     if(localStorage.getItem('scene')) {
         var data = JSON.parse(decodeURIComponent(localStorage.getItem('scene')));
         commit('INIT', data);
-        state.showMessageMethods.open('读取缓存成功');
+        state.toastMethods.open('读取缓存成功');
     }
 };
