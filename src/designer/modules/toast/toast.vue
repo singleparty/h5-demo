@@ -34,7 +34,7 @@
             }
         },
         compiled () {
-            this.$store.dispatch('setToastMethods', {
+            this.$store.commit('SET_TOAST_METHODS', {
                 open: this.open,
                 close: this.close
             });

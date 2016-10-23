@@ -28,19 +28,10 @@ export const moveDownCom = ({commit, state}, index) => {
 export const editSceneInfo = ({commit, state}, payload) => {
     commit('EDIT_SCENE_INFO', payload, { silent: true });
 };
-export const setUploadImgMethods = ({commit, state}, value) => {
-    commit('SET_UPLOAD_IMG_METHODS', value, { silent: true });
-};
-export const setToastMethods = ({commit, state}, value) => {
-    commit('SET_TOAST_METHODS', value, { silent: true });
-};
 export const init = ({commit, state}, payload) => {
     if(localStorage.getItem('scene')) {
         var data = JSON.parse(decodeURIComponent(localStorage.getItem('scene')));
         commit('INIT', data);
         state.toastMethods.open('读取缓存成功');
     }
-};
-export const setDialogMethods = ({commit, state}, value) => {
-    commit('SET_DIALOG_METHODS', value, {silent: true});
 };

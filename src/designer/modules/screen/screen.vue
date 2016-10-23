@@ -62,7 +62,7 @@
                 this.cancelComEdit();
             },
             remove ($index) {
-                this.dialogMethods.open('123123', () => {
+                this.dialogMethods.open('是否删除专题片段', () => {
                     this.focusIndex = null;
                     this.removeCom($index);
                 });

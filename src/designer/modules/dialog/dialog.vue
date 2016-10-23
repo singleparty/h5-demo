@@ -55,7 +55,7 @@
             }
         },
         compiled () {
-            this.$store.dispatch('setDialogMethods', {
+            this.$store.commit('SET_DIALOG_METHODS', {
                 open: this.open,
                 close: this.close
             });
