@@ -7,11 +7,11 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {mapGetters } from 'vuex';
-    var _getters = mapGetters({
-        coms: 'getComs',
-        sceneInfo: 'getSceneInfo',
-        toastMethods: 'getToastMethods'
+    import {mapState } from 'vuex';
+    var _state = mapState({
+        coms: state => state.coms,
+        sceneInfo: state => state.sceneInfo,
+        toastMethods: state => state.toastMethods
     });
     var ctor = Vue.extend({
         data(){
@@ -28,7 +28,7 @@
             }
         },
         computed: {
-            ..._getters
+            ..._state
         }
     });
     export default ctor;

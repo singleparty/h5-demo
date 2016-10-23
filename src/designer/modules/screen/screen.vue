@@ -35,10 +35,11 @@
 </style>
 <script type="es6">
     import 'libs/animate.min.css';
-    import {mapGetters, mapActions } from 'vuex';
+    import {mapState, mapActions } from 'vuex';
     import {comObj, comToEdts} from 'coms/coms-map';
-    var _getters = mapGetters({
-        coms: 'getComs', dialogMethods: 'getDialogMethods'
+    var _state = mapState({
+        coms: state => state.coms,
+        dialogMethods: state => state.dialogMethods
     });
     var _actions = mapActions(['cancelComEdit', 'showComEdit', 'removeCom', 'moveUpCom', 'moveDownCom']);
     var ctor = Vue.extend({
@@ -87,7 +88,7 @@
         },
         components: comObj,
         computed: {
-            ..._getters
+            ..._state
         }
     });
     export default ctor;
