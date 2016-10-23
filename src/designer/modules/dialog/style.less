@@ -1,0 +1,62 @@
+@import "../../../common/less/func.less";
+.btn() {
+    padding: 3px 15px;
+    border: 2px solid #ddd;
+    color: #333;
+    outline: 0 none;
+    background: #f3f3f3;
+    cursor: pointer;
+    font-size: 14px;
+    .prefix(transition, ~"background,color .5s linear 0s");
+    &:hover {
+        background: #000;
+        color: #fff;
+        .prefix(transition, ~"background,color .5s linear 0s");
+    }
+}
+.dialog {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    &:before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 0;
+        vertical-align: middle;
+    }
+    .prefix(animation-duration, 0.5s);
+    .dialog-main {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 10px;
+        width: 500px;
+        background: #fff;
+        border: 2px solid #eee;
+    }
+    .dialog-content {
+        color: #000;
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: left;
+        margin-top: 15px;
+        margin-bottom: 30px;
+    }
+    .dialog-buttons {
+        margin-left: 50%;
+        .clearFix();
+        .dialog-confirm {
+            float: right;
+            margin-right: 10px;
+            .btn();
+        }
+        .dialog-cancel {
+            float: right;
+            .btn();
+        }
+    }
+}

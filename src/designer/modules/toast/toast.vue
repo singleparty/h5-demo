@@ -1,7 +1,7 @@
 <template>
-    <div class="show-message animated" v-show="show" transition="fade">
-        <div class="show-message-main">
-            <div class="show-message-content">
+    <div class="toast animated" v-show="show" transition="fade">
+        <div class="toast-main">
+            <div class="toast-content">
                 {{content}}
             </div>
         </div>
@@ -12,8 +12,6 @@
 </style>
 <script type="es6">
     import 'libs/animate.min.css';
-    import {mapActions } from 'vuex';
-    var _actions = mapActions(['setShowMessageMethods']);
     var ctor = Vue.extend({
         data () {
             return {
@@ -23,7 +21,6 @@
             }
         },
         methods: {
-            ..._actions,
             open (msg) {
                 this.content = msg;
                 this.show = true;
@@ -37,7 +34,7 @@
             }
         },
         compiled () {
-            this.setShowMessageMethods({
+            this.$store.commit('SET_TOAST_METHODS', {
                 open: this.open,
                 close: this.close
             });

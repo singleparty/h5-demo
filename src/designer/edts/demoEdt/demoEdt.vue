@@ -25,15 +25,15 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {mapGetters, mapActions } from 'vuex';
-    var _getters = mapGetters({
-        uploadImgMethods: 'getUploadImgMethods'
+    import {mapState, mapActions } from 'vuex';
+    var _state = mapState({
+        uploadImgMethods: state => state.uploadImgMethods
     });
     var _actions = mapActions(['editComInfo']);
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
-            ..._getters
+            ..._state
         },
         data () {
             return {};

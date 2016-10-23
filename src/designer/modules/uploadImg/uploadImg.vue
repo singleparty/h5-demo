@@ -45,8 +45,6 @@
     import _temp from 'plupload';
     import swf from 'libs/plupload/js/Moxie.swf';
     import xap from 'libs/plupload/js/Moxie.xap';
-    import {mapActions } from 'vuex';
-    var _actions = mapActions(['setUploadImgMethods']);
     var plupload = _temp['window.plupload'];
     var mOxie = _temp['window.mOxie'];
     var createObjectURL = (function () {
@@ -130,7 +128,6 @@
             }
         },
         methods: {
-            ..._actions,
             //open, close 供外部调用
             open (cb) {
                 this.callback = cb;
@@ -233,7 +230,7 @@
         },
         ready () {
             this.uploader.init();
-            this.setUploadImgMethods({
+            this.$store.commit('SET_UPLOAD_IMG_METHODS', {
                 open: this.open, close: this.close
             });
         },
