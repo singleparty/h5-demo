@@ -10,7 +10,8 @@ const state = {
         name: ''
     },
     uploadImgMethods: {},
-    toastMethods: {}
+    toastMethods: {},
+    dialogMethods: {}
 };
 var store = new Vuex.Store({
     strict: __DEV__, state, mutations, actions, getters

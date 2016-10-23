@@ -38,7 +38,7 @@
     import {mapGetters, mapActions } from 'vuex';
     import {comObj, comToEdts} from 'coms/coms-map';
     var _getters = mapGetters({
-        coms: 'getComs'
+        coms: 'getComs', dialogMethods: 'getDialogMethods'
     });
     var _actions = mapActions(['cancelComEdit', 'showComEdit', 'removeCom', 'moveUpCom', 'moveDownCom']);
     var ctor = Vue.extend({
@@ -62,8 +62,10 @@
                 this.cancelComEdit();
             },
             remove ($index) {
-                this.focusIndex = null;
-                this.removeCom($index);
+                this.dialogMethods.open('123123', () => {
+                    this.focusIndex = null;
+                    this.removeCom($index);
+                });
             },
             moveUp ($index) {
                 if ($index == 0) return false;

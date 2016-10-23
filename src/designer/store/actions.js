@@ -41,3 +41,6 @@ export const init = ({commit, state}, payload) => {
         state.toastMethods.open('读取缓存成功');
     }
 };
+export const setDialogMethods = ({commit, state}, value) => {
+    commit('SET_DIALOG_METHODS', value, {silent: true});
+};
