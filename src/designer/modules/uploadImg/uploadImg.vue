@@ -230,7 +230,7 @@
         },
         ready () {
             this.uploader.init();
-            this.$store.dispatch('setUploadImgMethods', {
+            this.$store.commit('SET_UPLOAD_IMG_METHODS', {
                 open: this.open, close: this.close
             });
         },

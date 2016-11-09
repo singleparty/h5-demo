@@ -1,7 +1,7 @@
 <template>
-    <div class="show-message animated" v-show="show" transition="fade">
-        <div class="show-message-main">
-            <div class="show-message-content">
+    <div class="toast animated" v-show="show" transition="fade">
+        <div class="toast-main">
+            <div class="toast-content">
                 {{content}}
             </div>
         </div>
@@ -34,7 +34,7 @@
             }
         },
         compiled () {
-            this.$store.dispatch('setShowMessageMethods', {
+            this.$store.commit('SET_TOAST_METHODS', {
                 open: this.open,
                 close: this.close
             });

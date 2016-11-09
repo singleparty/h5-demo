@@ -7,11 +7,11 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {mapGetters } from 'vuex';
-    var _getters = mapGetters({
-        coms: 'getComs',
-        sceneInfo: 'getSceneInfo',
-        showMessageMethods: 'getShowMessageMethods'
+    import {mapState } from 'vuex';
+    var _state = mapState({
+        coms: state => state.coms,
+        sceneInfo: state => state.sceneInfo,
+        toastMethods: state => state.toastMethods
     });
     var ctor = Vue.extend({
         data(){
@@ -24,11 +24,11 @@
                     sceneInfo: this.sceneInfo
                 };
                 localStorage.setItem('scene', encodeURIComponent(JSON.stringify(data)));
-                this.showMessageMethods.open('保存成功');
+                this.toastMethods.open('保存成功');
             }
         },
         computed: {
-            ..._getters
+            ..._state
         }
     });
     export default ctor;

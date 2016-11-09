@@ -25,10 +25,10 @@
 </style>
 <script type="es6">
     import {edtObj} from 'edts/edts-map';
-    import {mapGetters, mapActions } from 'vuex';
-    var _getters = mapGetters({
-        edts: 'getEdts',
-        sceneInfo: 'getSceneInfo'
+    import {mapState, mapActions } from 'vuex';
+    var _state = mapState({
+        edts: state => state.edts,
+        sceneInfo: state => state.sceneInfo
     });
     var _actions = mapActions(['editSceneInfo']);
     var ctor = Vue.extend({
@@ -50,7 +50,7 @@
             }
         },
         computed: {
-            ..._getters
+            ..._state
         },
         methods: {
             ..._actions
