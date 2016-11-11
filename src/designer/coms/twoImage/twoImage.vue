@@ -18,7 +18,6 @@
 <script type="es6">
     import pic from './default.png';
     import {mapActions } from 'vuex';
-    var _actions = mapActions(['initComInfo']);
     var ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
@@ -26,7 +25,7 @@
                 var baseInfo = {left: {imgSrc: '', href: ''}, right: {imgSrc: '', href: ''}};
                 if(this.info === null) {
                     //初始化info数据
-                    this.initComInfo({
+                    this.$store.commit('INIT_COM_INFO', {
                         index: this.index,
                         info: baseInfo
                     });
@@ -42,9 +41,6 @@
             defaultImg: function (val) {
                 return val ? val : pic;
             }
-        },
-        methods: {
-            ..._actions
         }
     });
     export default ctor;
