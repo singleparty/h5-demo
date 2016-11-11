@@ -89,6 +89,11 @@
         components: comObj,
         computed: {
             ..._state
+        },
+        watch: {
+            coms(n, o) {
+                this.focusIndex = null;
+            }
         }
     });
     export default ctor;

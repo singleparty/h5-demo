@@ -95,5 +95,19 @@ export const SET_DIALOG_METHODS = (state, value) => {
  */
 export const INIT = (state, data) => {
     state.sceneInfo = data.sceneInfo;
-    state.coms = data.sceneInfo.branch.type['preferred'];
+    state.coms = data.sceneInfo.branch.type['0'];
+};
+/*
+* 添加分支
+* */
+export const ADD_BRANCH = (state, {branchName}) => {
+    var type = state.sceneInfo.branch.type;
+    var newBranchKey = Math.max.apply(Math, Object.keys(type)) + 1;
+    Vue.set(type, newBranchKey, Object.assign([], state.coms));
+};
+/*
+* 转换分支
+* */
+export const CHANGE_BRANCH = (state, {branchName, branchKey}) => {
+    state.coms = state.sceneInfo.branch[branchName][branchKey];
 };

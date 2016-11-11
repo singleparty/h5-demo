@@ -12,8 +12,10 @@
             <div class="item branch-type">
                 <span class="name">type: </span>
                 <div class="branchs">
-                    <span class="branch" v-for="b in branchType" v-text="b"></span>
-                    <span class="add-branch">+</span>
+                    <span class="branch" :class="{active: activeBranch == $index}"
+                          @click="changeBranch('type', branchKey, $index)"
+                          v-for="branchKey in getTypeBranchs" v-text="branchKey"></span>
+                    <span class="add-branch" @click="addBranch('type')">+</span>
                 </div>
             </div>
         </div>
@@ -32,13 +34,16 @@
     import {edtObj} from 'edts/edts-map';
     import {mapState, mapActions } from 'vuex';
     var _state = mapState({
+        coms: state => state.coms,
         edts: state => state.edts,
         sceneInfo: state => state.sceneInfo
     });
     var _actions = mapActions(['editSceneInfo']);
     var ctor = Vue.extend({
         data () {
-            return {}
+            return {
+                activeBranch: 0
+            }
         },
         components: edtObj,
         directives: {
@@ -56,13 +61,27 @@
         },
         computed: {
             ..._state,
-            branchType() {
+            getTypeBranchs() {
                 var type = this.sceneInfo.branch.type;
-                return Object.keys(type);
+                return Object.keys(type).sort(function (a, b) {
+                    return a - b;
+                });
             }
         },
         methods: {
-            ..._actions
+            ..._actions,
+            addBranch(branchName) {
+                this.$store.commit('ADD_BRANCH', {
+                    branchName: branchName
+                });
+            },
+            changeBranch(branchName, branchKey, index) {
+                this.activeBranch = index;
+                this.$store.dispatch('changeBranch', {
+                    branchName: branchName,
+                    branchKey: branchKey
+                });
+            }
         }
     });
     export default ctor;

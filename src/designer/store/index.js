@@ -10,7 +10,7 @@ const state = {
         name: '',
         branch: {
             type: {
-                preferred: []
+                '0': []
             }
         }
     },

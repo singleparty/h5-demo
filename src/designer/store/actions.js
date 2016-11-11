@@ -37,11 +37,15 @@ export const init = ({commit, state}, payload) => {
             sceneInfo: {
                 name: '',
                 branch: {
-                    type: {'preferred': []}
+                    type: {'0': []}
                 }
             }
         };
     }
     commit('INIT', data);
     if(isSaved) state.toastMethods.open('读取缓存成功');
+};
+export const changeBranch = ({commit, dispatch, state}, payload) => {
+    commit('CANCEL_COM_EDIT', {}, {silent: true});
+    commit('CHANGE_BRANCH', payload);
 };
