@@ -94,6 +94,6 @@ export const SET_DIALOG_METHODS = (state, value) => {
  * 初始化
  */
 export const INIT = (state, data) => {
-    state.coms = data.coms;
     state.sceneInfo = data.sceneInfo;
+    state.coms = data.sceneInfo.branch.type['preferred'];
 };

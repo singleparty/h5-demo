@@ -7,7 +7,12 @@ const state = {
     coms: [],
     edts: {},
     sceneInfo: {
-        name: ''
+        name: '',
+        branch: {
+            type: {
+                preferred: []
+            }
+        }
     },
     uploadImgMethods: {},
     toastMethods: {},

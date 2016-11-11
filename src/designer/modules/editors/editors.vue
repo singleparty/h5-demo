@@ -2,19 +2,24 @@
     <div class="editors-wrap">
         <!--页面级信息编辑器-->
         <div class="editors-scene">
-            <div class="item">
+            <div class="item scene-name">
                 <span class="name">专题名字：</span>
                 <label>
                     <input type="text" :value="sceneInfo.name" v-sync-scene-info
                            expression="name" class="input"/>
                 </label>
             </div>
+            <div class="item branch-type">
+                <span class="name">type: </span>
+                <div class="branchs">
+                    <span class="branch" v-for="b in branchType" v-text="b"></span>
+                    <span class="add-branch">+</span>
+                </div>
+            </div>
         </div>
         <!--组件编辑器-->
         <div class="editors">
-            <div class="basic-edt"
-                 v-for="edtName in edts.edtNames" track-by="$index"
-                 :data-edt-name="edtName">
+            <div class="basic-edt" v-for="edtName in edts.edtNames" track-by="$index">
                 <component :is="edtName" :index="edts.index" :info="edts.info"></component>
             </div>
         </div>
@@ -50,7 +55,11 @@
             }
         },
         computed: {
-            ..._state
+            ..._state,
+            branchType() {
+                var type = this.sceneInfo.branch.type;
+                return Object.keys(type);
+            }
         },
         methods: {
             ..._actions
