@@ -41,7 +41,7 @@
         coms: state => state.coms,
         dialogMethods: state => state.dialogMethods
     });
-    var _actions = mapActions(['cancelComEdit', 'showComEdit', 'removeCom', 'moveUpCom', 'moveDownCom']);
+    var _actions = mapActions(['showComEdit', 'removeCom']);
     var ctor = Vue.extend({
         props: {},
         data () {
@@ -60,7 +60,7 @@
             },
             blur () {
                 this.focusIndex = null;
-                this.cancelComEdit();
+                this.$store.commit('CANCEL_COM_EDIT', {});
             },
             remove ($index) {
                 this.dialogMethods.open('是否删除专题片段', () => {
@@ -70,12 +70,12 @@
             },
             moveUp ($index) {
                 if ($index == 0) return false;
-                this.moveUpCom($index);
+                this.$store.commit('MOVE_UP_COM', $index);
                 this.focusIndex--;
             },
             moveDown ($index) {
                 if ($index == this.coms.length - 1) return false;
-                this.moveDownCom($index);
+                this.$store.commit('MOVE_DOWN_COM', $index);
                 this.focusIndex++;
             }
         },
@@ -89,6 +89,11 @@
         components: comObj,
         computed: {
             ..._state
+        },
+        watch: {
+            coms(n, o) {
+                if(n !== o) this.focusIndex = null;
+            }
         }
     });
     export default ctor;

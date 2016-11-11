@@ -12,11 +12,7 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {mapActions } from 'vuex';
     import {comArr} from 'coms/coms-map';
-    var _actions = mapActions({
-        add: 'addOnCom'
-    });
     var ctor = Vue.extend({
         data () {
             return {
@@ -24,7 +20,9 @@
             }
         },
         methods: {
-            ..._actions
+            add(name) {
+                this.$store.commit('ADD_ON_COM', name);
+            }
         }
     });
     export default ctor;

@@ -20,7 +20,6 @@
         methods: {
             save(){
                 var data = {
-                    coms: this.coms,
                     sceneInfo: this.sceneInfo
                 };
                 localStorage.setItem('scene', encodeURIComponent(JSON.stringify(data)));
