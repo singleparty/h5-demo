@@ -23,7 +23,6 @@
                 if (this.info === null) {
                     //初始化info数据
                     this.$store.commit('INIT_COM_INFO', {
-                        index: this.index,
                         info: baseInfo
                     });
                     return baseInfo;
