@@ -14,7 +14,7 @@
 </style>
 <script type="es6">
     import 'libs/animate.min.css';
-    var ctor = Vue.extend({
+    const ctor = Vue.extend({
         data () {
             return {
                 show: false,

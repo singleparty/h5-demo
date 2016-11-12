@@ -104,7 +104,7 @@
         });
         return object;
     };
-    var ctor = Vue.extend({
+    const ctor = Vue.extend({
         data () {
             return {
                 isShow: false,

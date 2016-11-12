@@ -50,7 +50,7 @@
         uploadImgMethods: state => state.uploadImgMethods
     });
     var _actions = mapActions(['editComInfo']);
-    var ctor = Vue.extend({
+    const ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
             ..._state

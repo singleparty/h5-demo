@@ -13,7 +13,7 @@
         sceneInfo: state => state.sceneInfo,
         toastMethods: state => state.toastMethods
     });
-    var ctor = Vue.extend({
+    const ctor = Vue.extend({
         data(){
             return {};
         },

@@ -13,7 +13,7 @@
 </style>
 <script type="es6">
     import {comArr} from 'coms/coms-map';
-    var ctor = Vue.extend({
+    const ctor = Vue.extend({
         data () {
             return {
                 menus: comArr

@@ -38,7 +38,7 @@
         sceneInfo: state => state.sceneInfo
     });
     var _actions = mapActions(['editSceneInfo']);
-    var ctor = Vue.extend({
+    const ctor = Vue.extend({
         data () {
             return {
                 activeBranch: 0
@@ -69,7 +69,7 @@
                 });
             }
         },
-        ready() {
+        compiled() {
             var name = this.$els.sceneInfoName;
             name.addEventListener('input', e => {
                 var val = e.target.value;

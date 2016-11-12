@@ -42,7 +42,7 @@
         dialogMethods: state => state.dialogMethods
     });
     var _actions = mapActions(['showComEdit', 'removeCom']);
-    var ctor = Vue.extend({
+    const ctor = Vue.extend({
         props: {},
         data () {
             return {

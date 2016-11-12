@@ -11,7 +11,7 @@
 <script type="es6">
     import pic from './default.png';
     import {mapActions } from 'vuex';
-    var ctor = Vue.extend({
+    const ctor = Vue.extend({
         props: ['index', 'info'],
         computed: {
             imgSrc() {

@@ -3,12 +3,14 @@
         <div class="edit-link-center">
             <div class="edit-link-main">
                 <label>
-                    <input type="text" class="link-edit" :value="value" v-el:link/>
+                    <input type="text" class="link-edit" :value="value" v-el:link
+                           :class="{success: isSuccess, error: isError}"/>
                 </label>
             </div>
         </div>
         <div class="edit-link-left">
             <span class="edit-link-trigger" :class="{active: show}" @click="trigger"></span>
+
             <div class="edit-link-mask" v-show="show" @click="trigger"></div>
             <ul class="edit-link-dropdown" v-show="show" transition="fade">
                 <li class="link-item" :class="{active: type === 'url'}" @click="changeType('url')">跳转到url</li>
@@ -21,7 +23,11 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    var ctor = Vue.extend({
+    const regs = {
+        urlReg: /^.*$/i,
+        providerReg: /^\d*$/i
+    };
+    const ctor = Vue.extend({
         props: {
             type: [String, Number],
             value: [String, Number],
@@ -30,6 +36,9 @@
         data() {
             return {
                 show: false,
+                timeoutHandler: null,
+                isSuccess: false,
+                isError: false
             };
         },
         methods: {
@@ -42,16 +51,25 @@
                 this.update();
             },
             update() {
-                this.$emit('update', {
-                    type: this.type, value: this.value
-                }, this.label);
+                clearTimeout(this.timeoutHandler);
+                this.timeoutHandler = setTimeout(()=> {
+                    this.$emit('update', {
+                        type: this.type, value: this.value
+                    }, this.label);
+                }, 100);
             }
         },
-        ready() {
+        compiled() {
             var link = this.$els.link;
             link.addEventListener('input', e => {
-                this.value = e.target.value;
-                this.update();
+                var val = e.target.value
+                this.value = val;
+                if(regs[this.type + 'Reg'].test(val)) {
+                    this.isSuccess = !(this.isError = false);
+                    this.update();
+                } else {
+                    this.isSuccess = !(this.isError = true);
+                }
             }, false);
         },
         transitions: {
