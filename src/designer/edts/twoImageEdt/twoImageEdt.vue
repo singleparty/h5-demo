@@ -3,31 +3,31 @@
         <div class="left">
             <h5>左侧图片信息修改：</h5>
 
-            <div class="item pic">
+            <div class="item edit-pic">
                 <span class="name">修改图片：</span>
 
                 <div class="img-preview" @click="upload('left')">
                     <img :src="info.left.imgSrc" alt="" v-show="info.left.imgSrc"/>
                 </div>
             </div>
-            <div class="item href">
+            <div class="item edit-link">
                 <span class="name">跳转网页：</span>
-                <input type="text" :value="info.left.href" v-sync-com-info expression="left.href"/>
+                <input type="text" :value="info.left.link" v-sync-com-info expression="left.link"/>
             </div>
         </div>
         <div class="right">
             <h5>右侧图片信息修改：</h5>
 
-            <div class="item pic">
+            <div class="item edit-pic">
                 <span class="name">修改图片：</span>
 
                 <div class="img-preview" @click="upload('right')">
                     <img :src="info.right.imgSrc" alt="" v-show="info.right.imgSrc"/>
                 </div>
             </div>
-            <div class="item href">
+            <div class="item edit-link">
                 <span class="name">跳转网页：</span>
-                <input type="text" :value="info.right.href" v-sync-com-info expression="right.href"/>
+                <input type="text" :value="info.right.link" v-sync-com-info expression="right.link"/>
             </div>
         </div>
     </div>

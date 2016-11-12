@@ -7,10 +7,10 @@
                 <img :src="info.imgSrc" alt="" v-show="info.imgSrc"/>
             </div>
         </div>
-        <div class="item edit-href">
+        <div class="item edit-link">
             <span class="name">跳转页面：</span>
-            <div class="href">
-                <edit-link :type="info.href.type" :value="info.href.value" @update="updateLink"></edit-link>
+            <div class="link">
+                <edit-link :type="info.link.type" :value="info.link.value" @update="updateLink"></edit-link>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
             updateLink(data) {
                 this.editComInfo({
                     index: this.index,
-                    expression: 'href',
+                    expression: 'link',
                     value: data
                 });
             }

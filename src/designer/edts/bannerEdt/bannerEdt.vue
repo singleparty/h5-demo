@@ -1,15 +1,15 @@
 <template>
     <div class="banner-edt">
-        <div class="item pic">
+        <div class="item edit-pic">
             <span class="name">修改图片：</span>
 
             <div class="img-preview" @click="upload">
                 <img :src="info.imgSrc" alt="" v-show="info.imgSrc"/>
             </div>
         </div>
-        <div class="item href">
+        <div class="item edit-link">
             <span class="name">跳转网页：</span>
-            <input type="text" :value="info.href" v-sync-com-info :expression="'href'"/>
+            <input type="text" :value="info.link" v-sync-com-info :expression="'link'"/>
         </div>
     </div>
 </template>

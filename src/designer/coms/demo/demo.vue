@@ -1,6 +1,6 @@
 <template>
     <div class="demo">
-        <span class="demo-href">
+        <span class="demo-link">
             <img :src="imgSrc" alt="" class="demo-img"/>
         </span>
         <h5 v-for="_desc in data.desc">{{_desc.text}}</h5>
@@ -19,7 +19,7 @@
                 return this.data.imgSrc ? this.data.imgSrc : pic;
             },
             data () {
-                var baseInfo = {imgSrc: '', href: {type: 'url', value: ''}};
+                var baseInfo = {imgSrc: '', link: {type: 'url', value: ''}};
                 if (this.info === null) {
                     //初始化info数据
                     this.$store.commit('INIT_COM_INFO', {
