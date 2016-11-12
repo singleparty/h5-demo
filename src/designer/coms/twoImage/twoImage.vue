@@ -22,8 +22,11 @@
         props: ['index', 'info'],
         computed: {
             data () {
-                var baseInfo = {left: {imgSrc: '', link: ''}, right: {imgSrc: '', link: ''}};
-                if(this.info === null) {
+                var baseInfo = {
+                    left: {imgSrc: '', link: {type: 'url', value: ''}},
+                    right: {imgSrc: '', link: {type: 'url', value: ''}}
+                };
+                if (this.info === null) {
                     //初始化info数据
                     this.$store.commit('INIT_COM_INFO', {
                         info: baseInfo

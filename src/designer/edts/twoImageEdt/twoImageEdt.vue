@@ -11,8 +11,12 @@
                 </div>
             </div>
             <div class="item edit-link">
-                <span class="name">跳转网页：</span>
-                <input type="text" :value="info.left.link" v-sync-com-info expression="left.link"/>
+                <span class="name">跳转页面：</span>
+                <div class="link">
+                    <edit-link :type="info.left.link.type"
+                               :value="info.left.link.value" label="left" @update="updateLink">
+                    </edit-link>
+                </div>
             </div>
         </div>
         <div class="right">
@@ -26,8 +30,12 @@
                 </div>
             </div>
             <div class="item edit-link">
-                <span class="name">跳转网页：</span>
-                <input type="text" :value="info.right.link" v-sync-com-info expression="right.link"/>
+                <span class="name">跳转页面：</span>
+                <div class="link">
+                    <edit-link :type="info.right.link.type"
+                               :value="info.right.link.value" label="right" @update="updateLink">
+                    </edit-link>
+                </div>
             </div>
         </div>
     </div>
@@ -37,6 +45,7 @@
 </style>
 <script type="es6">
     import {mapState, mapActions } from 'vuex';
+    import editLink from '../editLink/editLink.vue';
     var _state = mapState({
         uploadImgMethods: state => state.uploadImgMethods
     });
@@ -49,6 +58,9 @@
         data () {
             return {};
         },
+        components: {
+            editLink
+        },
         methods: {
             ..._actions,
             upload (type) {
@@ -59,20 +71,13 @@
                         value: url
                     });
                 });
-            }
-        },
-        directives: {
-            syncComInfo: {
-                params: ['expression'],
-                bind () {
-                    this.el.addEventListener('input', (e)=> {
-                        this.vm.editComInfo({
-                            index: this.vm.index,
-                            expression: this.params.expression,
-                            value: e.currentTarget.value
-                        });
-                    });
-                }
+            },
+            updateLink(data, label) {
+                this.editComInfo({
+                    index: this.index,
+                    expression: label + '.link',
+                    value: data
+                });
             }
         }
     });
