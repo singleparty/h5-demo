@@ -1,16 +1,16 @@
 <template>
-    <div class="link-jump">
-        <div class="link-jump-center">
-            <div class="link-jump-main">
+    <div class="edit-link">
+        <div class="edit-link-center">
+            <div class="edit-link-main">
                 <label>
-                    <input type="text" class="link-edit" :value="value" v-el:link-edit/>
+                    <input type="text" class="link-edit" :value="value" v-el:link/>
                 </label>
             </div>
         </div>
-        <div class="link-jump-left">
-            <span class="link-jump-trigger" :class="{active: show}" @click="trigger"></span>
-            <div class="link-jump-mask" v-show="show" @click="trigger"></div>
-            <ul class="link-jump-dropdown" v-show="show" transition="fade">
+        <div class="edit-link-left">
+            <span class="edit-link-trigger" :class="{active: show}" @click="trigger"></span>
+            <div class="edit-link-mask" v-show="show" @click="trigger"></div>
+            <ul class="edit-link-dropdown" v-show="show" transition="fade">
                 <li class="link-item" :class="{active: type === 'url'}" @click="changeType('url')">跳转到url</li>
                 <li class="link-item" :class="{active: type === 'provider'}" @click="changeType('provider')">跳转到店铺</li>
             </ul>
@@ -47,8 +47,8 @@
             }
         },
         ready() {
-            var edit = this.$els.linkEdit;
-            edit.addEventListener('input', e => {
+            var link = this.$els.link;
+            link.addEventListener('input', e => {
                 this.value = e.target.value;
                 this.update();
             }, false);
