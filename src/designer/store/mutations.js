@@ -12,8 +12,9 @@ export const ADD_ON_COM = (state, name) => {
 /*
  * 初始化一个组件的info信息
  */
-export const INIT_COM_INFO = (state, {index, info}) => {
-    state['coms'][index]['info'] = info;
+export const INIT_COM_INFO = (state, {info}) => {
+    var index = state.coms.length - 1;
+    state.coms[index]['info'] = info;
 };
 /*
  * 展示组件的编辑器

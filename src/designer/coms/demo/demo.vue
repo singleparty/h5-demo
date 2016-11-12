@@ -19,8 +19,8 @@
                 return this.data.imgSrc ? this.data.imgSrc : pic;
             },
             data () {
-                var baseInfo = {imgSrc: '', href: '', desc: [{text:'描述1'}, {text: '描述2'}]};
-                if(this.info === null) {
+                var baseInfo = {imgSrc: '', href: {type: 'url', value: ''}};
+                if (this.info === null) {
                     //初始化info数据
                     this.$store.commit('INIT_COM_INFO', {
                         index: this.index,

@@ -1,22 +1,16 @@
 <template>
     <div class="demo-edt">
-        <div class="item pic">
+        <div class="item edit-pic">
             <span class="name">修改图片：</span>
 
             <div class="img-preview" @click="upload">
                 <img :src="info.imgSrc" alt="" v-show="info.imgSrc"/>
             </div>
         </div>
-        <div class="item href">
-            <span class="name">跳转网页：</span>
-            <input type="text" :value="info.href" v-sync-com-info :expression="'href'"/>
-        </div>
-        <div class="item text">
-            <span class="name">描述文字：</span>
-
-            <div class="text-content">
-                <input type="text" v-for="(index, _desc) in info.desc"
-                       :value="_desc.text" v-sync-com-info :expression="'desc.'+index+'.text'"/>
+        <div class="item edit-href">
+            <span class="name">跳转页面：</span>
+            <div class="href">
+                <edit-link :type="info.href.type" :value="info.href.value" @update="updateLink"></edit-link>
             </div>
         </div>
     </div>
@@ -26,6 +20,7 @@
 </style>
 <script type="es6">
     import {mapState, mapActions } from 'vuex';
+    import editLink from '../editLink/editLink.vue';
     var _state = mapState({
         uploadImgMethods: state => state.uploadImgMethods
     });
@@ -38,6 +33,9 @@
         data () {
             return {};
         },
+        components: {
+            editLink
+        },
         methods: {
             ..._actions,
             upload () {
@@ -48,20 +46,13 @@
                         value: url
                     });
                 });
-            }
-        },
-        directives: {
-            syncComInfo: {
-                params: ['expression'],
-                bind () {
-                    this.el.addEventListener('input', (e)=> {
-                        this.vm.editComInfo({
-                            index: this.vm.index,
-                            expression: this.params.expression,
-                            value: e.currentTarget.value
-                        });
-                    });
-                }
+            },
+            updateLink(data) {
+                this.editComInfo({
+                    index: this.index,
+                    expression: 'href',
+                    value: data
+                });
             }
         }
     });
