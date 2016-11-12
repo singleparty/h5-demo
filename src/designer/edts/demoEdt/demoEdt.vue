@@ -47,7 +47,7 @@
                     });
                 });
             },
-            updateLink(data) {
+            updateLink(data, label) {
                 this.editComInfo({
                     index: this.index,
                     expression: 'link',

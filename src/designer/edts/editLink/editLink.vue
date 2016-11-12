@@ -24,7 +24,8 @@
     var ctor = Vue.extend({
         props: {
             type: [String, Number],
-            value: [String, Number]
+            value: [String, Number],
+            label: [null]
         },
         data() {
             return {
@@ -43,7 +44,7 @@
             update() {
                 this.$emit('update', {
                     type: this.type, value: this.value
-                });
+                }, this.label);
             }
         },
         ready() {
