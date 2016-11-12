@@ -5,8 +5,7 @@
             <div class="item scene-name">
                 <span class="name">专题名字：</span>
                 <label>
-                    <input type="text" :value="sceneInfo.name" v-sync-scene-info
-                           expression="name" class="input"/>
+                    <input type="text" :value="sceneInfo.name" class="input" v-el:scene-info-name/>
                 </label>
             </div>
             <div class="item branch-type">
@@ -46,19 +45,6 @@
             }
         },
         components: edtObj,
-        directives: {
-            syncSceneInfo: {
-                params: ['expression'],
-                bind () {
-                    this.el.addEventListener('input', (e)=> {
-                        this.vm.editSceneInfo({
-                            expression: this.params.expression,
-                            value: e.currentTarget.value
-                        });
-                    });
-                }
-            }
-        },
         computed: {
             ..._state,
             getTypeBranchs() {
@@ -82,6 +68,16 @@
                     branchKey: branchKey
                 });
             }
+        },
+        ready() {
+            var name = this.$els.sceneInfoName;
+            name.addEventListener('input', e => {
+                var val = e.target.value;
+                this.editSceneInfo({
+                    expression: 'name',
+                    value: val
+                });
+            }, false);
         }
     });
     export default ctor;
