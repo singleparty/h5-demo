@@ -3,7 +3,6 @@
         <span class="demo-link">
             <img :src="imgSrc" alt="" class="demo-img"/>
         </span>
-        <h5 v-for="_desc in data.desc">{{_desc.text}}</h5>
     </div>
 </template>
 <style lang="less" scoped>
