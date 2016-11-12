@@ -38,16 +38,12 @@
         margin-left: -100%;
     }
     .edit-link-trigger {
-        display: inline-block;
-        margin-left: 3px;
-        width: 0;
-        height: 0;
-        border-color: transparent transparent #000 transparent;
-        border-width: 6px;
-        border-style: solid;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: url(./arrow.png) 0 2px no-repeat;
         &.active {
-            border-color: #000 transparent transparent transparent;
-            margin-top: 8px;
+            background-position: -20px 2px;
         }
     }
     .edit-link-dropdown {
