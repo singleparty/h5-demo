@@ -24,7 +24,7 @@
 </style>
 <script type="es6">
     const regs = {
-        urlReg: /^.*$/i,
+        urlReg: /^\S*$/i,
         providerReg: /^\d*$/i
     };
     const ctor = Vue.extend({
