@@ -1,11 +1,11 @@
 import 'designer/less/main.less'
-import menus from 'designer/modules/menus/menus.vue';
-import editors from 'designer/modules/editors/editors.vue';
-import screen from 'designer/modules/screen/screen.vue';
-import operation from 'designer/modules/operation/operation.vue';
-import uploadImg from 'designer/modules/uploadImg/uploadImg.vue';
-import toast from 'designer/modules/toast/toast.vue';
-import dialog from 'designer/modules/dialog/dialog.vue';
+import menus from 'designer/components/menus/menus.vue';
+import editors from 'designer/components/editors/editors.vue';
+import screen from 'designer/components/screen/screen.vue';
+import operation from 'designer/components/operation/operation.vue';
+import uploadImg from 'designer/components/uploadImg/uploadImg.vue';
+import toast from 'designer/components/toast/toast.vue';
+import dialog from 'designer/components/dialog/dialog.vue';
 import {mapActions } from 'vuex';
 import store from 'store/index';
 var _actions = mapActions(['init']);
