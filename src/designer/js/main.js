@@ -8,8 +8,8 @@ import toast from 'designer/components/toast/toast.vue';
 import dialog from 'designer/components/dialog/dialog.vue';
 import {mapActions } from 'vuex';
 import store from 'store/index';
-var _actions = mapActions(['init']);
-var main = new Vue({
+const _actions = mapActions(['init']);
+const main = new Vue({
     el: document.getElementById('main'),
     data: {
         uploadImgOption: {
