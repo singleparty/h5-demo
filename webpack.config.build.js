@@ -69,11 +69,7 @@ module.exports = {
     resolve: {
         alias: {
             libs: __dirname + '/libs',
-            common: __dirname + '/src/common',
-            //设计器
             designer: __dirname + '/src/designer',
-            coms: __dirname + '/src/designer/coms',
-            edts: __dirname + '/src/designer/edts',
             store: __dirname + '/src/designer/store',
             //插件
             vue: __dirname + '/libs/vue-1.0.26/vue.min.js',
