@@ -27,7 +27,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'js/[name].js',
-        publicPath: '/dist/', //给require.ensure用
+        publicPath: './', //给require.ensure用
         chunkFilename: 'js/[name].js' //给require.ensure用
     },
     module: {
