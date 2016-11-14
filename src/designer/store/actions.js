@@ -28,7 +28,7 @@ export const init = ({commit, state}, payload) => {
         };
     }
     commit('INIT', data);
-    if(isSaved) Vue.toast.open('读取缓存成功');
+    return isSaved;
 };
 export const changeBranch = ({commit, dispatch, state}, payload) => {
     commit('CANCEL_COM_EDIT', {}, {silent: true});

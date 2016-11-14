@@ -21,7 +21,9 @@ const main = new Vue({
         menus, editors, screen, operation
     },
     ready: function () {
-        this.$store.dispatch('init');
+        if(this.$store.dispatch('init')) {
+            Vue.toast.open('读取缓存成功');
+        }
     },
     store
 });
