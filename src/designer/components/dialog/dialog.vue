@@ -23,7 +23,7 @@
         },
         methods: {
             open (node, success, fail) {
-                if (typeof(node) === 'string' || node instanceof Element) {
+                if (typeof(node) === 'string' || node.nodeName) {
                     if(typeof(node) === 'string') {
                         var _str = node;
                         node = document.createElement('div');
