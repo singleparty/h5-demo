@@ -3,8 +3,8 @@
         <div class="item edit-pic">
             <span class="name">修改图片：</span>
 
-            <div class="img-preview" @click="upload">
-                <img :src="info.imgSrc" alt="" v-show="info.imgSrc"/>
+            <div class="img-preview">
+                <edit-img-src :img-src="info.imgSrc" @update="updateImgSrc"></edit-img-src>
             </div>
         </div>
         <div class="item edit-link">
@@ -21,6 +21,7 @@
 <script type="es6">
     import {mapActions} from 'vuex';
     import editLink from '../editLink/editLink.vue';
+    import editImgSrc from '../editImgSrc/editImgSrc.vue';
     var _actions = mapActions(['editComInfo']);
     const ctor = Vue.extend({
         props: ['index', 'info'],
@@ -28,23 +29,21 @@
             return {};
         },
         components: {
-            editLink
+            editLink, editImgSrc
         },
         methods: {
             ..._actions,
-            upload () {
-                Vue.uploadImg.open((url) => {
-                    this.editComInfo({
-                        index: this.index,
-                        expression: 'imgSrc',
-                        value: url
-                    });
-                });
-            },
             updateLink(data, label) {
                 this.editComInfo({
                     index: this.index,
                     expression: 'link',
+                    value: data
+                });
+            },
+            updateImgSrc(data, label) {
+                this.editComInfo({
+                    index: this.index,
+                    expression: 'imgSrc',
                     value: data
                 });
             }
