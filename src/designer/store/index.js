@@ -13,12 +13,9 @@ const state = {
                 '0': []
             }
         }
-    },
-    uploadImgMethods: {},
-    toastMethods: {},
-    dialogMethods: {}
+    }
 };
-var store = new Vuex.Store({
+const store = new Vuex.Store({
     strict: __DEV__, state, mutations, actions, getters
 });
 export default store;

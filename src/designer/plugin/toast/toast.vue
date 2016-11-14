@@ -33,12 +33,6 @@
                 this.show = false;
             }
         },
-        compiled () {
-            this.$store.commit('SET_TOAST_METHODS', {
-                open: this.open,
-                close: this.close
-            });
-        },
         transitions: {
             fade: {
                 enterClass: 'fadeInDown',

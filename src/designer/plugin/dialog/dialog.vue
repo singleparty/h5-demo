@@ -23,7 +23,7 @@
         },
         methods: {
             open (node, success, fail) {
-                if (typeof(node) === 'string' || node instanceof Element) {
+                if (typeof(node) === 'string' || node.nodeName) {
                     if(typeof(node) === 'string') {
                         var _str = node;
                         node = document.createElement('div');
@@ -53,12 +53,6 @@
                 }
                 this.close();
             }
-        },
-        compiled () {
-            this.$store.commit('SET_DIALOG_METHODS', {
-                open: this.open,
-                close: this.close
-            });
         },
         transitions: {
             fade: {

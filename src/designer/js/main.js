@@ -3,29 +3,27 @@ import menus from 'designer/components/menus/menus.vue';
 import editors from 'designer/components/editors/editors.vue';
 import screen from 'designer/components/screen/screen.vue';
 import operation from 'designer/components/operation/operation.vue';
-import uploadImg from 'designer/components/uploadImg/uploadImg.vue';
-import toast from 'designer/components/toast/toast.vue';
-import dialog from 'designer/components/dialog/dialog.vue';
-import {mapActions } from 'vuex';
+import uploadImg from 'designer/plugin/uploadImg/uploadImg';
+import toast from 'designer/plugin/toast/toast';
+import dialog from 'designer/plugin/dialog/dialog';
 import store from 'store/index';
-var _actions = mapActions(['init']);
-var main = new Vue({
+Vue.use(uploadImg, {
+    url: '../backend/uploadImg.php', //上传地址
+    fileDataName: 'upload', //上传的name
+    maxFileSize: 5 * 1024 * 1024 //图片上限
+});
+Vue.use(dialog);
+Vue.use(toast);
+const main = new Vue({
     el: document.getElementById('main'),
-    data: {
-        uploadImgOption: {
-            url: '../backend/uploadImg.php', //上传地址
-            fileDataName: 'upload', //上传的name
-            maxFileSize: 5 * 1024 * 1024 //图片上限
-        }
-    },
+    data: {},
     components: {
-        menus, editors, screen, operation, uploadImg, toast, dialog
+        menus, editors, screen, operation
     },
     ready: function () {
-        this.init();
-    },
-    methods: {
-        ..._actions
+        if(this.$store.dispatch('init')) {
+            Vue.toast.open('读取缓存成功');
+        }
     },
     store
 });

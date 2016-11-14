@@ -45,8 +45,7 @@
     import _temp from 'plupload';
     import swf from 'libs/plupload/js/Moxie.swf';
     import xap from 'libs/plupload/js/Moxie.xap';
-    var plupload = _temp['window.plupload'];
-    var mOxie = _temp['window.mOxie'];
+    var {'window.plupload': plupload, 'window.mOxie': mOxie} = _temp;
     var createObjectURL = (function () {
         var fn = null;
         if (window.createObjectURL != undefined) {
@@ -116,15 +115,6 @@
                 isShowToast: false,
                 toast: '',
                 showToastTimeoutHandler: null
-            }
-        },
-        props: {
-            option: {
-                type: Object,
-                required: true,
-                validator: function (i) {
-                    return i['url'] && i['maxFileSize'] && i['fileDataName'];
-                }
             }
         },
         methods: {
@@ -230,9 +220,6 @@
         },
         ready () {
             this.uploader.init();
-            this.$store.commit('SET_UPLOAD_IMG_METHODS', {
-                open: this.open, close: this.close
-            });
         },
         transitions: {
             fade: {
