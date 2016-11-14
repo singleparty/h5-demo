@@ -14,7 +14,6 @@ const state = {
             }
         }
     },
-    uploadImgMethods: {},
     toastMethods: {},
     dialogMethods: {}
 };

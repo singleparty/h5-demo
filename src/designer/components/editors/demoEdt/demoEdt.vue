@@ -19,17 +19,11 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {mapState, mapActions } from 'vuex';
+    import {mapActions } from 'vuex';
     import editLink from '../editLink/editLink.vue';
-    var _state = mapState({
-        uploadImgMethods: state => state.uploadImgMethods
-    });
     var _actions = mapActions(['editComInfo']);
     const ctor = Vue.extend({
         props: ['index', 'info'],
-        computed: {
-            ..._state
-        },
         data () {
             return {};
         },
@@ -39,7 +33,7 @@
         methods: {
             ..._actions,
             upload () {
-                this.uploadImgMethods.open((url) => {
+                Vue.uploadImg.open((url) => {
                     this.editComInfo({
                         index: this.index,
                         expression: 'imgSrc',

@@ -74,12 +74,6 @@ export const EDIT_SCENE_INFO = (state, {expression, value}) => {
     editSceneInfoFuncs[expression](state.sceneInfo, value);
 };
 /*
- * 上传图片方法集
- */
-export const SET_UPLOAD_IMG_METHODS = (state, value) => {
-    state.uploadImgMethods = value;
-};
-/*
  * 信息提示方法集
  */
 export const SET_TOAST_METHODS = (state, value) => {
