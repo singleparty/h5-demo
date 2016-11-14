@@ -10,8 +10,7 @@
     import {mapState } from 'vuex';
     var _state = mapState({
         coms: state => state.coms,
-        sceneInfo: state => state.sceneInfo,
-        toastMethods: state => state.toastMethods
+        sceneInfo: state => state.sceneInfo
     });
     const ctor = Vue.extend({
         data(){
@@ -23,7 +22,7 @@
                     sceneInfo: this.sceneInfo
                 };
                 localStorage.setItem('scene', encodeURIComponent(JSON.stringify(data)));
-                this.toastMethods.open('保存成功');
+                Vue.toast.open('保存成功');
             }
         },
         computed: {

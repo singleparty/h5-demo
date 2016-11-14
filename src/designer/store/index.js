@@ -13,8 +13,7 @@ const state = {
                 '0': []
             }
         }
-    },
-    toastMethods: {}
+    }
 };
 const store = new Vuex.Store({
     strict: __DEV__, state, mutations, actions, getters
