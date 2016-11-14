@@ -14,8 +14,7 @@ const state = {
             }
         }
     },
-    toastMethods: {},
-    dialogMethods: {}
+    toastMethods: {}
 };
 const store = new Vuex.Store({
     strict: __DEV__, state, mutations, actions, getters

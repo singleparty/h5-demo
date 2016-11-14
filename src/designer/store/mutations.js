@@ -80,12 +80,6 @@ export const SET_TOAST_METHODS = (state, value) => {
     state.toastMethods = value;
 };
 /*
-* 确认操作方法集
-*/
-export const SET_DIALOG_METHODS = (state, value) => {
-    state.dialogMethods = value;
-};
-/*
  * 初始化
  */
 export const INIT = (state, data) => {

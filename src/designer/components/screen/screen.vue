@@ -39,7 +39,6 @@
     import {comObj, comToEdts} from './coms-map';
     var _state = mapState({
         coms: state => state.coms,
-        dialogMethods: state => state.dialogMethods
     });
     var _actions = mapActions(['showComEdit', 'removeCom']);
     const ctor = Vue.extend({
@@ -63,7 +62,7 @@
                 this.$store.commit('CANCEL_COM_EDIT', {});
             },
             remove ($index) {
-                this.dialogMethods.open('是否删除专题片段', () => {
+                Vue.dialog.open('是否删除专题片段', () => {
                     this.focusIndex = null;
                     this.removeCom($index);
                 });
