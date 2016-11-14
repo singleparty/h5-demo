@@ -30,10 +30,3 @@ const main = new Vue({
     store
 });
 export default main;
-/*
-import u from 'designer/plugin/uploadImg/uploadImg.js';
-Vue.use(u, {
-    url: '../backend/uploadImg.php', //上传地址
-    fileDataName: 'upload', //上传的name
-    maxFileSize: 5 * 1024 * 1024 //图片上限
-});*/
