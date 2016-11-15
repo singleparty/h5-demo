@@ -12,7 +12,7 @@ var path = require('path');
 module.exports = {
     entry: {
         bundle: ['./src/designer/js/main.js'],
-        vendor: ['vue', 'vuex', 'plupload']
+        vendor: ['vue', 'vuex', 'vueResource', 'plupload']
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -74,6 +74,7 @@ module.exports = {
             //插件
             vue: __dirname + '/libs/vue-1.0.26/vue.min.js',
             vuex: __dirname + '/libs/vuex-2.0.0/vuex.min.js',
+            vueResource: __dirname + '/libs/vue-resource-1.0.3/vue-resource.min.js',
             jquery: __dirname + '/libs/jquery-1.9.1/jquery.min.js',
             plupload: __dirname + '/libs/plupload/js/plupload.full.min.js'
         }
