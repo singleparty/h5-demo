@@ -19,6 +19,7 @@ module.exports = {
         vendor: [
             'vue',
             'vuex',
+            'vueResource',
             'plupload',
             'webpack/hot/dev-server',
             'webpack-dev-server/client?http://localhost:9090'
@@ -83,6 +84,7 @@ module.exports = {
             //插件
             vue: __dirname + '/libs/vue-1.0.26/vue.dev.js',
             vuex: __dirname + '/libs/vuex-2.0.0/vuex.js',
+            vueResource: __dirname + '/libs/vue-resource-1.0.3/vue-resource.js',
             jquery: __dirname + '/libs/jquery-1.9.1/jquery.js',
             plupload: __dirname + '/libs/plupload/js/plupload.full.min.js'
         }
