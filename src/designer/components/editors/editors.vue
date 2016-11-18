@@ -31,13 +31,15 @@
 </style>
 <script type="es6">
     import {edtObj} from './edts-map';
-    import {mapState, mapActions } from 'vuex';
-    var _state = mapState({
+    import {mapState, mapActions, mapGetters} from 'vuex';
+    const _state = mapState({
         coms: state => state.coms,
-        edts: state => state.edts,
         sceneInfo: state => state.sceneInfo
     });
-    var _actions = mapActions(['editSceneInfo']);
+    const _actions = mapActions(['editSceneInfo']);
+    const _getters = mapGetters({
+        edts: 'getEdts'
+    });
     const ctor = Vue.extend({
         data () {
             return {
@@ -46,7 +48,7 @@
         },
         components: edtObj,
         computed: {
-            ..._state,
+            ..._state, ..._getters,
             getTypeBranchs() {
                 var type = this.sceneInfo.branch.type;
                 return Object.keys(type).sort(function (a, b) {

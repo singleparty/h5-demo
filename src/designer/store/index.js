@@ -5,7 +5,7 @@ import * as getters from './getters';
 Vue.use(Vuex);
 const state = {
     coms: [],
-    edts: {},
+    activeComIndex: null,
     sceneInfo: {
         name: '',
         branch: {
