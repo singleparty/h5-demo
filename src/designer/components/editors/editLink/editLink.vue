@@ -3,8 +3,8 @@
         <div class="edit-link-center">
             <div class="edit-link-main">
                 <label>
-                    <input type="text" class="link-edit" :value="cValue" v-el:link
-                           :class="{success: isSuccess, error: isError}"/>
+                    <input type="text" class="link-edit" v-model="cValue"
+                           :class="{success: isSuccess, error: !isSuccess}"/>
                 </label>
             </div>
         </div>
@@ -39,7 +39,6 @@
                 show: false,
                 timeoutHandler: null,
                 isSuccess: false,
-                isError: false,
                 cType: this.type,
                 cValue: this.value
             };
@@ -51,8 +50,6 @@
             changeType(type) {
                 this.cType = type;
                 this.show = false;
-                this.valid(this.cValue);
-                this.update();
             },
             update() {
                 clearTimeout(this.timeoutHandler);
@@ -62,30 +59,28 @@
                     }, this.label);
                 }, 100);
             },
-            valid(val) {
-                if(regs[this.cType + 'Reg'].test(val)) {
-                    this.isSuccess = !(this.isError = false);
-                    return true;
-                } else {
-                    this.isSuccess = !(this.isError = true);
-                    return false;
-                }
+            valid() {
+                return this.isSuccess = regs[this.cType + 'Reg'].test(this.cValue);
             }
-        },
-        compiled() {
-            var link = this.$els.link;
-            this.valid();
-            link.addEventListener('input', e => {
-                var val = e.target.value
-                this.cValue = val;
-                if(this.valid(val)) this.update();
-            }, false);
         },
         transitions: {
             fade: {
                 enterClass: 'fadeIn',
                 leaveClass: 'fadeOut',
                 type: 'animation'
+            }
+        },
+        compiled() {
+            this.valid();
+        },
+        watch: {
+            cValue(n, o) {
+                if(!this.valid()) return;
+                this.update();
+            },
+            cType(n,o) {
+                if(!this.valid()) return;
+                this.update();
             }
         }
     });
