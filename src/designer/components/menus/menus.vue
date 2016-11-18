@@ -12,7 +12,7 @@
     @import "./style.less";
 </style>
 <script type="es6">
-    import {comArr} from '../screen/coms-map';
+    import {comArr, comToEdts} from '../screen/coms-map';
     const ctor = Vue.extend({
         data () {
             return {
@@ -21,7 +21,9 @@
         },
         methods: {
             add(name) {
-                this.$store.commit('ADD_ON_COM', name);
+                this.$store.commit('ADD_ON_COM', {
+                    comName: name, edtNames: comToEdts[name]
+                });
             }
         }
     });

@@ -1,11 +1,12 @@
-var editComInfoFuncs = {};
-var editSceneInfoFuncs = {};
+const editComInfoFuncs = {};
+const editSceneInfoFuncs = {};
 /*
  * 添加一个组件
  */
-export const ADD_ON_COM = (state, name) => {
+export const ADD_ON_COM = (state, {comName, edtNames}) => {
     state['coms'].push({
-        comName: name,
+        comName: comName,
+        edtNames: edtNames,
         info: null
     });
 };
@@ -17,16 +18,10 @@ export const INIT_COM_INFO = (state, {info}) => {
     state.coms[index]['info'] = info;
 };
 /*
- * 展示组件的编辑器
- */
-export const SHOW_COM_EDIT = (state, edts) => {
-    state.edts = edts;
-};
-/*
- * 隐藏组件的编辑器
- */
-export const CANCEL_COM_EDIT = (state) => {
-    state.edts = {}
+* 更新被选中的组件index
+*/
+export const UPDATE_ACTIVE_COM_INDEX = (state , index) => {
+    state.activeComIndex = index;
 };
 /*
  * 编辑组件的info信息
@@ -44,27 +39,28 @@ export const EDIT_COM_INFO = (state, {index, expression, value}) => {
  */
 export const REMOVE_COM = (state, index) => {
     state['coms'].splice(index, 1);
+    state.activeComIndex = null;
 };
 /*
  * 组件上移
  */
 export const MOVE_UP_COM = (state, index) => {
-    var _temp = state.coms[index];
-    state.coms.$set(index, state.coms[index - 1]);
-    state.coms.$set(index - 1, _temp);
-    state.edts.index = index - 1;
+    if(index < 1) return;
+    var _temp = state.coms.splice(index, 1)[0];
+    state.coms.splice(index - 1, 0, _temp);
+    state.activeComIndex--;
 };
 /*
  * 组件下移
  */
 export const MOVE_DOWN_COM = (state, index) => {
-    var _temp = state.coms[index];
-    state.coms.$set(index, state.coms[index + 1]);
-    state.coms.$set(index + 1, _temp);
-    state.edts.index = index + 1;
+    if(index === state.coms.length - 1) return;
+    var _temp = state.coms.splice(index, 1)[0];
+    state.coms.splice(index + 1, 0, _temp);
+    state.activeComIndex++;
 };
 /*
- * 组件下移
+ * 组件编辑
  */
 export const EDIT_SCENE_INFO = (state, {expression, value}) => {
     if (!editSceneInfoFuncs[expression]) {
@@ -93,4 +89,5 @@ export const ADD_BRANCH = (state, {branchName}) => {
 * */
 export const CHANGE_BRANCH = (state, {branchName, branchKey}) => {
     state.coms = state.sceneInfo.branch[branchName][branchKey];
+    state.activeComIndex = null;
 };
