@@ -10,7 +10,7 @@
         </div>
         <div class="edit-link-left">
             <span class="edit-link-trigger" :class="{active: show}" @click="trigger"></span>
-
+            <span class="edit-link-text">{{cType | textFilter}}</span>
             <div class="edit-link-mask" v-show="show" @click="trigger"></div>
             <ul class="edit-link-dropdown" v-show="show" transition="fade">
                 <li class="link-item" :class="{active: cType === 'url'}" @click="changeType('url')">跳转到url</li>
@@ -81,6 +81,11 @@
             cType(n,o) {
                 if(!this.valid()) return;
                 this.update();
+            }
+        },
+        filters: {
+            textFilter(val) {
+                return val === 'url' ? '跳转到url' : '跳转到店铺';
             }
         }
     });

@@ -7,7 +7,7 @@
         float: left;
     }
     .edit-link-main {
-        margin-left: 25px;
+        margin-left: 100px;
     }
     .link-edit {
         display: inline-block;
@@ -32,18 +32,22 @@
     }
     .edit-link-left {
         position: relative;
-        width: 20px;
+        width: 100px;
         float: left;
         margin-left: -100%;
     }
     .edit-link-trigger {
-        display: block;
+        display: inline-block;
         width: 20px;
         height: 20px;
         background: url(./arrow.png) 0 2px no-repeat;
+        vertical-align: middle;
         &.active {
             background-position: -20px 2px;
         }
+    }
+    .edit-link-text {
+        font-size: 12px;
     }
     .edit-link-dropdown {
         .prefix(animation-duration, .5s);
