@@ -3,18 +3,18 @@
         <div class="edit-link-center">
             <div class="edit-link-main">
                 <label>
-                    <input type="text" class="link-edit" :value="value" v-el:link
-                           :class="{success: isSuccess, error: isError}"/>
+                    <input type="text" class="link-edit" v-model="cValue"
+                           :class="{success: isSuccess, error: !isSuccess}"/>
                 </label>
             </div>
         </div>
         <div class="edit-link-left">
             <span class="edit-link-trigger" :class="{active: show}" @click="trigger"></span>
-
+            <span class="edit-link-text">{{cType | textFilter}}</span>
             <div class="edit-link-mask" v-show="show" @click="trigger"></div>
             <ul class="edit-link-dropdown" v-show="show" transition="fade">
-                <li class="link-item" :class="{active: type === 'url'}" @click="changeType('url')">跳转到url</li>
-                <li class="link-item" :class="{active: type === 'provider'}" @click="changeType('provider')">跳转到店铺</li>
+                <li class="link-item" :class="{active: cType === 'url'}" @click="changeType('url')">跳转到url</li>
+                <li class="link-item" :class="{active: cType === 'provider'}" @click="changeType('provider')">跳转到店铺</li>
             </ul>
         </div>
     </div>
@@ -32,14 +32,15 @@
         props: {
             type: [String, Number],
             value: [String, Number],
-            label: [null]
+            label: null
         },
         data() {
             return {
                 show: false,
                 timeoutHandler: null,
                 isSuccess: false,
-                isError: false
+                cType: this.type,
+                cValue: this.value
             };
         },
         methods: {
@@ -47,37 +48,44 @@
                 this.show = !this.show;
             },
             changeType(type) {
-                this.type = type;
+                this.cType = type;
                 this.show = false;
-                this.update();
             },
             update() {
                 clearTimeout(this.timeoutHandler);
                 this.timeoutHandler = setTimeout(()=> {
                     this.$emit('update', {
-                        type: this.type, value: this.value
+                        type: this.cType, value: this.cValue
                     }, this.label);
                 }, 100);
+            },
+            valid() {
+                return this.isSuccess = regs[this.cType + 'Reg'].test(this.cValue);
             }
-        },
-        compiled() {
-            var link = this.$els.link;
-            link.addEventListener('input', e => {
-                var val = e.target.value
-                this.value = val;
-                if(regs[this.type + 'Reg'].test(val)) {
-                    this.isSuccess = !(this.isError = false);
-                    this.update();
-                } else {
-                    this.isSuccess = !(this.isError = true);
-                }
-            }, false);
         },
         transitions: {
             fade: {
                 enterClass: 'fadeIn',
                 leaveClass: 'fadeOut',
                 type: 'animation'
+            }
+        },
+        compiled() {
+            this.valid();
+        },
+        watch: {
+            cValue(n, o) {
+                if(!this.valid()) return;
+                this.update();
+            },
+            cType(n,o) {
+                if(!this.valid()) return;
+                this.update();
+            }
+        },
+        filters: {
+            textFilter(val) {
+                return val === 'url' ? '跳转到url' : '跳转到店铺';
             }
         }
     });

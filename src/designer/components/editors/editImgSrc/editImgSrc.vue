@@ -10,7 +10,7 @@
     const ctor = Vue.extend({
         props: {
             imgSrc: [String, Number],
-            label: [null]
+            label: null
         },
         data() {
             return {};
