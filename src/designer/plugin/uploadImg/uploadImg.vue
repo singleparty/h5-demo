@@ -1,5 +1,5 @@
 <template>
-    <div class="upload-img animated" v-show="isShow" transition="bounce">
+    <div class="upload-img animated" v-show="isShow" transition="zoom">
         <div class="mask" @click="close"></div>
         <div class="frame">
             <div class="frame-resources">
@@ -227,9 +227,9 @@
                 leaveClass: 'fadeOut',
                 type: 'animation'
             },
-            bounce: {
-                enterClass: 'bounceIn',
-                leaveClass: 'bounceOut',
+            zoom: {
+                enterClass: 'zoomIn',
+                leaveClass: 'zoomOut',
                 type: 'animation'
             }
         }
