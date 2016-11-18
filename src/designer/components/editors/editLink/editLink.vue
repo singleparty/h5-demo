@@ -3,7 +3,7 @@
         <div class="edit-link-center">
             <div class="edit-link-main">
                 <label>
-                    <input type="text" class="link-edit" :value="value" v-el:link
+                    <input type="text" class="link-edit" :value="cValue" v-el:link
                            :class="{success: isSuccess, error: isError}"/>
                 </label>
             </div>
@@ -13,8 +13,8 @@
 
             <div class="edit-link-mask" v-show="show" @click="trigger"></div>
             <ul class="edit-link-dropdown" v-show="show" transition="fade">
-                <li class="link-item" :class="{active: type === 'url'}" @click="changeType('url')">跳转到url</li>
-                <li class="link-item" :class="{active: type === 'provider'}" @click="changeType('provider')">跳转到店铺</li>
+                <li class="link-item" :class="{active: cType === 'url'}" @click="changeType('url')">跳转到url</li>
+                <li class="link-item" :class="{active: cType === 'provider'}" @click="changeType('provider')">跳转到店铺</li>
             </ul>
         </div>
     </div>
@@ -32,14 +32,16 @@
         props: {
             type: [String, Number],
             value: [String, Number],
-            label: [null]
+            label: null
         },
         data() {
             return {
                 show: false,
                 timeoutHandler: null,
                 isSuccess: false,
-                isError: false
+                isError: false,
+                cType: this.type,
+                cValue: this.value
             };
         },
         methods: {
@@ -47,30 +49,36 @@
                 this.show = !this.show;
             },
             changeType(type) {
-                this.type = type;
+                this.cType = type;
                 this.show = false;
+                this.valid(this.cValue);
                 this.update();
             },
             update() {
                 clearTimeout(this.timeoutHandler);
                 this.timeoutHandler = setTimeout(()=> {
                     this.$emit('update', {
-                        type: this.type, value: this.value
+                        type: this.cType, value: this.cValue
                     }, this.label);
                 }, 100);
+            },
+            valid(val) {
+                if(regs[this.cType + 'Reg'].test(val)) {
+                    this.isSuccess = !(this.isError = false);
+                    return true;
+                } else {
+                    this.isSuccess = !(this.isError = true);
+                    return false;
+                }
             }
         },
         compiled() {
             var link = this.$els.link;
+            this.valid();
             link.addEventListener('input', e => {
                 var val = e.target.value
-                this.value = val;
-                if(regs[this.type + 'Reg'].test(val)) {
-                    this.isSuccess = !(this.isError = false);
-                    this.update();
-                } else {
-                    this.isSuccess = !(this.isError = true);
-                }
+                this.cValue = val;
+                if(this.valid(val)) this.update();
             }, false);
         },
         transitions: {
