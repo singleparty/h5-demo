@@ -11,10 +11,10 @@
             <div class="item branch-type">
                 <span class="name">type: </span>
                 <div class="branchs">
-                    <span class="branch" :class="{active: activeBranch == $index}"
-                          @click="changeBranch('type', branchKey, $index)"
-                          v-for="branchKey in getTypeBranchs" v-text="branchKey"></span>
-                    <span class="add-branch" @click="addBranch('type')">+</span>
+                    <span class="branch" :class="{active: activeBranch == branch.type}"
+                          @click="changeBranch(branch.type)"
+                          v-for="branch in getTypeBranchs" v-text="branch.type"></span>
+                    <span class="add-branch" @click="addBranch()">+</span>
                 </div>
             </div>
         </div>
@@ -50,25 +50,20 @@
         computed: {
             ..._state, ..._getters,
             getTypeBranchs() {
-                var type = this.sceneInfo.branch.type;
-                return Object.keys(type).sort(function (a, b) {
-                    return a - b;
+                var types = this.sceneInfo.types;
+                return types.sort(function (a, b) {
+                    return a.type - b.type;
                 });
             }
         },
         methods: {
             ..._actions,
-            addBranch(branchName) {
-                this.$store.commit('ADD_BRANCH', {
-                    branchName: branchName
-                });
+            addBranch() {
+                this.$store.commit('ADD_BRANCH');
             },
-            changeBranch(branchName, branchKey, index) {
+            changeBranch(num) {
                 this.activeBranch = index;
-                this.$store.dispatch('changeBranch', {
-                    branchName: branchName,
-                    branchKey: branchKey
-                });
+                this.$store.dispatch('changeBranch', num);
             }
         },
         compiled() {

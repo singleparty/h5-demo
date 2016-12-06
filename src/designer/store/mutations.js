@@ -69,7 +69,7 @@ export const INIT = (state, data) => {
 /*
 * 添加分支，现在只有“type”分支
 */
-export const ADD_BRANCH = (state, {branchName}) => {
+export const ADD_BRANCH = (state) => {
     var types = state.sceneInfo.types;
     var typeNum = types.reduce((a,b) => {
         return a.type > b.type ? a : b;
@@ -82,9 +82,9 @@ export const ADD_BRANCH = (state, {branchName}) => {
 /*
 * 转换分支
 */
-export const CHANGE_BRANCH = (state, {typeNum}) => {
+export const CHANGE_BRANCH = (state, num) => {
     var type = state.sceneInfo.types.filter(({type}) => {
-        return type === typeNum;
+        return type === num;
     });
     state.coms = type[0].coms;
     state.activeComIndex = null;
