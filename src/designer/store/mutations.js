@@ -64,20 +64,28 @@ export const EDIT_SCENE_INFO = (state, {expression, value}) => {
  */
 export const INIT = (state, data) => {
     state.sceneInfo = data.sceneInfo;
-    state.coms = data.sceneInfo.branch.type['0'];
+    state.coms = data.sceneInfo.types[0].coms;
 };
 /*
 * 添加分支，现在只有“type”分支
 */
 export const ADD_BRANCH = (state, {branchName}) => {
-    var branck = state.sceneInfo.branch[branchName];
-    var newBranchKey = Math.max.apply(Math, Object.keys(branck)) + 1;
-    Vue.set(branck, newBranchKey, Object.assign([], state.coms));
+    var types = state.sceneInfo.types;
+    var typeNum = types.reduce((a,b) => {
+        return a.type > b.type ? a : b;
+    }).type + 1;
+    types.push({
+        type: typeNum,
+        coms: Object.assign([], state.coms)
+    });
 };
 /*
 * 转换分支
 */
-export const CHANGE_BRANCH = (state, {branchName, branchKey}) => {
-    state.coms = state.sceneInfo.branch[branchName][branchKey];
+export const CHANGE_BRANCH = (state, {typeNum}) => {
+    var type = state.sceneInfo.types.filter(({type}) => {
+        return type === typeNum;
+    });
+    state.coms = type[0].coms;
     state.activeComIndex = null;
 };

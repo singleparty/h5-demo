@@ -11,10 +11,15 @@ export const init = ({commit, state}, payload) => {
     } else {
         data = {
             sceneInfo: {
-                name: '',
-                branch: {
-                    type: {'0': []}
-                }
+                pageId: -1,
+                pageName: '',
+                pageTitle: '',
+                types: [
+                    {
+                        type: 1,
+                        coms: []
+                    }
+                ]
             }
         };
     }

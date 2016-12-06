@@ -3,9 +3,9 @@
         <!--页面级信息编辑器-->
         <div class="editors-scene">
             <div class="item scene-name">
-                <span class="name">专题名字：</span>
+                <span class="name">文件名：</span>
                 <label>
-                    <input type="text" :value="sceneInfo.name" class="input" v-el:scene-info-name/>
+                    <input type="text" :value="sceneInfo.pageName" class="input" v-el:scene-info-name/>
                 </label>
             </div>
             <div class="item branch-type">
@@ -43,7 +43,7 @@
     const ctor = Vue.extend({
         data () {
             return {
-                activeBranch: 0
+                activeBranch: 1
             }
         },
         components: edtObj,
@@ -76,7 +76,7 @@
             name.addEventListener('input', e => {
                 var val = e.target.value;
                 this.editSceneInfo({
-                    expression: 'name',
+                    expression: 'pageName',
                     value: val
                 });
             }, false);
