@@ -13,7 +13,7 @@
                 <div class="branchs">
                     <span class="branch" :class="{active: activeBranch == branch.type}"
                           @click="changeBranch(branch.type)"
-                          v-for="branch in getTypeBranchs" v-text="branch.type"></span>
+                          v-for="branch in sceneInfo.types" v-text="branch.type"></span>
                     <span class="add-branch" @click="addBranch()">+</span>
                 </div>
             </div>
@@ -48,13 +48,7 @@
         },
         components: edtObj,
         computed: {
-            ..._state, ..._getters,
-            getTypeBranchs() {
-                var types = this.sceneInfo.types;
-                return types.sort(function (a, b) {
-                    return a.type - b.type;
-                });
-            }
+            ..._state, ..._getters
         },
         methods: {
             ..._actions,
@@ -62,7 +56,7 @@
                 this.$store.commit('ADD_BRANCH');
             },
             changeBranch(num) {
-                this.activeBranch = index;
+                this.activeBranch = num;
                 this.$store.dispatch('changeBranch', num);
             }
         },
