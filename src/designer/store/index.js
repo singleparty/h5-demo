@@ -6,8 +6,8 @@ Vue.use(Vuex);
 const state = {
     coms: [],
     activeComIndex: null,
+    pageId: -1,
     sceneInfo: {
-        pageId: -1,
         pageName: '',
         pageTitle: '',
         types: [

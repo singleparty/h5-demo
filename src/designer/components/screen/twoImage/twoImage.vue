@@ -23,8 +23,8 @@
         computed: {
             data () {
                 var baseInfo = {
-                    left: {imgSrc: '', link: {type: 'url', value: ''}},
-                    right: {imgSrc: '', link: {type: 'url', value: ''}}
+                    left: {imgSrc: '', link: {type: 0, value: ''}},
+                    right: {imgSrc: '', link: {type: 0, value: ''}}
                 };
                 if (this.info === null) {
                     //初始化info数据

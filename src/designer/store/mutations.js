@@ -63,8 +63,10 @@ export const EDIT_SCENE_INFO = (state, {expression, value}) => {
  * 从接口/本地获取保存的数据，进行初始化
  */
 export const INIT = (state, data) => {
-    state.sceneInfo = data.sceneInfo;
-    state.coms = data.sceneInfo.types[0].coms;
+    if(data) {
+        state.sceneInfo = data.sceneInfo;
+    }
+    state.coms = state.sceneInfo.types[0].coms;
 };
 /*
 * 添加分支，现在只有“type”分支

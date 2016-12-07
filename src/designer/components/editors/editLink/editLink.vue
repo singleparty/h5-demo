@@ -13,8 +13,8 @@
             <span class="edit-link-text">{{cType | textFilter}}</span>
             <div class="edit-link-mask" v-show="show" @click="trigger"></div>
             <ul class="edit-link-dropdown" v-show="show" transition="fade">
-                <li class="link-item" :class="{active: cType === 'url'}" @click="changeType('url')">跳转到url</li>
-                <li class="link-item" :class="{active: cType === 'provider'}" @click="changeType('provider')">跳转到店铺</li>
+                <li class="link-item" :class="{active: cType === 0}" @click="changeType(0)">跳转到url</li>
+                <li class="link-item" :class="{active: cType === 1}" @click="changeType(1)">跳转到店铺</li>
             </ul>
         </div>
     </div>
@@ -24,14 +24,11 @@
 </style>
 <script type="es6">
     import 'libs/animate.min.css';
-    const regs = {
-        urlReg: /^\S*$/i,
-        providerReg: /^\d*$/i
-    };
+    const regs = [/^\S*$/i, /^\d*$/i];
     const ctor = Vue.extend({
         props: {
-            type: [String, Number],
-            value: [String, Number],
+            type: [Number],
+            value: [Number],
             label: null
         },
         data() {
@@ -60,7 +57,7 @@
                 }, 100);
             },
             valid() {
-                return this.isSuccess = regs[this.cType + 'Reg'].test(this.cValue);
+                return this.isSuccess = regs[this.cType].test(this.cValue);
             }
         },
         transitions: {
@@ -85,7 +82,7 @@
         },
         filters: {
             textFilter(val) {
-                return val === 'url' ? '跳转到url' : '跳转到店铺';
+                return val === 0 ? '跳转到url' : '跳转到店铺';
             }
         }
     });
