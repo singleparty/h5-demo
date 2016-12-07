@@ -55,7 +55,7 @@
         data () {
             return {
                 activeBranch: 1,
-                pageNameSuccess: true,
+                pageNameSuccess: false,
                 pageNameError: false
             }
         },
