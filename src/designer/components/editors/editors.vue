@@ -8,6 +8,12 @@
                     <input type="text" :value="sceneInfo.pageName" class="input" v-el:scene-info-name/>
                 </label>
             </div>
+            <div class="item scene-title">
+                <span class="title">页面title：</span>
+                <label>
+                    <input type="text" :value="sceneInfo.pageTitle" class="input" v-el:scene-info-title/>
+                </label>
+            </div>
             <div class="item branch-type">
                 <span class="name">type: </span>
                 <div class="branchs">
@@ -62,10 +68,18 @@
         },
         compiled() {
             var name = this.$els.sceneInfoName;
+            var title = this.$els.sceneInfoTitle;
             name.addEventListener('input', e => {
                 var val = e.target.value;
                 this.editSceneInfo({
                     expression: 'pageName',
+                    value: val
+                });
+            }, false);
+            title.addEventListener('input', e => {
+                var val = e.target.value;
+                this.editSceneInfo({
+                    expression: 'pageTitle',
                     value: val
                 });
             }, false);

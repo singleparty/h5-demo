@@ -76,7 +76,7 @@ export const ADD_BRANCH = (state) => {
     }).type + 1;
     types.push({
         type: typeNum,
-        coms: Object.assign([], state.coms)
+        coms: JSON.parse(JSON.stringify(state.coms))
     });
 };
 /*
