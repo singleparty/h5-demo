@@ -56,7 +56,7 @@
                     }, this.label);
                 }, 100);
             },
-            valid() {
+            verify() {
                 return this.isSuccess = regs[this.cType].test(this.cValue);
             }
         },
@@ -68,15 +68,15 @@
             }
         },
         compiled() {
-            this.valid();
+            this.verify();
         },
         watch: {
             cValue(n, o) {
-                if(!this.valid()) return;
+                if(!this.verify()) return;
                 this.update();
             },
             cType(n,o) {
-                if(!this.valid()) return;
+                if(!this.verify()) return;
                 this.update();
             }
         },
