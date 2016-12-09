@@ -64,9 +64,14 @@ export const EDIT_SCENE_INFO = (state, {expression, value}) => {
  */
 export const INIT = (state, data) => {
     if(data) {
+        data.sceneInfo.types.sort(({type: a},{type: b}) => {
+            return a - b;
+        });
         state.sceneInfo = data.sceneInfo;
     }
-    state.coms = state.sceneInfo.types[0].coms;
+    var type = state.sceneInfo.types[0];
+    state.coms = type.coms;
+    state.activeBranch = type.type;
 };
 /*
 * 添加分支，现在只有“type”分支
@@ -89,5 +94,6 @@ export const CHANGE_BRANCH = (state, num) => {
         return type === num;
     });
     state.coms = type[0].coms;
+    state.activeBranch = type[0].type;
     state.activeComIndex = null;
 };

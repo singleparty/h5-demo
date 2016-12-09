@@ -44,6 +44,7 @@
     import {mapState, mapActions, mapGetters} from 'vuex';
     const _state = mapState({
         coms: state => state.coms,
+        activeBranch: state => state.activeBranch,
         sceneInfo: state => state.sceneInfo
     });
     const _actions = mapActions(['editSceneInfo']);
@@ -54,7 +55,6 @@
     const ctor = Vue.extend({
         data () {
             return {
-                activeBranch: 1,
                 pageNameSuccess: false,
                 pageNameError: false
             }
