@@ -29,7 +29,8 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         filename: 'js/[name].js',
         publicPath: './', //给require.ensure用
-        chunkFilename: 'js/[name].js' //给require.ensure用
+        chunkFilename: 'js/[name].js', //给require.ensure用
+        libraryTarget: 'umd'
     },
     module: {
         loaders: [
